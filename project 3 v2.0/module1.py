@@ -12,16 +12,17 @@ black = (0,0,0)
 white = (255,255,255)
 bright_red = (255,0,0)
 bright_green = (0,255,0)
-bright_yellow = (239,254,54)
+bright_yellow = (255,255,54)
 bright_blue = (64,132,244)
-red = (200,0,0)
-green = (0,200,0)
-yellow = (236,220,26)
+red = (255,0,0)
+green = (0,255,0)
+yellow = (255,255,0)
 blue = (11,83,202)
 mudgreen = (51,125,2)
 mudyellow = (119,117,19)
 mudred = (112,46,27)
 mudblue = (1,66,137)
+map_colour = (0, 148, 255)
 
 #------------------------------------------------------------------------------------------------------------------------
 
@@ -55,6 +56,15 @@ def sound_off():
     pygame.mixer.music.stop()
 def sound_on():
     pygame.mixer.music.play(-1)
+def volumedown():
+    volume = pygame.mixer.music.get_volume()
+    volume = volume - 0.1
+    pygame.mixer.music.set_volume(volume)
+
+def volumeup():
+    volume = pygame.mixer.music.get_volume()
+    volume = volume + 0.1
+    pygame.mixer.music.set_volume(volume)
 
 #-----------------------------------------------------------------------------------------------------------
 
@@ -67,10 +77,10 @@ def Main_scherm():   #main menu scherm
                 pygame.quit()
                 quit()
 
-        gameDisplay.fill(white)
-        button1("kaart", 50, 230, 700, 50,green, bright_green, Kaart_scherm)
-        button1("Navigatie", 50, 330, 700, 50, green, bright_green, Navigatie_scherm)
-        button1("Opties", 50, 430, 700, 50, green, bright_green, Opties_scherm)
+        gameDisplay.fill(map_colour)
+        button1("kaart", 50, 230, 700, 50,yellow, red, Kaart_scherm)
+        button1("Navigatie", 50, 330, 700, 50, yellow, red, Navigatie_scherm)
+        button1("Opties", 50, 430, 700, 50, yellow, red, Opties_scherm)
 
         clock.tick(60)      #refresh rate
         pygame.display.flip()
@@ -82,8 +92,8 @@ def Kaart_scherm():    #kaart scherm
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-        gameDisplay.fill(white)
-        button1("Back", 50, 500, 700, 50, red, bright_red, Main_scherm)
+        gameDisplay.fill(map_colour)
+        button1("Back", 50, 500, 700, 50, yellow, red, Main_scherm)
         clock.tick(15)  #refresh rate van 15
         pygame.display.flip()
 
@@ -94,8 +104,8 @@ def Navigatie_scherm():    #navigatie scherm
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-        gameDisplay.fill(white)
-        button1("Back", 50, 500, 700, 50, red, bright_red, Main_scherm)
+        gameDisplay.fill(map_colour)
+        button1("Back", 50, 500, 700, 50, yellow, red, Main_scherm)
         clock.tick(15)  #refresh rate van 15
         pygame.display.flip()
 def Opties_scherm():  #opties menu
@@ -105,10 +115,12 @@ def Opties_scherm():  #opties menu
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-        gameDisplay.fill(white)
-        button1("Sound off", 50, 130, 350, 50, bright_green, green, sound_off)
-        button1("Sound on", 400, 130, 350, 50, bright_green, green, sound_on)
-        button1("Back", 50, 500, 700, 50, bright_red, red, Main_scherm)
+        gameDisplay.fill(map_colour)
+        button1("Sound off", 50, 130, 350, 50, yellow, red, sound_off)
+        button1("Sound on", 400, 130, 350, 50, yellow, red, sound_on)
+        button1("Volume down", 50, 230, 350, 50, yellow, red, volumedown)
+        button1("Volume up", 400, 230, 350, 50, yellow, red, volumeup)
+        button1("Back", 50, 500, 700, 50, yellow, red, Main_scherm)
         clock.tick(15)  #refresh rate van 15
         pygame.display.flip()
 
