@@ -157,6 +157,9 @@ def Kaart_scherm():    #kaart scherm
         button("A200", x1 + nextX * 7, y1 + nextY * 3, 53, 30, yellow, red)
         button("EE_1", x1 + nextX * 8, y1 + nextY * 3, 53, 30, yellow, red)
         
+        # button back
+        button("back", 1200, 700, 53, 30, yellow, red, Main_scherm)
+        
         clock.tick(15)  #refresh rate van 15
         pygame.display.flip()
 
