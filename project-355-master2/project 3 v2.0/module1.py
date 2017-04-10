@@ -3,6 +3,7 @@ import eztext
 
 pygame.init()
 
+
 display_width = 1300
 display_height = 800
 pygame.mixer.music.load("poi.wav")
@@ -14,6 +15,7 @@ pygame.display.set_caption('Roadmap Netherlands') # titel of pygame frame
 
 # image
 map_image = pygame.image.load('images/wegenkaartV2.png')
+test = pygame.image.load('images/test.png')
 
 #colors are in a range of 0-255 (256 different entries)
 red = [255, 0, 0]
@@ -35,6 +37,11 @@ mudred = (112,46,27)
 mudblue = (1,66,137)
 map_colour = (0, 148, 255)
 
+map_var = ""
+
+andere = None
+
+
 #------------------------------------------------------------------------------------------------------------------------
 
 intro, Introduction, gameExit,playing, players, throwdice = True, False, False, False, False, 0
@@ -45,12 +52,14 @@ _image_library = {}     #global list
 
 #-------------------------------------------------------------------------------------------------------------------------
 
-def button(msg,x,y,w,h,ic,ac,action=None):          #functie om een knop te maken (text,x,y,width,height,kleur, hover kleur, actie)
+def button(msg,x,y,w,h,ic,ac,action=None, action2=None):          #functie om een knop te maken (text,x,y,width,height,kleur, hover kleur, actie)
     mouse = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
     if x+w > mouse[0] > x and y+h > mouse[1] > y:   #als de muis over de knop hovert, verander de kleur
         pygame.draw.rect(gameDisplay, ac,(x,y,w,h))
         if click[0] == 1 and action != None:        #als je er op klikt, doe actie
+            action()
+        if click[0] == 1 and action2 != None:
             action()
     else:
         pygame.draw.rect(gameDisplay, ic,(x,y,w,h))
@@ -77,12 +86,31 @@ def volumeup():
     volume = volume + 0.1
     pygame.mixer.music.set_volume(volume)
 
-def map(x,y):
-    gameDisplay.blit(map_image, (x,y))
-#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+def map(naam, x,y):
+    gameDisplay.blit(naam, (x,y))
+
+def map_change():
+   # map_var = change
+    map_var = "A1"
+    global andere
+    andere = True
+    if map_var == "A1":
+        map(test, 1000,100)
+
+def reset():
+    global andere
+    andere = False
+
+
+        
+    
+    
+    
+#--------------------------------------------------------------------------------------------------------------
 
 def Main_scherm():   #main menu scherm
     Instruction, Intro = False, True
+    andere = False
     x, y, mov_x, mov_y = 0,0,6,6
     while intro:
         for event in pygame.event.get():
@@ -91,10 +119,10 @@ def Main_scherm():   #main menu scherm
                 quit()
 
         gameDisplay.fill(map_colour)
-        button("kaart", 50, 230, 700, 50,yellow, red, Kaart_scherm)
+        button("kaart", 50, 230, 700, 50,yellow, red, Kaart_scherm, reset)
         button("Navigatie", 50, 330, 700, 50, yellow, red, Navigatie_scherm)
         button("Opties", 50, 430, 700, 50, yellow, red, Opties_scherm)
-        button("X", 1200, 700, 70, 50, yellow, red, quit)
+        button("X", 1200, 100, 70, 50, yellow, red, quit)
 
         clock.tick(60)      #refresh rate
         pygame.display.flip()
@@ -107,7 +135,7 @@ def Kaart_scherm():    #kaart scherm
                 pygame.quit()
                 quit()
         gameDisplay.fill(map_colour)
-        map(10,10)
+        map(map_image,10,10)
 
         # button vars
         x1 = 700
@@ -115,7 +143,7 @@ def Kaart_scherm():    #kaart scherm
         y1 = 15
         nextY = 50
         # button row 1
-        button("A1", x1, y1, 53, 30, yellow, red)
+        button("A1", x1, y1, 53, 30, yellow, red, map_change)
         button("A2", x1 + nextX, y1, 53, 30, yellow, red)
         button("A4", x1 + nextX * 2, y1, 53, 30, yellow, red)
         button("A5", x1 + nextX * 3, y1, 53, 30, yellow, red)
@@ -161,6 +189,9 @@ def Kaart_scherm():    #kaart scherm
         # button back
         button("back", 1200, 700, 53, 30, yellow, red, Main_scherm)
         
+        if andere == True:
+            map_change()
+
         clock.tick(15)  #refresh rate van 15
         pygame.display.flip()
 
@@ -197,4 +228,5 @@ pygame.mixer.music.play(-1)
 Main_scherm()
 Kaart_scherm()
 Navigatie_scherm()
+
 quit()
