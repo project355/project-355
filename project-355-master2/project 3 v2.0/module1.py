@@ -94,6 +94,7 @@ def Main_scherm():   #main menu scherm
         button("kaart", 50, 230, 700, 50,yellow, red, Kaart_scherm)
         button("Navigatie", 50, 330, 700, 50, yellow, red, Navigatie_scherm)
         button("Opties", 50, 430, 700, 50, yellow, red, Opties_scherm)
+        button("X", 1200, 700, 70, 50, yellow, red, quit)
 
         clock.tick(60)      #refresh rate
         pygame.display.flip()
