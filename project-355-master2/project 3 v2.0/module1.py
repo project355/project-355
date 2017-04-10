@@ -5,12 +5,12 @@ pygame.init()
 
 display_width = 1300
 display_height = 800
-pygame.mixer.music.load("Salty_Ditty.wav")
+pygame.mixer.music.load("poi.wav")
 
 # globals
 x = (display_width * 0.45)
 y = (display_height * 0.8)
-pygame.display.set_caption('roadmap netherlands') # titel of pygame frame
+pygame.display.set_caption('Roadmap Netherlands') # titel of pygame frame
 
 # image
 map_image = pygame.image.load('images/wegenkaartV2.png')
@@ -39,7 +39,7 @@ map_colour = (0, 148, 255)
 
 intro, Introduction, gameExit,playing, players, throwdice = True, False, False, False, False, 0
 gameDisplay = pygame.display.set_mode((display_width, display_height))  #init resolution
-pygame.display.set_caption('Name')  #window naam
+pygame.display.set_caption('Roadmap Netherlands')  #window naam
 clock = pygame.time.Clock()     #nodig voor Refresh Rate
 _image_library = {}     #global list
 
