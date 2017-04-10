@@ -14,7 +14,7 @@ x = (display_width * 0.45)
 y = (display_height * 0.8)
 pygame.display.set_caption('Roadmap Netherlands') # titel of pygame frame
 
-# image
+# image 637x750
 map_image = pygame.image.load('images/wegenkaartV2.png')
 #map_A1 = pygame.image.load('images/A1.jpg')
 map_A2 = pygame.image.load('images/A2.jpg')
@@ -286,7 +286,7 @@ def atari():
         # 32 columns of blocks
         for column in range(0, blockcount):
             # Create a block (color,x,y)
-            block = Block(blue, column * (block_width + 2) + 1, top)
+            block = Block(blue, column * (block_width + 2) + 1, (80))
             blocks.add(block)
             allsprites.add(block)
         # Move the top of the next row down
@@ -383,217 +383,295 @@ def map(naam, x,y):
 def A1():
     global andere
     andere = True
-   # display_ = 
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A1
+    map(Display_map, map_x,map_y)
 
 def A2():
     global andere
     andere = True
-    map(test, map_x, map_y)
+    global Display_map
+    Display_map = map_A2
+    map(Display_map, map_x, map_y)
 
 
 def A4():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A4
+    map(Display_map, map_x,map_y)
 
 
 def A5():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A5
+    map(Display_map, map_x,map_y)
 
 
 def A6():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A6
+    map(Display_map, map_x,map_y)
 
 
 def A7():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A7
+    map(Display_map, map_x,map_y)
 
 
 def A8():
     global andere
+    global Display_map
+    Display_map = map_A8
     andere = True
-    map(test, map_x,map_y)
+    map(Display_map, map_x,map_y)
 
 
 def A9():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A9
+    map(Display_map, map_x,map_y)
 
 
 def A10():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A10
+    map(Display_map, map_x,map_y)
 
 
 def A12():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A12
+    map(Display_map, map_x,map_y)
 
 
 def A13():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A13
+    map(Display_map, map_x,map_y)
 
 
 def A15():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A15
+    map(Display_map, map_x,map_y)
 
 
 def A16():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A16
+    map(Display_map, map_x,map_y)
 
 
 def A17():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A17
+    map(Display_map, map_x,map_y)
 
 
 def A18():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A18
+    map(Display_map, map_x,map_y)
 
 
 def A19():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A19
+    map(Display_map, map_x,map_y)
 
 
 def A20():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A20
+    map(Display_map, map_x,map_y)
 
 
 def A27():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A27
+    map(Display_map, map_x,map_y)
 
 
 def A28():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A28
+    map(Display_map, map_x,map_y)
 
 
 def A29():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A29
+    map(Display_map, map_x,map_y)
 
 
 def A30():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A30
+    map(Display_map, map_x,map_y)
 
 
 def A31():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A31
+    map(Display_map, map_x,map_y)
 
 
 def A32():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A32
+    map(Display_map, map_x,map_y)
 
 
 def A35():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A35
+    map(Display_map, map_x,map_y)
 
 
 def A37():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A37
+    map(Display_map, map_x,map_y)
 
 
 def A44():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A44
+    map(Display_map, map_x,map_y)
 
 
 def A50():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A50
+    map(Display_map, map_x,map_y)
 
 
 def A58():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A58
+    map(Display_map, map_x,map_y)
 
 
 def A59():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A59
+    map(Display_map, map_x,map_y)
 
 
 def A65():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A65
+    map(Display_map, map_x,map_y)
 
 
 def A67():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A67
+    map(Display_map, map_x,map_y)
 
 
 def A73():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A73
+    map(Display_map, map_x,map_y)
 
 
 def A76():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A76
+    map(Display_map, map_x,map_y)
 
 
 def A77():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A77
+    map(Display_map, map_x,map_y)
 
 
 def A79():
     global andere
     andere = True
-
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A79
+    map(Display_map, map_x,map_y)
 
 def A200():
     global andere
     andere = True
-    map(test, map_x,map_y)
+    global Display_map
+    Display_map = map_A200
+    map(Display_map, map_x,map_y)
+
+def reset():
+    global andere
+    andere = False
+    global Display_map
+    Display_map = map_image
+    map(Display_map, map_x,map_y)
+
 
 
 
@@ -684,11 +762,11 @@ def Kaart_scherm():    #kaart scherm
         
         # button back
         button("back", 1200, 700, 53, 30, yellow, red, Main_scherm)
-        button("deselecteer", 800, 700, 70, 30, yellow, red)
+        button("deselecteer", 800, 700, 70, 30, yellow, red, reset)
   
         
         if andere == True:
-            map_change()
+            map(Display_map, map_x,map_y)
 
         clock.tick(15)  #refresh rate van 15
         pygame.display.flip()
