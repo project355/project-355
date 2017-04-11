@@ -22,16 +22,64 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="atari.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="eztext.py" />
+    <Compile Include="globals.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="module1.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="images\" />
+    <Folder Include="bu_img+pdn\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\A1.jpg" />
+    <Content Include="images\A10.jpg" />
+    <Content Include="images\A12.jpg" />
+    <Content Include="images\A13.jpg" />
+    <Content Include="images\A15.jpg" />
+    <Content Include="images\A16.jpg" />
+    <Content Include="images\A17.jpg" />
+    <Content Include="images\A18.jpg" />
+    <Content Include="images\A2.jpg" />
+    <Content Include="images\A20.jpg" />
+    <Content Include="images\A200.jpg" />
+    <Content Include="images\A22.jpg" />
+    <Content Include="images\A27.jpg" />
+    <Content Include="images\A28.jpg" />
+    <Content Include="images\A29.jpg" />
+    <Content Include="images\A30.jpg" />
+    <Content Include="images\A31.jpg" />
+    <Content Include="images\A32.jpg" />
+    <Content Include="images\A35.jpg" />
+    <Content Include="images\A37.jpg" />
+    <Content Include="images\A38.jpg" />
+    <Content Include="images\A4.jpg" />
+    <Content Include="images\A44.jpg" />
+    <Content Include="images\A5.jpg" />
+    <Content Include="images\A50.jpg" />
+    <Content Include="images\A58.jpg" />
+    <Content Include="images\A59.jpg" />
+    <Content Include="images\A6.jpg" />
+    <Content Include="images\A65.jpg" />
+    <Content Include="images\A67.jpg" />
+    <Content Include="images\A7.jpg" />
+    <Content Include="images\A73.jpg" />
+    <Content Include="images\A74.jpg" />
+    <Content Include="images\A76.jpg" />
+    <Content Include="images\A77.jpg" />
+    <Content Include="images\A79.jpg" />
+    <Content Include="images\A8.jpg" />
+    <Content Include="images\A9.jpg" />
     <Content Include="images\wegenkaartV2.png" />
+    <Content Include="bu_img+pdn\wegenkaart.pdn" />
+    <Content Include="bu_img+pdn\wegenkaart.png" />
+    <Content Include="bu_img+pdn\wegenkaartV2.pdn" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
