@@ -1,7 +1,7 @@
 import pygame, time, psycopg2
 import eztext
 import math
-import time
+
 
 pygame.init()
 
@@ -363,6 +363,7 @@ def atari():
 
     if game_over == True:
         Kaart_scherm()
+
 
 def text_objects(text, font):   #functie om tekst te tonen
     textSurface = font.render(text, True, black)
