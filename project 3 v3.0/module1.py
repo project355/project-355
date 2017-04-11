@@ -329,9 +329,10 @@ def atari():
         if game_over:
             text = font.render("Game Over", True, white)
             textpos = text.get_rect(centerx=background.get_width()/2)
-            textpos.top = 300
-            time.sleep(3)
+            textpos.top = 300            
             screen.blit(text, textpos)
+            time.sleep(3)
+            Kaart_scherm()
 
         # See if the ball hits the player paddle
         if pygame.sprite.spritecollide(player, balls, False):
