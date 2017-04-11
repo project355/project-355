@@ -13,6 +13,7 @@ pygame.mixer.music.load("poi.wav")
 x = (display_width * 0.45)
 y = (display_height * 0.8)
 pygame.display.set_caption('Roadmap Netherlands') # titel of pygame frame
+map_text = ""
 
 # image 637x750
 title = pygame.image.load('images/Roadmap.png')
