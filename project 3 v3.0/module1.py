@@ -1,6 +1,7 @@
-import pygame, time, psycopg2
+import pygame, time, psycopg2, random
 import eztext
 import math
+import snake
 
 pygame.init()
 
@@ -104,6 +105,8 @@ def button(msg,x,y,w,h,ic,ac,action=None):          #functie om een knop te make
     textSurf, textRect = text_objects(msg, smallText)
     textRect.center = ( (x+(w/2)), (y+(h/2)) )
     gameDisplay.blit(textSurf, textRect)
+
+
 
 def atari():
     block_width = 23
@@ -329,7 +332,7 @@ def atari():
         if game_over:
             text = font.render("Game Over", True, white)
             textpos = text.get_rect(centerx=background.get_width()/2)
-            textpos.top = 300            
+            textpos.top = 300
             screen.blit(text, textpos)
             time.sleep(3)
             Kaart_scherm()
@@ -758,6 +761,11 @@ def reset():
     map(Display_map, map_x, map_y)
     map_text = ""
 
+    def snek2():
+        snake()
+        Main_scherm()
+
+
 
 
 
@@ -938,7 +946,7 @@ def beoordeling_scherm():
         button("A77", 1025, y2, 53, 30, yellow, red, A77)
         button("A79", 1090, y2, 53, 30, yellow, red, A79)
         button("A200",1155, y2, 53, 30, yellow, red, A200)
-        button("EE_1",1220, y2, 53, 30, yellow, red, atari)
+        button("EE_1",1220, y2, 53, 30, yellow, red, snake.actisnek)
 
         button("Terug", 150, 700, 300, 50, yellow, red, Main_scherm)
         button("Verstuur", 850, 700, 300, 50, yellow, red, Main_scherm)
