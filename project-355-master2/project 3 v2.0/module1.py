@@ -1,6 +1,6 @@
 import pygame, time, psycopg2
 import eztext
-import math 
+import math
 
 pygame.init()
 
@@ -110,12 +110,12 @@ def atari():
         """This class represents each block that will get knocked out by the ball
         It derives from the "Sprite" class in Pygame """
 
-        def _init_(self, color, x, y):
+        def __init__(self, color, x, y):
             """ Constructor. Pass in the color of the block,
                 and its x and y position. """
 
             # Call the parent class (Sprite) constructor
-            super()._init_()
+            super().__init__()
 
             # Create the image of the block of appropriate size
             # The width and height are sent as a list for the first parameter.
@@ -151,9 +151,9 @@ def atari():
         height = 10
 
         # Constructor. Pass in the color of the block, and its x and y position
-        def _init_(self):
+        def __init__(self):
             # Call the parent class (Sprite) constructor
-            super()._init_()
+            super().__init__()
 
             # Create the image of the ball
             self.image = pygame.Surface([self.width, self.height])
@@ -214,10 +214,10 @@ def atari():
         """ This class represents the bar at the bottom that the
         player controls. """
 
-        def _init_(self):
+        def __init__(self):
             """ Constructor for Player. """
             # Call the parent's constructor
-            super()._init_()
+            super().__init__()
 
             self.width = 75
             self.height = 15
@@ -287,7 +287,7 @@ def atari():
         # 32 columns of blocks
         for column in range(0, blockcount):
             # Create a block (color,x,y)
-            block = Block(blue, column * (block_width + 2) + 1, (80))
+            block = Block(blue, column * (block_width + 2) + 1, top)
             blocks.add(block)
             allsprites.add(block)
         # Move the top of the next row down
@@ -677,10 +677,10 @@ def reset():
 
 
 
-        
-    
-    
-    
+
+
+
+
 #--------------------------------------------------------------------------------------------------------------
 
 def Main_scherm():   #main menu scherm
@@ -694,9 +694,11 @@ def Main_scherm():   #main menu scherm
                 quit()
 
         gameDisplay.fill(map_colour)
+        #map(Roadmap.png, 50, 130)
         button("kaart", 50, 230, 700, 50,yellow, red, Kaart_scherm)
         button("Navigatie", 50, 330, 700, 50, yellow, red, Navigatie_scherm)
         button("Opties", 50, 430, 700, 50, yellow, red, Opties_scherm)
+        button("Beoordeling", 50, 530, 700, 50, yellow, red, beoordeling_scherm)
         button("X", 1200, 100, 70, 50, yellow, red, quit)
 
         clock.tick(60)      #refresh rate
@@ -760,17 +762,30 @@ def Kaart_scherm():    #kaart scherm
         button("A79", x1 + nextX * 6, y1 + nextY * 3, 53, 30, yellow, red, A79)
         button("A200", x1 + nextX * 7, y1 + nextY * 3, 53, 30, yellow, red, A200)
         button("EE_1", x1 + nextX * 8, y1 + nextY * 3, 53, 30, yellow, red, atari)
-        
+
         # button back
         button("back", 1200, 700, 53, 30, yellow, red, Main_scherm)
         button("deselecteer", 800, 700, 70, 30, yellow, red, reset)
-  
-        
+
+
         if andere == True:
             map(Display_map, map_x,map_y)
 
         clock.tick(15)  #refresh rate van 15
         pygame.display.flip()
+
+def beoordeling_scherm():
+    Instruction, Intro = True, False
+    while Instruction:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+        gameDisplay.fill(map_colour)
+        button("Back", 50, 500, 700, 50, yellow, red, Main_scherm)
+        clock.tick(15)  #refresh rate van 15
+        pygame.display.flip()
+
 
 def Navigatie_scherm():    #navigatie scherm
     Instruction, Intro = True, False
