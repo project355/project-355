@@ -364,7 +364,6 @@ def atari():
     if game_over == True:
         Kaart_scherm()
 
-
 def text_objects(text, font):   #functie om tekst te tonen
     textSurface = font.render(text, True, black)
     return textSurface, textSurface.get_rect()
@@ -400,14 +399,12 @@ def A2():
     Display_map = map_A2
     map(Display_map, map_x, map_y)
 
-
 def A4():
     global andere
     andere = True
     global Display_map
     Display_map = map_A4
     map(Display_map, map_x,map_y)
-
 
 def A5():
     global andere
@@ -416,14 +413,12 @@ def A5():
     Display_map = map_A5
     map(Display_map, map_x,map_y)
 
-
 def A6():
     global andere
     andere = True
     global Display_map
     Display_map = map_A6
     map(Display_map, map_x,map_y)
-
 
 def A7():
     global andere
@@ -432,14 +427,12 @@ def A7():
     Display_map = map_A7
     map(Display_map, map_x,map_y)
 
-
 def A8():
     global andere
     global Display_map
     Display_map = map_A8
     andere = True
     map(Display_map, map_x,map_y)
-
 
 def A9():
     global andere
@@ -448,14 +441,12 @@ def A9():
     Display_map = map_A9
     map(Display_map, map_x,map_y)
 
-
 def A10():
     global andere
     andere = True
     global Display_map
     Display_map = map_A10
     map(Display_map, map_x,map_y)
-
 
 def A12():
     global andere
@@ -464,14 +455,12 @@ def A12():
     Display_map = map_A12
     map(Display_map, map_x,map_y)
 
-
 def A13():
     global andere
     andere = True
     global Display_map
     Display_map = map_A13
     map(Display_map, map_x,map_y)
-
 
 def A15():
     global andere
@@ -480,14 +469,12 @@ def A15():
     Display_map = map_A15
     map(Display_map, map_x,map_y)
 
-
 def A16():
     global andere
     andere = True
     global Display_map
     Display_map = map_A16
     map(Display_map, map_x,map_y)
-
 
 def A17():
     global andere
@@ -496,14 +483,12 @@ def A17():
     Display_map = map_A17
     map(Display_map, map_x,map_y)
 
-
 def A18():
     global andere
     andere = True
     global Display_map
     Display_map = map_A18
     map(Display_map, map_x,map_y)
-
 
 def A19():
     global andere
@@ -512,14 +497,12 @@ def A19():
     Display_map = map_A19
     map(Display_map, map_x,map_y)
 
-
 def A20():
     global andere
     andere = True
     global Display_map
     Display_map = map_A20
     map(Display_map, map_x,map_y)
-
 
 def A27():
     global andere
@@ -528,14 +511,12 @@ def A27():
     Display_map = map_A27
     map(Display_map, map_x,map_y)
 
-
 def A28():
     global andere
     andere = True
     global Display_map
     Display_map = map_A28
     map(Display_map, map_x,map_y)
-
 
 def A29():
     global andere
@@ -544,14 +525,12 @@ def A29():
     Display_map = map_A29
     map(Display_map, map_x,map_y)
 
-
 def A30():
     global andere
     andere = True
     global Display_map
     Display_map = map_A30
     map(Display_map, map_x,map_y)
-
 
 def A31():
     global andere
@@ -560,14 +539,12 @@ def A31():
     Display_map = map_A31
     map(Display_map, map_x,map_y)
 
-
 def A32():
     global andere
     andere = True
     global Display_map
     Display_map = map_A32
     map(Display_map, map_x,map_y)
-
 
 def A35():
     global andere
@@ -576,14 +553,12 @@ def A35():
     Display_map = map_A35
     map(Display_map, map_x,map_y)
 
-
 def A37():
     global andere
     andere = True
     global Display_map
     Display_map = map_A37
     map(Display_map, map_x,map_y)
-
 
 def A44():
     global andere
@@ -592,14 +567,12 @@ def A44():
     Display_map = map_A44
     map(Display_map, map_x,map_y)
 
-
 def A50():
     global andere
     andere = True
     global Display_map
     Display_map = map_A50
     map(Display_map, map_x,map_y)
-
 
 def A58():
     global andere
@@ -608,14 +581,12 @@ def A58():
     Display_map = map_A58
     map(Display_map, map_x,map_y)
 
-
 def A59():
     global andere
     andere = True
     global Display_map
     Display_map = map_A59
     map(Display_map, map_x,map_y)
-
 
 def A65():
     global andere
@@ -624,14 +595,12 @@ def A65():
     Display_map = map_A65
     map(Display_map, map_x,map_y)
 
-
 def A67():
     global andere
     andere = True
     global Display_map
     Display_map = map_A67
     map(Display_map, map_x,map_y)
-
 
 def A73():
     global andere
@@ -640,7 +609,6 @@ def A73():
     Display_map = map_A73
     map(Display_map, map_x,map_y)
 
-
 def A76():
     global andere
     andere = True
@@ -648,14 +616,12 @@ def A76():
     Display_map = map_A76
     map(Display_map, map_x,map_y)
 
-
 def A77():
     global andere
     andere = True
     global Display_map
     Display_map = map_A77
     map(Display_map, map_x,map_y)
-
 
 def A79():
     global andere
@@ -679,19 +645,16 @@ def reset():
     map(Display_map, map_x,map_y)
 
 
-
-
-
-
-
-
-
 #--------------------------------------------------------------------------------------------------------------
 
 def Main_scherm():   #main menu scherm
     Instruction, Intro = False, True
     andere = False
     x, y, mov_x, mov_y = 0,0,6,6
+    global andere
+    andere = False
+    global Display_map
+    Display_map = map_image
     while intro:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
