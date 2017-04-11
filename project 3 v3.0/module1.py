@@ -330,6 +330,7 @@ def atari():
             text = font.render("Game Over", True, white)
             textpos = text.get_rect(centerx=background.get_width()/2)
             textpos.top = 300
+            time.sleep(3)
             screen.blit(text, textpos)
 
         # See if the ball hits the player paddle
@@ -360,7 +361,7 @@ def atari():
         pygame.display.flip()
 
     if game_over == True:
-        start()
+        Kaart_scherm()
 
 def text_objects(text, font):   #functie om tekst te tonen
     textSurface = font.render(text, True, black)
