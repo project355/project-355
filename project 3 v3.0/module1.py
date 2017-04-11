@@ -3,9 +3,7 @@ import eztext
 import math
 import sys
 
-
 pygame.init()
-
 
 display_width = 1300
 display_height = 800
@@ -76,8 +74,6 @@ mudred = (112,46,27)
 mudblue = (1,66,137)
 map_colour = (0, 148, 255)
 
-
-
 andere = None
 map_x, map_y = 10, 10
 Display_map = ""
@@ -86,28 +82,25 @@ Display_map = ""
 
 intro, Introduction, gameExit,playing, players, throwdice = True, False, False, False, False, 0
 gameDisplay = pygame.display.set_mode((display_width, display_height))  #init resolution
-pygame.display.set_caption('Roadmap Netherlands')  #window naam
 clock = pygame.time.Clock()     #nodig voor Refresh Rate
 _image_library = {}     #global list
 
 #-------------------------------------------------------------------------------------------------------------------------
 
-def button(msg,x,y,w,h,ic,ac,action=None):          #functie om een knop te maken (text,x,y,width,height,kleur, hover kleur, actie)
+def button(msg,x,y,w,h,ic,ac,action=None):
+    """functie om een knop te maken (text,x,y,width,height,kleur, hover kleur, actie)"""
     mouse = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
     if x+w > mouse[0] > x and y+h > mouse[1] > y:   #als de muis over de knop hovert, verander de kleur
         pygame.draw.rect(gameDisplay, ac,(x,y,w,h))
         if click[0] == 1 and action != None:        #als je er op klikt, doe actie
             action()
-
     else:
         pygame.draw.rect(gameDisplay, ic,(x,y,w,h))
     smallText = pygame.font.SysFont("freesansbold.ttf",20)
     textSurf, textRect = text_objects(msg, smallText)
     textRect.center = ( (x+(w/2)), (y+(h/2)) )
     gameDisplay.blit(textSurf, textRect)
-
-
 
 def atari():
     block_width = 23
@@ -137,7 +130,6 @@ def atari():
             # This is where our block will appear..
             self.rect.x = x
             self.rect.y = y
-
 
     class Ball(pygame.sprite.Sprite):
         """ This class represents the ball
@@ -214,7 +206,6 @@ def atari():
                 return True
             else:
                 return False
-
 
     class Player(pygame.sprite.Sprite):
         """ This class represents the bar at the bottom that the
@@ -334,9 +325,8 @@ def atari():
             text = font.render("Game Over", True, white)
             textpos = text.get_rect(centerx=background.get_width()/2)
             textpos.top = 300
-            screen.blit(text, textpos)
             time.sleep(3)
-            Kaart_scherm()
+            screen.blit(text, textpos)
 
         # See if the ball hits the player paddle
         if pygame.sprite.spritecollide(player, balls, False):
@@ -373,9 +363,13 @@ def text_objects(text, font):   #functie om tekst te tonen
     return textSurface, textSurface.get_rect()
 
 def sound_off():
+    """turn sound off"""
     pygame.mixer.music.stop()
+
 def sound_on():
+    """turn sound on"""
     pygame.mixer.music.play(-1)
+
 def volumedown():
     volume = pygame.mixer.music.get_volume()
     volume = volume - 0.1
@@ -394,7 +388,7 @@ def message_display(text):
 
 def map(naam, x,y):
     gameDisplay.blit(naam, (x,y))
-    pygame.draw.rect(gameDisplay, map_colour, (700, 220, 535, 450)) # map_colour, vlak
+    pygame.draw.rect(gameDisplay, map_colour, (700, 220, 535, 450)) # vlak
     message_display(map_text)
 
 def A1():
@@ -404,7 +398,7 @@ def A1():
     Display_map = map_A1
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
+    map_text = "info A1"
 
 def A2():
     global andere
@@ -413,8 +407,7 @@ def A2():
     Display_map = map_A2
     global map_text
     map(Display_map, map_x, map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A2"
 
 def A4():
     global andere
@@ -423,8 +416,7 @@ def A4():
     Display_map = map_A4
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A4"
 
 def A5():
     global andere
@@ -433,7 +425,7 @@ def A5():
     Display_map = map_A5
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
+    map_text = "info A5"
 
 def A6():
     global andere
@@ -442,8 +434,7 @@ def A6():
     Display_map = map_A6
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A6"
 
 def A7():
     global andere
@@ -452,8 +443,7 @@ def A7():
     Display_map = map_A7
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A7"
 
 def A8():
     global andere
@@ -462,8 +452,7 @@ def A8():
     Display_map = map_A8
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A8"
 
 def A9():
     global andere
@@ -472,8 +461,7 @@ def A9():
     Display_map = map_A9
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A9"
 
 def A10():
     global andere
@@ -482,8 +470,7 @@ def A10():
     Display_map = map_A10
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A10"
 
 def A12():
     global andere
@@ -492,8 +479,7 @@ def A12():
     Display_map = map_A12
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A12"
 
 def A13():
     global andere
@@ -502,7 +488,7 @@ def A13():
     Display_map = map_A13
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
+    map_text = "info A13"
 
 def A15():
     global andere
@@ -511,8 +497,7 @@ def A15():
     Display_map = map_A15
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A15"
 
 def A16():
     global andere
@@ -521,8 +506,7 @@ def A16():
     Display_map = map_A16
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A16"
 
 def A17():
     global andere
@@ -531,8 +515,7 @@ def A17():
     Display_map = map_A17
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A17"
 
 def A18():
     global andere
@@ -541,8 +524,7 @@ def A18():
     Display_map = map_A18
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A18"
 
 def A19():
     global andere
@@ -551,8 +533,7 @@ def A19():
     Display_map = map_A19
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A19"
 
 def A20():
     global andere
@@ -561,8 +542,7 @@ def A20():
     Display_map = map_A20
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A20"
 
 def A27():
     global andere
@@ -571,8 +551,7 @@ def A27():
     Display_map = map_A27
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A27"
 
 def A28():
     global andere
@@ -581,8 +560,7 @@ def A28():
     Display_map = map_A28
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A28"
 
 def A29():
     global andere
@@ -591,8 +569,7 @@ def A29():
     Display_map = map_A29
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A29"
 
 def A30():
     global andere
@@ -601,8 +578,7 @@ def A30():
     Display_map = map_A30
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A30"
 
 def A31():
     global andere
@@ -611,8 +587,7 @@ def A31():
     Display_map = map_A31
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A31"
 
 def A32():
     global andere
@@ -621,8 +596,7 @@ def A32():
     Display_map = map_A32
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A32"
 
 def A35():
     global andere
@@ -631,8 +605,7 @@ def A35():
     Display_map = map_A35
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A35"
 
 def A37():
     global andere
@@ -641,8 +614,7 @@ def A37():
     Display_map = map_A37
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A37"
 
 def A44():
     global andere
@@ -651,8 +623,7 @@ def A44():
     Display_map = map_A44
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A44"
 
 def A50():
     global andere
@@ -661,8 +632,7 @@ def A50():
     Display_map = map_A50
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A50"
 
 def A58():
     global andere
@@ -671,8 +641,7 @@ def A58():
     Display_map = map_A58
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A58"
 
 def A59():
     global andere
@@ -681,8 +650,7 @@ def A59():
     Display_map = map_A59
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A59"
 
 def A65():
     global andere
@@ -691,8 +659,7 @@ def A65():
     Display_map = map_A65
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A65"
 
 def A67():
     global andere
@@ -701,8 +668,7 @@ def A67():
     Display_map = map_A67
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A67"
 
 def A73():
     global andere
@@ -711,8 +677,7 @@ def A73():
     Display_map = map_A73
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A73"
 
 def A76():
     global andere
@@ -721,8 +686,7 @@ def A76():
     Display_map = map_A76
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A76"
 
 def A77():
     global andere
@@ -731,8 +695,7 @@ def A77():
     Display_map = map_A77
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
-
+    map_text = "info A77"
 
 def A79():
     global andere
@@ -741,7 +704,7 @@ def A79():
     Display_map = map_A79
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
+    map_text = "info A79"
 
 def A200():
     global andere
@@ -750,7 +713,7 @@ def A200():
     Display_map = map_A200
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum"
+    map_text = "info A200"
 
 def reset():
     global andere
@@ -801,14 +764,6 @@ def snek():
             s.blit(img, (xs[i], ys[i]))
         s.blit(appleimage, applepos);t=f.render(str(score), True, (0, 0, 0));s.blit(t, (10, 10));pygame.display.update()
 
-
-
-
-
-
-
-
-
 #--------------------------------------------------------------------------------------------------------------
 
 def Main_scherm():   #main menu scherm
@@ -823,15 +778,12 @@ def Main_scherm():   #main menu scherm
                 quit()
 
         gameDisplay.fill(map_colour)
-
         map(title, 50, 52)
         button("kaart", 50, 230, 700, 50,yellow, red, Kaart_scherm)
         button("Navigatie", 50, 330, 700, 50, yellow, red, Navigatie_scherm)
         button("Opties", 50, 430, 700, 50, yellow, red, Opties_scherm)
         button("Beoordeling", 50, 530, 700, 50, yellow, red, beoordeling_scherm)
         button("X", 1200, 100, 70, 50, yellow, red, quit)
-
-
         pygame.display.flip()
 
 def Kaart_scherm():    #kaart scherm
@@ -897,7 +849,6 @@ def Kaart_scherm():    #kaart scherm
         button("Terug", 1200, 700, 53, 30, yellow, red, Main_scherm)
         button("deselecteer", 800, 700, 70, 30, yellow, red, reset)
 
-
         if andere == True:
             map(Display_map, map_x,map_y)
 
@@ -914,7 +865,7 @@ def beoordeling_scherm():
         gameDisplay.fill(map_colour)
 
         # Connect to an existing database
-        #conn = psycopg2.connect("dbname=project3 user=postgres password=wachtwoord")
+        # conn = psycopg2.connect("dbname=project3 user=postgres password=wachtwoord")
 
         # Open a cursor to perform database operations
         #cur = conn.cursor()
@@ -934,13 +885,11 @@ def beoordeling_scherm():
         #cur.close()
         #conn.close()
 
-            # button vars
-        x1 = 700
-        nextX = 60
+        # button vars
         y1 = 15
-        nextY = 50
         y2 = 50
 
+        # button row 1
         button("A1", 43, y1, 50, 30, yellow, red, A1)
         button("A2", 115, y1, 50, 30, yellow, red, A2)
         button("A4", 185, y1, 50, 30, yellow, red, A4)
@@ -950,8 +899,6 @@ def beoordeling_scherm():
         button("A8", 465, y1, 50, 30, yellow, red, A8)
         button("A9", 535, y1, 50, 30, yellow, red, A9)
         button("A10",605, y1, 50, 30, yellow, red, A10)
-
-        # button row 2
         button("A12", 675, y1, 50, 30, yellow, red, A12)
         button("A13", 745, y1, 50, 30, yellow, red, A13)
         button("A15", 815, y1, 50, 30, yellow, red, A15)
@@ -962,7 +909,7 @@ def beoordeling_scherm():
         button("A27", 1155, y1, 50, 30, yellow, red, A27)
         button("A28", 1220, y1, 50, 30, yellow, red, A28)
 
-        # button row 3
+        # button row 2
         button("A29", 43, y2, 50, 30, yellow, red, A29)
         button("A30", 115, y2, 50, 30, yellow, red, A30)
         button("A31", 185, y2, 50, 30, yellow, red, A31)
@@ -972,8 +919,6 @@ def beoordeling_scherm():
         button("A44", 465, y2, 50, 30, yellow, red, A44)
         button("A50", 535, y2, 50, 30, yellow, red, A50)
         button("A58", 605, y2, 50, 30, yellow, red, A58)
-
-        # button row 4
         button("A59", 675, y2, 53, 30, yellow, red, A59)
         button("A65", 745, y2, 53, 30, yellow, red, A65)
         button("A67", 815, y2, 53, 30, yellow, red, A67)
@@ -982,13 +927,15 @@ def beoordeling_scherm():
         button("A77", 1025, y2, 53, 30, yellow, red, A77)
         button("A79", 1090, y2, 53, 30, yellow, red, A79)
         button("A200",1155, y2, 53, 30, yellow, red, A200)
-        button("EE_1",1220, y2, 53, 30, yellow, red, snek)
+        button("EE_1",1220, y2, 53, 30, yellow, red, snake.actisnek)
 
         button("Terug", 150, 700, 300, 50, yellow, red, Main_scherm)
         button("Verstuur", 850, 700, 300, 50, yellow, red, Main_scherm)
         clock.tick(15)  #refresh rate van 15
         pygame.display.flip()
+
 def actisnek():
+    """snake"""
     Main_scherm()
 
 def Navigatie_scherm():    #navigatie scherm
@@ -1002,6 +949,7 @@ def Navigatie_scherm():    #navigatie scherm
         button("Terug", 50, 500, 700, 50, yellow, red, Main_scherm)
         clock.tick(15)  #refresh rate van 15
         pygame.display.flip()
+
 def Opties_scherm():  #opties menu
     Instruction, Intro = True, False
     while Instruction:
@@ -1024,5 +972,4 @@ pygame.mixer.music.play(-1)
 Main_scherm()
 Kaart_scherm()
 Navigatie_scherm()
-
 quit()
