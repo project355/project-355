@@ -1,5 +1,4 @@
 from globals import *
-from button import *
 
 crash = False 
 

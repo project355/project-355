@@ -22,9 +22,6 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="button.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="eztext.py">
       <SubType>Code</SubType>
     </Compile>
