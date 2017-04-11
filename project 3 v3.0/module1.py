@@ -31,12 +31,6 @@ def button(msg,x,y,w,h,ic,ac,action=None):
     textRect.center = ( (x+(w/2)), (y+(h/2)) )
     gameDisplay.blit(textSurf, textRect)
 
-def text(msg, x, y):
-    """functie om tekst te maken (text,x,y,width,height)"""
-    smallText = pygame.font.SysFont("freesansbold.ttf",20)
-    textSurf, textRect = text_objects(msg, smallText)
-    gameDisplay.blit(textSurf, textRect)
-
 def text_objects(text, font):   #functie om tekst te tonen
     textSurface = font.render(text, True, black)
     return textSurface, textSurface.get_rect()
@@ -55,10 +49,16 @@ def volumeup():
     volume = volume + 0.1
     pygame.mixer.music.set_volume(volume)
 
+def message_display(text):
+    largeText = pygame.font.Font('freesansbold.ttf',30)
+    TextSurf, TextRect = text_objects(text, largeText)
+    TextRect.center = (820, 250)
+    gameDisplay.blit(TextSurf, TextRect)
+
 def map(naam, x,y):
     gameDisplay.blit(naam, (x,y))
-    pygame.draw.rect(gameDisplay, white, (700, 220, 535, 450)) # map_colour
-    text(map_text, 700, 220)
+    pygame.draw.rect(gameDisplay, white, (700, 220, 535, 450)) # map_colour, vlak
+    message_display(map_text)
 
 def A1():
     global andere
@@ -67,15 +67,16 @@ def A1():
     Display_map = map_A1
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum 1"
+    map_text = "Lorem ipsum"
 
 def A2():
     global andere
     andere = True
     global Display_map
     Display_map = map_A2
+    global map_text
     map(Display_map, map_x, map_y)
-    map_text = "Lorem ipsum 2"
+    map_text = "Lorem ipsum"
 
 
 def A4():
@@ -83,8 +84,9 @@ def A4():
     andere = True
     global Display_map
     Display_map = map_A4
+    global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Lorem ipsum 3"
+    map_text = "Lorem ipsum"
 
 
 def A5():
@@ -92,15 +94,18 @@ def A5():
     andere = True
     global Display_map
     Display_map = map_A5
+    global map_text
     map(Display_map, map_x,map_y)
-
+    map_text = "Lorem ipsum"
 
 def A6():
     global andere
     andere = True
     global Display_map
     Display_map = map_A6
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A7():
@@ -108,15 +113,19 @@ def A7():
     andere = True
     global Display_map
     Display_map = map_A7
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A8():
     global andere
+    andere = True
     global Display_map
     Display_map = map_A8
-    andere = True
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A9():
@@ -124,7 +133,9 @@ def A9():
     andere = True
     global Display_map
     Display_map = map_A9
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A10():
@@ -132,7 +143,9 @@ def A10():
     andere = True
     global Display_map
     Display_map = map_A10
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A12():
@@ -140,7 +153,9 @@ def A12():
     andere = True
     global Display_map
     Display_map = map_A12
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A13():
@@ -148,15 +163,18 @@ def A13():
     andere = True
     global Display_map
     Display_map = map_A13
+    global map_text
     map(Display_map, map_x,map_y)
-
+    map_text = "Lorem ipsum"
 
 def A15():
     global andere
     andere = True
     global Display_map
     Display_map = map_A15
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A16():
@@ -164,7 +182,9 @@ def A16():
     andere = True
     global Display_map
     Display_map = map_A16
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A17():
@@ -172,7 +192,9 @@ def A17():
     andere = True
     global Display_map
     Display_map = map_A17
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A18():
@@ -180,7 +202,9 @@ def A18():
     andere = True
     global Display_map
     Display_map = map_A18
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A19():
@@ -188,7 +212,9 @@ def A19():
     andere = True
     global Display_map
     Display_map = map_A19
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A20():
@@ -196,7 +222,9 @@ def A20():
     andere = True
     global Display_map
     Display_map = map_A20
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A27():
@@ -204,7 +232,9 @@ def A27():
     andere = True
     global Display_map
     Display_map = map_A27
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A28():
@@ -212,7 +242,9 @@ def A28():
     andere = True
     global Display_map
     Display_map = map_A28
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A29():
@@ -220,7 +252,9 @@ def A29():
     andere = True
     global Display_map
     Display_map = map_A29
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A30():
@@ -228,7 +262,9 @@ def A30():
     andere = True
     global Display_map
     Display_map = map_A30
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A31():
@@ -236,7 +272,9 @@ def A31():
     andere = True
     global Display_map
     Display_map = map_A31
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A32():
@@ -244,7 +282,9 @@ def A32():
     andere = True
     global Display_map
     Display_map = map_A32
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A35():
@@ -252,7 +292,9 @@ def A35():
     andere = True
     global Display_map
     Display_map = map_A35
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A37():
@@ -260,7 +302,9 @@ def A37():
     andere = True
     global Display_map
     Display_map = map_A37
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A44():
@@ -268,7 +312,9 @@ def A44():
     andere = True
     global Display_map
     Display_map = map_A44
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A50():
@@ -276,7 +322,9 @@ def A50():
     andere = True
     global Display_map
     Display_map = map_A50
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A58():
@@ -284,7 +332,9 @@ def A58():
     andere = True
     global Display_map
     Display_map = map_A58
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A59():
@@ -292,7 +342,9 @@ def A59():
     andere = True
     global Display_map
     Display_map = map_A59
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A65():
@@ -300,7 +352,9 @@ def A65():
     andere = True
     global Display_map
     Display_map = map_A65
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A67():
@@ -308,7 +362,9 @@ def A67():
     andere = True
     global Display_map
     Display_map = map_A67
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A73():
@@ -316,7 +372,9 @@ def A73():
     andere = True
     global Display_map
     Display_map = map_A73
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A76():
@@ -324,7 +382,9 @@ def A76():
     andere = True
     global Display_map
     Display_map = map_A76
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A77():
@@ -332,7 +392,9 @@ def A77():
     andere = True
     global Display_map
     Display_map = map_A77
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 
 def A79():
@@ -340,14 +402,18 @@ def A79():
     andere = True
     global Display_map
     Display_map = map_A79
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 def A200():
     global andere
     andere = True
     global Display_map
     Display_map = map_A200
+    global map_text
     map(Display_map, map_x,map_y)
+    map_text = "Lorem ipsum"
 
 def reset():
     global andere
@@ -355,12 +421,16 @@ def reset():
     global Display_map
     Display_map = map_image
     map(Display_map, map_x,map_y)
+    global map_text
+    map(Display_map, map_x, map_y)
+    map_text = ""
     
 #--------------------------------------------------------------------------------------------------------------
 
 def Main_scherm():   #main menu scherm
     Instruction, Intro = False, True
-    andere = False
+    reset()
+    
     x, y, mov_x, mov_y = 0,0,6,6
     while intro:
         for event in pygame.event.get():
