@@ -2,6 +2,7 @@ import pygame, time, psycopg2
 import eztext
 import math
 
+
 pygame.init()
 
 
@@ -329,6 +330,9 @@ def atari():
             textpos = text.get_rect(centerx=background.get_width()/2)
             textpos.top = 300
             screen.blit(text, textpos)
+            time.sleep(3)
+            Kaart_scherm()
+
 
         # See if the ball hits the player paddle
         if pygame.sprite.spritecollide(player, balls, False):
@@ -358,7 +362,8 @@ def atari():
         pygame.display.flip()
 
     if game_over == True:
-        start()
+        Kaart_scherm()
+
 
 def text_objects(text, font):   #functie om tekst te tonen
     textSurface = font.render(text, True, black)
