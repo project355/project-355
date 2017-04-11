@@ -389,7 +389,7 @@ def message_display(text):
 
 def map(naam, x,y):
     gameDisplay.blit(naam, (x,y))
-    pygame.draw.rect(gameDisplay, white, (700, 220, 535, 450)) # map_colour, vlak
+    pygame.draw.rect(gameDisplay, map_colour, (700, 220, 535, 450)) # map_colour, vlak
     message_display(map_text)
 
 def A1():
