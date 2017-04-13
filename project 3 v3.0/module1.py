@@ -580,7 +580,15 @@ def A30():
     global map_text
     map(Display_map, map_x,map_y)
     map_text = "Niet-dodelijke ongevallen:2322"
-
+    
+def A31():
+    global andere
+    andere = True
+    global Display_map
+    Display_map = map_A31
+    global map_text
+    map(Display_map, map_x,map_y)
+    map_text = "Niet-dodelijke ongevallen:2429"
 
 def A32():
     global andere
