@@ -928,7 +928,7 @@ def beoordeling_scherm():
         button("A77", 1025, y2, 53, 30, yellow, red, A77)
         button("A79", 1090, y2, 53, 30, yellow, red, A79)
         button("A200",1155, y2, 53, 30, yellow, red, A200)
-        button("EE_1",1220, y2, 53, 30, yellow, red, snake.actisnek)
+        button("EE_1",1220, y2, 53, 30, yellow, red, snek)
 
         button("Terug", 150, 700, 300, 50, yellow, red, Main_scherm)
         button("Verstuur", 850, 700, 300, 50, yellow, red, Main_scherm)
