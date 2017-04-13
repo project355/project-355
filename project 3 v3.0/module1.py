@@ -597,7 +597,7 @@ def A32():
     Display_map = map_A32
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "info A32"
+    map_text = "Niet-dodelijke ongevallen:7400"
 
 def A35():
     global andere
@@ -606,7 +606,7 @@ def A35():
     Display_map = map_A35
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "info A35"
+    map_text = "Niet-dodelijke ongevallen:2107"
 
 def A37():
     global andere
@@ -615,7 +615,7 @@ def A37():
     Display_map = map_A37
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "info A37"
+    map_text = "Niet-dodelijke ongevallen:5533"
 
 def A44():
     global andere
@@ -624,7 +624,7 @@ def A44():
     Display_map = map_A44
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "info A44"
+    map_text = "Niet-dodelijke ongevallen:8727"
 
 def A50():
     global andere
@@ -633,7 +633,7 @@ def A50():
     Display_map = map_A50
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "info A50"
+    map_text = "Niet-dodelijke ongevallen:5874"
 
 def A58():
     global andere
@@ -642,7 +642,7 @@ def A58():
     Display_map = map_A58
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "info A58"
+    map_text = "Niet-dodelijke ongevallen:2779"
 
 def A59():
     global andere
@@ -651,7 +651,7 @@ def A59():
     Display_map = map_A59
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "info A59"
+    map_text = "Niet-dodelijke ongevallen:4381"
 
 def A65():
     global andere
@@ -660,7 +660,7 @@ def A65():
     Display_map = map_A65
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "info A65"
+    map_text = "Niet-dodelijke ongevallen:2729"
 
 def A67():
     global andere
@@ -669,7 +669,7 @@ def A67():
     Display_map = map_A67
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "info A67"
+    map_text = "Niet-dodelijke ongevallen:4381"
 
 def A73():
     global andere
@@ -678,7 +678,7 @@ def A73():
     Display_map = map_A73
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "info A73"
+    map_text = "Niet-dodelijke ongevallen:2592"
 
 def A76():
     global andere
@@ -687,7 +687,7 @@ def A76():
     Display_map = map_A76
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "info A76"
+    map_text = "Niet-dodelijke ongevallen:3719"
 
 def A77():
     global andere
@@ -696,7 +696,7 @@ def A77():
     Display_map = map_A77
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "info A77"
+    map_text = "Niet-dodelijke ongevallen:3449"
 
 def A79():
     global andere
@@ -705,7 +705,7 @@ def A79():
     Display_map = map_A79
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "info A79"
+    map_text = "Niet-dodelijke ongevallen:3716"
 
 def A200():
     global andere
@@ -714,7 +714,7 @@ def A200():
     Display_map = map_A200
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "info A200"
+    map_text = "Niet-dodelijke ongevallen:7102"
 
 def reset():
     global andere
