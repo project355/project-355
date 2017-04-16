@@ -14,6 +14,16 @@ x = (display_width * 0.45)
 y = (display_height * 0.8)
 pygame.display.set_caption('Roadmap Netherlands') # titel of pygame frame
 map_text = ""
+naam_snelweg = "     "
+file_nummer = 0
+wegdek_nummer = 0
+andere = None
+map_x, map_y = 10, 10
+Display_map = ""
+rating_files = False
+rating_wegdek = False
+beoordeling_file = 0
+beoordeling_wegdek = 0
 
 # image 637x750
 title = pygame.image.load('images/Roadmap.png')
@@ -53,6 +63,8 @@ map_A76 = pygame.image.load('images/A76.jpg')
 map_A77 = pygame.image.load('images/A77.jpg')
 map_A79 = pygame.image.load('images/A79.jpg')
 map_A200 = pygame.image.load('images/A200.jpg')
+volle_ster = pygame.image.load('images/volle_ster.png')
+lege_ster = pygame.image.load('images/lege_ster.png')
 
 #colors are in a range of 0-255 (256 different entries)
 red = [255, 0, 0]
@@ -74,9 +86,6 @@ mudred = (112,46,27)
 mudblue = (1,66,137)
 map_colour = (0, 148, 255)
 
-andere = None
-map_x, map_y = 10, 10
-Display_map = ""
 
 #------------------------------------------------------------------------------------------------------------------------
 
@@ -327,6 +336,7 @@ def atari():
             textpos.top = 300
             time.sleep(3)
             screen.blit(text, textpos)
+            Kaart_scherm()
 
         # See if the ball hits the player paddle
         if pygame.sprite.spritecollide(player, balls, False):
@@ -399,7 +409,6 @@ def A1():
     global map_text
     map(Display_map, map_x,map_y)
     map_text = "Niet-dodelijke ongevallen:9638"
-
 
 def A2():
     global andere
@@ -498,7 +507,7 @@ def A15():
     Display_map = map_A15
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:9412"
+    map_text = "info A15"
 
 def A16():
     global andere
@@ -507,7 +516,7 @@ def A16():
     Display_map = map_A16
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:8641"
+    map_text = "info A16"
 
 def A17():
     global andere
@@ -516,7 +525,7 @@ def A17():
     Display_map = map_A17
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:3244"
+    map_text = "info A17"
 
 def A18():
     global andere
@@ -525,7 +534,7 @@ def A18():
     Display_map = map_A18
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:7749"
+    map_text = "info A18"
 
 def A19():
     global andere
@@ -534,7 +543,7 @@ def A19():
     Display_map = map_A19
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:5121"
+    map_text = "info A19"
 
 def A20():
     global andere
@@ -543,7 +552,7 @@ def A20():
     Display_map = map_A20
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:5121"
+    map_text = "info A20"
 
 def A27():
     global andere
@@ -552,7 +561,7 @@ def A27():
     Display_map = map_A27
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:6489"
+    map_text = "info A27"
 
 def A28():
     global andere
@@ -561,7 +570,7 @@ def A28():
     Display_map = map_A28
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:4654"
+    map_text = "info A28"
 
 def A29():
     global andere
@@ -570,7 +579,7 @@ def A29():
     Display_map = map_A29
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:4755"
+    map_text = "info A29"
 
 def A30():
     global andere
@@ -579,8 +588,8 @@ def A30():
     Display_map = map_A30
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:2322"
-    
+    map_text = "info A30"
+
 def A31():
     global andere
     andere = True
@@ -588,7 +597,7 @@ def A31():
     Display_map = map_A31
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:2429"
+    map_text = "info A31"
 
 def A32():
     global andere
@@ -597,7 +606,7 @@ def A32():
     Display_map = map_A32
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:7400"
+    map_text = "info A32"
 
 def A35():
     global andere
@@ -606,7 +615,7 @@ def A35():
     Display_map = map_A35
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:2107"
+    map_text = "info A35"
 
 def A37():
     global andere
@@ -615,7 +624,7 @@ def A37():
     Display_map = map_A37
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:5533"
+    map_text = "info A37"
 
 def A44():
     global andere
@@ -624,7 +633,7 @@ def A44():
     Display_map = map_A44
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:8727"
+    map_text = "info A44"
 
 def A50():
     global andere
@@ -633,7 +642,7 @@ def A50():
     Display_map = map_A50
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:5874"
+    map_text = "info A50"
 
 def A58():
     global andere
@@ -642,7 +651,7 @@ def A58():
     Display_map = map_A58
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:2779"
+    map_text = "info A58"
 
 def A59():
     global andere
@@ -651,7 +660,7 @@ def A59():
     Display_map = map_A59
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:4381"
+    map_text = "info A59"
 
 def A65():
     global andere
@@ -660,7 +669,7 @@ def A65():
     Display_map = map_A65
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:2729"
+    map_text = "info A65"
 
 def A67():
     global andere
@@ -669,7 +678,7 @@ def A67():
     Display_map = map_A67
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:4381"
+    map_text = "info A67"
 
 def A73():
     global andere
@@ -678,7 +687,7 @@ def A73():
     Display_map = map_A73
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:2592"
+    map_text = "info A73"
 
 def A76():
     global andere
@@ -687,7 +696,7 @@ def A76():
     Display_map = map_A76
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:3719"
+    map_text = "info A76"
 
 def A77():
     global andere
@@ -696,7 +705,7 @@ def A77():
     Display_map = map_A77
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:3449"
+    map_text = "info A77"
 
 def A79():
     global andere
@@ -705,7 +714,7 @@ def A79():
     Display_map = map_A79
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:3716"
+    map_text = "info A79"
 
 def A200():
     global andere
@@ -714,17 +723,21 @@ def A200():
     Display_map = map_A200
     global map_text
     map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:7102"
+    map_text = "info A200"
 
 def reset():
     global andere
     andere = False
     global Display_map
+    global naam_snelweg
+    naam_snelweg = "     "
     Display_map = map_image
     map(Display_map, map_x,map_y)
     global map_text
     map(Display_map, map_x, map_y)
     map_text = ""
+    global file_nummer
+    file_nummer = 0
 
 def snek():
     def collide(x1, x2, y1, y2, w1, w2, h1, h2):
@@ -765,10 +778,344 @@ def snek():
             s.blit(img, (xs[i], ys[i]))
         s.blit(appleimage, applepos);t=f.render(str(score), True, (0, 0, 0));s.blit(t, (10, 10));pygame.display.update()
 
+def message_display2(text, x, y, h):
+    largeText = pygame.font.Font('freesansbold.ttf',h)
+    TextSurf, TextRect = text_objects(text, largeText)
+    TextRect.center = (x, y)
+    gameDisplay.blit(TextSurf, TextRect)
+
+def button2(msg,x,y,w,h,ic,ac,action=None):
+    """functie om een knop te maken (text,x,y,width,height,kleur, hover kleur, actie)"""
+    mouse = pygame.mouse.get_pos()
+    click = pygame.mouse.get_pressed()
+    if x+w > mouse[0] > x and y+h > mouse[1] > y:   #als de muis over de knop hovert
+        
+        if click[0] == 1 and action != None:        #als je er op klikt, doe actie
+            action()
+
+    
+    smallText = pygame.font.SysFont("freesansbold.ttf",20)
+    textSurf, textRect = text_objects(msg, smallText)
+    textRect.center = ( (x+(w/2)), (y+(h/2)) )
+    gameDisplay.blit(textSurf, textRect)
+
+def rating():
+    gameDisplay.blit(lege_ster, (550,500))
+    gameDisplay.blit(lege_ster, (550,300))
+    message_display2('welke rating geeft u over de ' + naam_snelweg + ":", 600, 150, 70)
+    message_display2('files:', 250, 550, 100)
+    #buttons file
+    button2("", 550, 500, 100, 100, yellow, red, set_file1)
+    button2("", 650, 500, 100, 100, yellow, red, set_file2)
+    button2("", 750, 500, 100, 100, yellow, red, set_file3)
+    button2("", 850, 500, 100, 100, yellow, red, set_file4)
+    button2("", 950, 500, 100, 100, yellow, red, set_file5)
+    #buttons wegdek
+    button2("", 550, 300, 100, 100, yellow, red, set_wegdek1)
+    button2("", 650, 300, 100, 100, yellow, red, set_wegdek2)
+    button2("", 750, 300, 100, 100, yellow, red, set_wegdek3)
+    button2("", 850, 300, 100, 100, yellow, red, set_wegdek4)
+    button2("", 950, 300, 100, 100, yellow, red, set_wegdek5)
+
+    message_display2('wegdek:', 250, 350, 100)
+
+def set_file1():
+    global beoordeling_file
+    beoordeling_file = 1
+    print(beoordeling_file)
+    rating_file_1()
+
+def set_file2():
+    global beoordeling_file
+    beoordeling_file = 2
+    print(beoordeling_file)
+    rating_file_2()
+
+def set_file3():
+    global beoordeling_file
+    beoordeling_file = 3
+    print(beoordeling_file)
+    rating_file_3()
+
+def set_file4():
+    global beoordeling_file
+    beoordeling_file = 4
+    print(beoordeling_file)
+    rating_file_4()
+
+def set_file5():
+    global beoordeling_file
+    beoordeling_file = 5
+    print(beoordeling_file)
+    rating_file_5()
+   
+def rating_file_1():
+    global rating_files 
+    rating_files = True
+    gameDisplay.blit(volle_ster, (550,500))
+    global file_nummer
+    file_nummer = 1
+
+def rating_file_2():
+    global rating_files 
+    rating_files = True
+    gameDisplay.blit(volle_ster, (650,500))
+    rating_file_1()
+    global file_nummer
+    file_nummer = 2
+
+def rating_file_3():
+    global rating_files
+    rating_files = True
+    gameDisplay.blit(volle_ster, (750,500))
+    rating_file_2()
+    global file_nummer
+    file_nummer = 3
+
+def rating_file_4():
+    global rating_files 
+    rating_files = True
+    gameDisplay.blit(volle_ster, (850,500))
+    rating_file_3()
+    global file_nummer
+    file_nummer = 4
+
+def rating_file_5():
+    global rating_files
+    rating_files = True
+    gameDisplay.blit(volle_ster, (950,500))
+    rating_file_4()
+    global file_nummer
+    file_nummer = 5
+
+    ###########################################################################################
+def set_wegdek1():
+    global beoordeling_wegdek
+    beoordeling_wegdek = 1
+    print(beoordeling_wegdek)
+    rating_wegdek_1()
+
+def set_wegdek2():
+    global beoordeling_wegdek
+    beoordeling_wegdek = 2
+    print(beoordeling_wegdek)
+    rating_wegdek_2()
+
+def set_wegdek3():
+    global beoordeling_wegdek
+    beoordeling_wegdek = 3
+    print(beoordeling_wegdek)
+    rating_wegdek_3()
+
+def set_wegdek4():
+    global beoordeling_wegdek
+    beoordeling_wegdek = 4
+    print(beoordeling_wegdek)
+    rating_wegdek_4()
+
+def set_wegdek5():
+    global beoordeling_wegdek
+    beoordeling_wegdek = 5
+    print(beoordeling_wegdek)
+    rating_wegdek_5()
+   
+def rating_wegdek_1():
+    global rating_wegdek
+    rating_wegdek = True
+    gameDisplay.blit(volle_ster, (550,300))
+    global wegdek_nummer
+    wegdek_nummer = 1
+
+def rating_wegdek_2():
+    global rating_wegdek 
+    rating_wegdek = True
+    gameDisplay.blit(volle_ster, (650,300))
+    rating_wegdek_1()
+    global wegdek_nummer
+    wegdek_nummer = 2
+
+def rating_wegdek_3():
+    global rating_wegdek
+    rating_wegdek = True
+    gameDisplay.blit(volle_ster, (750,300))
+    rating_wegdek_2()
+    global wegdek_nummer
+    wegdek_nummer = 3
+
+def rating_wegdek_4():
+    global rating_wegdek 
+    rating_wegdek = True
+    gameDisplay.blit(volle_ster, (850,300))
+    rating_wegdek_3()
+    global wegdek_nummer
+    wegdek_nummer = 4
+
+def rating_wegdek_5():
+    global rating_wegdek
+    rating_wegdek = True
+    gameDisplay.blit(volle_ster, (950,300))
+    rating_wegdek_4()
+    global wegdek_nummer
+    wegdek_nummer = 5
+
+    ############################################################################################
+
+
+#beoordeling_wegdek & beoordeling_file & naam_snelweg moeten naar de database.
+def sent_data():
+    if naam_snelweg != "     " and beoordeling_file != 0 and beoordeling_wegdek != 0:
+        poi = 'gooi alles in de database'
+        Main_scherm()
+    else:
+        message_display2("selecteer een snelweg en beoordeel het wegdek en het aantal files", 630, 650, 35)
+
+def A1_query():
+    global naam_snelweg
+    naam_snelweg = "A1"
+    
+def A2_query():
+    global naam_snelweg
+    naam_snelweg = "A2"
+
+def A4_query():
+    global naam_snelweg
+    naam_snelweg = "A4"
+
+def A5_query():
+    global naam_snelweg
+    naam_snelweg = "A5"
+
+def A6_query():
+    global naam_snelweg
+    naam_snelweg = "A6"
+
+def A7_query():
+    global naam_snelweg
+    naam_snelweg = "A7"
+
+def A8_query():
+    global naam_snelweg
+    naam_snelweg = "A8"
+
+def A9_query():
+    global naam_snelweg
+    naam_snelweg = "A9"
+
+def A10_query():
+    global naam_snelweg
+    naam_snelweg = "A10"
+
+def A12_query():
+    global naam_snelweg
+    naam_snelweg = "A12"
+
+def A13_query():
+    global naam_snelweg
+    naam_snelweg = "A13"
+
+def A15_query():
+    global naam_snelweg
+    naam_snelweg = "A15"
+
+def A16_query():
+    global naam_snelweg
+    naam_snelweg = "A16"
+
+def A17_query():
+    global naam_snelweg
+    naam_snelweg = "A17"
+
+def A18_query():
+    global naam_snelweg
+    naam_snelweg = "A18"
+
+def A20_query():
+    global naam_snelweg
+    naam_snelweg = "A20"
+
+def A27_query():
+    global naam_snelweg
+    naam_snelweg = "A27"
+
+def A28_query():
+    global naam_snelweg
+    naam_snelweg = "A28"
+
+def A29_query():
+    global naam_snelweg
+    naam_snelweg = "A29"
+
+def A30_query():
+    global naam_snelweg
+    naam_snelweg = "A30"
+
+def A31_query():
+    global naam_snelweg
+    naam_snelweg = "A31"
+
+def A32_query():
+    global naam_snelweg
+    naam_snelweg = "A32"
+
+def A35_query():
+    global naam_snelweg
+    naam_snelweg = "A35"
+
+def A37_query():
+    global naam_snelweg
+    naam_snelweg = "A37"
+
+def A44_query():
+    global naam_snelweg
+    naam_snelweg = "A44"
+
+def A50_query():
+    global naam_snelweg
+    naam_snelweg = "A50"
+
+def A58_query():
+    global naam_snelweg
+    naam_snelweg = "A58"
+
+def A59_query():
+    global naam_snelweg
+    naam_snelweg = "A59" 
+
+def A65_query():
+    global naam_snelweg
+    naam_snelweg = "A65"
+
+def A67_query():
+    global naam_snelweg
+    naam_snelweg = "A67"
+
+def A73_query():
+    global naam_snelweg
+    naam_snelweg = "A73"
+
+def A76_query():
+    global naam_snelweg
+    naam_snelweg = "A76"
+
+def A77_query():
+    global naam_snelweg
+    naam_snelweg = "A77"
+
+def A79_query():
+    global naam_snelweg
+    naam_snelweg = "A79"
+
+def A200_query():
+    global naam_snelweg
+    naam_snelweg = "A200"
+
+
+
 #--------------------------------------------------------------------------------------------------------------
 
 def Main_scherm():   #main menu scherm
     pygame.display.set_mode((display_width,display_height))
+    pygame.display.set_caption('Roadmap Netherlands')
     Instruction, Intro = False, True
     reset()
     x, y, mov_x, mov_y = 0,0,6,6
@@ -789,11 +1136,14 @@ def Main_scherm():   #main menu scherm
 
 def Kaart_scherm():    #kaart scherm
     Instruction, Intro = True, False
+    pygame.display.set_caption('Roadmap Netherlands')
     while Instruction:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
+
+        
         gameDisplay.fill(map_colour)
         map(map_image,map_x,10)
 
@@ -860,9 +1210,14 @@ def beoordeling_scherm():
     Instruction, Intro = True, False
     while Instruction:
         for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    quit()
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
+        
+
         gameDisplay.fill(map_colour)
 
         # Connect to an existing database
@@ -891,53 +1246,84 @@ def beoordeling_scherm():
         y2 = 50
 
         # button row 1
-        button("A1", 43, y1, 50, 30, yellow, red, A1)
-        button("A2", 115, y1, 50, 30, yellow, red, A2)
-        button("A4", 185, y1, 50, 30, yellow, red, A4)
-        button("A5", 255, y1, 50, 30, yellow, red, A5)
-        button("A6", 325, y1, 50, 30, yellow, red, A6)
-        button("A7", 395, y1, 50, 30, yellow, red, A7)
-        button("A8", 465, y1, 50, 30, yellow, red, A8)
-        button("A9", 535, y1, 50, 30, yellow, red, A9)
-        button("A10",605, y1, 50, 30, yellow, red, A10)
-        button("A12", 675, y1, 50, 30, yellow, red, A12)
-        button("A13", 745, y1, 50, 30, yellow, red, A13)
-        button("A15", 815, y1, 50, 30, yellow, red, A15)
-        button("A16", 885, y1, 50, 30, yellow, red, A16)
-        button("A17", 955, y1, 50, 30, yellow, red, A17)
-        button("A18", 1025, y1, 50, 30, yellow, red, A18)
-        button("A20", 1090, y1, 50, 30, yellow, red, A20)
-        button("A27", 1155, y1, 50, 30, yellow, red, A27)
-        button("A28", 1220, y1, 50, 30, yellow, red, A28)
+        button("A1", 43, y1, 50, 30, yellow, red, A1_query)
+        button("A2", 115, y1, 50, 30, yellow, red, A2_query)
+        button("A4", 185, y1, 50, 30, yellow, red, A4_query)
+        button("A5", 255, y1, 50, 30, yellow, red, A5_query)
+        button("A6", 325, y1, 50, 30, yellow, red, A6_query)
+        button("A7", 395, y1, 50, 30, yellow, red, A7_query)
+        button("A8", 465, y1, 50, 30, yellow, red, A8_query)
+        button("A9", 535, y1, 50, 30, yellow, red, A9_query)
+        button("A10",605, y1, 50, 30, yellow, red, A10_query)
+        button("A12", 675, y1, 50, 30, yellow, red, A12_query)
+        button("A13", 745, y1, 50, 30, yellow, red, A13_query)
+        button("A15", 815, y1, 50, 30, yellow, red, A15_query)
+        button("A16", 885, y1, 50, 30, yellow, red, A16_query)
+        button("A17", 955, y1, 50, 30, yellow, red, A17_query)
+        button("A18", 1025, y1, 50, 30, yellow, red, A18_query)
+        button("A20", 1090, y1, 50, 30, yellow, red, A20_query)
+        button("A27", 1155, y1, 50, 30, yellow, red, A27_query)
+        button("A28", 1220, y1, 50, 30, yellow, red, A28_query)
 
         # button row 2
-        button("A29", 43, y2, 50, 30, yellow, red, A29)
-        button("A30", 115, y2, 50, 30, yellow, red, A30)
-        button("A31", 185, y2, 50, 30, yellow, red, A31)
-        button("A32", 255, y2, 50, 30, yellow, red, A32)
-        button("A35", 325, y2, 50, 30, yellow, red, A35)
-        button("A37", 395, y2, 50, 30, yellow, red, A37)
-        button("A44", 465, y2, 50, 30, yellow, red, A44)
-        button("A50", 535, y2, 50, 30, yellow, red, A50)
-        button("A58", 605, y2, 50, 30, yellow, red, A58)
-        button("A59", 675, y2, 53, 30, yellow, red, A59)
-        button("A65", 745, y2, 53, 30, yellow, red, A65)
-        button("A67", 815, y2, 53, 30, yellow, red, A67)
-        button("A73", 885, y2, 53, 30, yellow, red, A73)
-        button("A76", 955, y2, 53, 30, yellow, red, A76)
-        button("A77", 1025, y2, 53, 30, yellow, red, A77)
-        button("A79", 1090, y2, 53, 30, yellow, red, A79)
-        button("A200",1155, y2, 53, 30, yellow, red, A200)
-        button("EE_1",1220, y2, 53, 30, yellow, red, snek)
+        button("A29", 43, y2, 50, 30, yellow, red, A29_query)
+        button("A30", 115, y2, 50, 30, yellow, red, A30_query)
+        button("A31", 185, y2, 50, 30, yellow, red, A31_query)
+        button("A32", 255, y2, 50, 30, yellow, red, A32_query)
+        button("A35", 325, y2, 50, 30, yellow, red, A35_query)
+        button("A37", 395, y2, 50, 30, yellow, red, A37_query)
+        button("A44", 465, y2, 50, 30, yellow, red, A44_query)
+        button("A50", 535, y2, 50, 30, yellow, red, A50_query)
+        button("A58", 605, y2, 50, 30, yellow, red, A58_query)
+        button("A59", 675, y2, 50, 30, yellow, red, A59_query)
+        button("A65", 745, y2, 50, 30, yellow, red, A65_query)
+        button("A67", 815, y2, 50, 30, yellow, red, A67_query)
+        button("A73", 885, y2, 50, 30, yellow, red, A73_query)
+        button("A76", 955, y2, 50, 30, yellow, red, A76_query)
+        button("A77", 1025, y2, 50, 30, yellow, red, A77_query)
+        button("A79", 1090, y2, 50, 30, yellow, red, A79_query)
+        button("A200",1155, y2, 50, 30, yellow, red, A200_query)
+        button("EE_1",1220, y2, 50, 30, yellow, red, snek)
 
-        button("Terug", 150, 700, 300, 50, yellow, red, Main_scherm)
-        button("Verstuur", 850, 700, 300, 50, yellow, red, Main_scherm)
+        button("Verstuur", 150, 700, 300, 50, yellow, red, sent_data)
+        button("Terug", 850, 700, 300, 50, yellow, red, Main_scherm)
+
+
+
+
+        #if andere == True:######################################################################################################3
+         #   map(Display_map, map_x,map_y)
+
+
+
+        rating()
+        if rating_files == True:
+            if file_nummer == 1:
+                rating_file_1()
+            elif file_nummer == 2:
+                rating_file_2()
+            elif file_nummer == 3:
+                rating_file_3()
+            elif file_nummer == 4:
+                rating_file_4()
+            elif file_nummer == 5:
+                rating_file_5()
+
+        if rating_wegdek == True:
+            if wegdek_nummer == 1:
+                rating_wegdek_1()
+            elif wegdek_nummer == 2:
+                rating_wegdek_2()
+            elif wegdek_nummer == 3:
+                rating_wegdek_3()
+            elif wegdek_nummer == 4:
+                rating_wegdek_4()
+            elif wegdek_nummer == 5:
+                rating_wegdek_5()
+
         clock.tick(15)  #refresh rate van 15
         pygame.display.flip()
 
-def actisnek():
-    """snake"""
-    Main_scherm()
 
 def Navigatie_scherm():    #navigatie scherm
     Instruction, Intro = True, False
