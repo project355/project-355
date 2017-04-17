@@ -1,0 +1,17 @@
+-- Create table ongevallen(naam varchar primary key,niet_dodelijk int,dodelijk int)
+-- insert into ongevallen values('A1', 9538,52),('A2', 7053,21),('A4', 8989,25), ('A5', 7090,18),('A6', 2195,8 ),('A7',7687,28),('A8',6859,15),('A9',6512,19),
+-- ('A10',7102,17),('A12',10267,32),('A13',6159,16),('A15',9412,25),('A16',8641,28),('A17',3224,8),('A18',7749,23),('A20',5121,17),('A22',6489,32),('A27',4654,36),
+-- ('A28',5423,15),('A29',4755,18),('A30',2322,8),('A31',2429,10),('A32',7400,21),('A35',2107,9),('A37',5553,17),('A38',8727,23),('A44',5521,15),('A50',8717,14),
+-- ('A58',5581,15),('A59',5847,14),('A65',2729,8),('A67',4381,13),('A73',2591,8),('A74',3719,2),('A76',3448,10),('A77',3716,8),('A79',4185,10),('A200',7102,14)
+
+-- #--------------------------------------------------------------------------------------------------------------------------------------------------# 
+
+-- create table beoordeling(naam varchar references ongevallen,wegsterren int, filesterren int)
+-- create table leeftijd_doden(leeftijd varchar,geslacht varchar,aantal_dood int)
+insert into leeftijd_doden values('0 tot 15 jaar','Man',14),('15 tot 18 jaar','Man',7),('18 tot 20 jaar','Man', 25),('20 tot 30 jaar','Man',15),('30 tot 40 jaar','Man',46),
+('40 tot 50 jaar','Man',46),('50 tot 60 jaar','Man',53),('60 tot 70 jaar','Man',51),('70 tot 80 jaar','Man',55),('80 jaar en ouder','Man',89),
+
+('0 tot 15 jaar','Vrouw',4),('15 tot 18 jaar','Vrouw',8),('18 tot 20 jaar','Vrouw', 4),('20 tot 30 jaar','Vrouw',15),('30 tot 40 jaar','Vrouw',8),
+('40 tot 50 jaar','Vrouw',9),('50 tot 60 jaar','Vrouw',20),('60 tot 70 jaar','Vrouw',27),('70 tot 80 jaar','Vrouw',38),('80 jaar en ouder','Vrouw',30)
+
+
