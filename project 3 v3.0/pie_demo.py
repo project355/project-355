@@ -1,12 +1,3 @@
-"""
-Make a pie chart - see
-http://matplotlib.sf.net/matplotlib.pylab.html#-pie for the docstring.
-
-This example shows a basic pie chart with labels optional features,
-like autolabeling the percentage, offsetting a slice with "explode",
-adding a shadow, and changing the starting angle.
-
-"""
 from pylab import *
 
 # make a square figure and axes
