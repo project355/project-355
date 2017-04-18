@@ -14,6 +14,7 @@ x = (display_width * 0.45)
 y = (display_height * 0.8)
 pygame.display.set_caption('Roadmap Netherlands') # titel of pygame frame
 map_text = ""
+map2_text = ""
 naam_snelweg = "     "
 file_nummer = 0
 wegdek_nummer = 0
@@ -95,6 +96,8 @@ clock = pygame.time.Clock()     #nodig voor Refresh Rate
 _image_library = {}     #global list
 
 #-------------------------------------------------------------------------------------------------------------------------
+
+
 
 def button(msg,x,y,w,h,ic,ac,action=None):
     """functie om een knop te maken (text,x,y,width,height,kleur, hover kleur, actie)"""
@@ -390,6 +393,11 @@ def volumeup():
     volume = volume + 0.1
     pygame.mixer.music.set_volume(volume)
 
+def message_display2(text, x, y, h):
+    largeText = pygame.font.Font('freesansbold.ttf',h)
+    TextSurf, TextRect = text_objects(text, largeText)
+    TextRect.center = (x, y)
+    gameDisplay.blit(TextSurf, TextRect)
 def message_display(text):
     largeText = pygame.font.Font('freesansbold.ttf',30)
     TextSurf, TextRect = text_objects(text, largeText)
@@ -399,331 +407,380 @@ def message_display(text):
 def map(naam, x,y):
     gameDisplay.blit(naam, (x,y))
     pygame.draw.rect(gameDisplay, map_colour, (700, 220, 535, 450)) # vlak
+
     message_display(map_text)
-class snelweg():
-    def A1():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A1
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:9638" 
 
-    def A2():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A2
-        global map_text
-        map(Display_map, map_x, map_y)
-        map_text = "Niet-dodelijke ongevallen:2003"
 
-    def A4():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A4
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:3456"
+    message_display2(map_text, 850, 250, 20)
+    message_display2(map2_text, 815, 300, 20)
 
-    def A5():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A5
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:2090"
+def sec(naam, x, y):
+    gameDisplay.blit(naam, (x,y))
+    message_display(map2_text)
 
-    def A6():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A6
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:1195"
+class snelweg:
+  def A1():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A1
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:9638"
+      map2_text = "Dodelijke ongevallen:52"
 
-    def A7():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A7
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:7687"
+  def A2():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A2
+      global map_text
+      global map2_text
+      map(Display_map, map_x, map_y)
+      map_text = "Niet-dodelijke ongevallen:2003"
+      map2_text = "Dodelijke ongevallen:21"
+  def A4():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A4
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:3456"
+      map2_text = "Dodelijke ongevallen:25"
+  def A5():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A5
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:2090"
+      map2_text = "Dodelijke ongevallen:18"
+  def A6():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A6
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:1195"
+      map2_text = "Dodelijke ongevallen:8"
+  def A7():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A7
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:7687"
+      map2_text = "Dodelijke ongevallen:28"
+  def A8():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A8
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:6859"
+      map2_text = "Dodelijke ongevallen:15"
 
-    def A8():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A8
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:6859"
-
-    def A9():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A9
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:6512’"
-
-    def A10():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A10
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:7102"
-
-    def A12():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A12
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:10267"
-
-    def A13():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A13
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:6159"
-
-    def A15():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A15
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A15"
-
-    def A16():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A16
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A16"
-
-    def A17():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A17
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A17"
-
-    def A18():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A18
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A18"
-
-    def A19():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A19
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A19"
-
-    def A20():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A20
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A20"
-
-    def A27():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A27
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A27"
-
-    def A28():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A28
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A28"
-
-    def A29():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A29
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A29"
-
-    def A30():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A30
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A30"
-
-    def A31():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A31
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A31"
-
-    def A32():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A32
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A32"
-
-    def A35():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A35
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A35"
-
-    def A37():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A37
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A37"
-
-    def A44():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A44
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A44"
-
-    def A50():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A50
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A50"
-
-    def A58():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A58
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A58"
-
-    def A59():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A59
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A59"
-
-    def A65():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A65
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A65"
-
-    def A67():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A67
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A67"
-
-    def A73():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A73
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A73"
-
-    def A76():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A76
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A76"
-
-    def A77():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A77
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A77"
-
-    def A79():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A79
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A79"
-
-    def A200():
-        global andere
-        andere = True
-        global Display_map
-        Display_map = map_A200
-        global map_text
-        map(Display_map, map_x,map_y)
-        map_text = "info A200"
+  def A9():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A9
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:6512’"
+      map2_text = "Dodelijke ongevallen:19"
+  def A10():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A10
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:7102"
+      map2_text = "Dodelijke ongevallen:17"
+  def A12():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A12
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:10267"
+      map2_text = "Dodelijke ongevallen:32"
+  def A13():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A13
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:6159"
+      map2_text = "Dodelijke ongevallen:16"
+  def A15():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A15
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:9412"
+      map2_text = "Dodelijke ongevallen:25"
+  def A16():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A16
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:8641"
+      map2_text = "Dodelijke ongevallen:28"
+  def A17():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A17
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:3244"
+      map2_text = "Dodelijke ongevallen:8"
+  def A18():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A18
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:7749"
+      map2_text = "Dodelijke ongevallen:23"
+  def A19():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A19
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:5121"
+      map2_text = "Dodelijke ongevallen:14"
+  def A20():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A20
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:5121"
+      map2_text = "Dodelijke ongevallen:17"
+  def A27():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A27
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:6489"
+      map2_text = "Dodelijke ongevallen:32"
+  def A28():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A28
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:4654"
+      map2_text = "Dodelijke ongevallen:36"
+  def A29():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A29
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:4755"
+      map2_text = "Dodelijke ongevallen:15"
+  def A30():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A30
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:2322"
+      map2_text = "Dodelijke ongevallen:18"
+  def A31():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A31
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:2429"
+      map2_text = "Dodelijke ongevallen:8"
+  def A32():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A32
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:7400"
+      map2_text = "Dodelijke ongevallen:10"
+  def A35():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A35
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:2107"
+      map2_text = "Dodelijke ongevallen:21"
+  def A37():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A37
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:5533"
+      map2_text = "Dodelijke ongevallen:9"
+  def A44():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A44
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:8727"
+      map2_text = "Dodelijke ongevallen:17"
+  def A50():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A50
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:5874"
+      map2_text = "Dodelijke ongevallen:23"
+  def A58():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A58
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:2779"
+      map2_text = "Dodelijke ongevallen:15"
+  def A59():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A59
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:4381"
+      map2_text = "Dodelijke ongevallen:14"
+  def A65():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A65
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:2729"
+      map2_text = "Dodelijke ongevallen:8"
+  def A67():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A67
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:4381"
+      map2_text = "Dodelijke ongevallen:13"
+  def A73():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A73
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:2592"
+      map2_text = "Dodelijke ongevallen:8"
+  def A76():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A76
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:3719"
+      map2_text = "Dodelijke ongevallen:10"
+  def A77():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A77
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:3449"
+      map2_text = "Dodelijke ongevallen:8"
+  def A79():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A79
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:3716"
+      map2_text = "Dodelijke ongevallen:10"
+  def A200():
+      global andere
+      andere = True
+      global Display_map
+      Display_map = map_A200
+      global map_text
+      global map2_text
+      map(Display_map, map_x,map_y)
+      map_text = "Niet-dodelijke ongevallen:7102"
+      map2_text = "Dodelijke ongevallen:14"
 
 def reset():
     global andere
@@ -734,8 +791,10 @@ def reset():
     Display_map = map_image
     map(Display_map, map_x,map_y)
     global map_text
+    global map2_text
     map(Display_map, map_x, map_y)
     map_text = ""
+    map2_text = ""
     global file_nummer
     file_nummer = 0
 
@@ -789,11 +848,11 @@ def button2(msg,x,y,w,h,ic,ac,action=None):
     mouse = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
     if x+w > mouse[0] > x and y+h > mouse[1] > y:   #als de muis over de knop hovert
-        
+
         if click[0] == 1 and action != None:        #als je er op klikt, doe actie
             action()
 
-    
+
     smallText = pygame.font.SysFont("freesansbold.ttf",20)
     textSurf, textRect = text_objects(msg, smallText)
     textRect.center = ( (x+(w/2)), (y+(h/2)) )
@@ -848,16 +907,16 @@ def set_file5():
     beoordeling_file = 5
     print(beoordeling_file)
     rating_file_5()
-   
+
 def rating_file_1():
-    global rating_files 
+    global rating_files
     rating_files = True
     gameDisplay.blit(volle_ster, (550,500))
     global file_nummer
     file_nummer = 1
 
 def rating_file_2():
-    global rating_files 
+    global rating_files
     rating_files = True
     gameDisplay.blit(volle_ster, (650,500))
     rating_file_1()
@@ -873,7 +932,7 @@ def rating_file_3():
     file_nummer = 3
 
 def rating_file_4():
-    global rating_files 
+    global rating_files
     rating_files = True
     gameDisplay.blit(volle_ster, (850,500))
     rating_file_3()
@@ -917,7 +976,7 @@ def set_wegdek5():
     beoordeling_wegdek = 5
     print(beoordeling_wegdek)
     rating_wegdek_5()
-   
+
 def rating_wegdek_1():
     global rating_wegdek
     rating_wegdek = True
@@ -926,7 +985,7 @@ def rating_wegdek_1():
     wegdek_nummer = 1
 
 def rating_wegdek_2():
-    global rating_wegdek 
+    global rating_wegdek
     rating_wegdek = True
     gameDisplay.blit(volle_ster, (650,300))
     rating_wegdek_1()
@@ -942,7 +1001,7 @@ def rating_wegdek_3():
     wegdek_nummer = 3
 
 def rating_wegdek_4():
-    global rating_wegdek 
+    global rating_wegdek
     rating_wegdek = True
     gameDisplay.blit(volle_ster, (850,300))
     rating_wegdek_3()
@@ -967,6 +1026,7 @@ def sent_data():
         Main_scherm()
     else:
         message_display2("selecteer een snelweg en beoordeel het wegdek en het aantal files", 630, 650, 35)
+
 class snelweg_query:
     def A1_query():
         global naam_snelweg
@@ -1076,6 +1136,7 @@ class snelweg_query:
         global naam_snelweg
         naam_snelweg = "A58"
 
+
     def A59_query():
         global naam_snelweg
         naam_snelweg = "A59" 
@@ -1142,7 +1203,7 @@ def Kaart_scherm():    #kaart scherm
                 pygame.quit()
                 quit()
 
-        
+
         gameDisplay.fill(map_colour)
         map(map_image,map_x,10)
 
@@ -1215,7 +1276,7 @@ def beoordeling_scherm():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-        
+
 
         gameDisplay.fill(map_colour)
 
