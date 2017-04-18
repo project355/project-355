@@ -2,6 +2,8 @@ import pygame, time, psycopg2, random
 import eztext
 import math
 import sys
+import pie_demo
+
 
 pygame.init()
 
@@ -25,6 +27,7 @@ rating_files = False
 rating_wegdek = False
 beoordeling_file = 0
 beoordeling_wegdek = 0
+tijd = ''
 
 # image 637x750
 title = pygame.image.load('images/Roadmap.png')
@@ -408,10 +411,6 @@ def message_display(text):
 def map(naam, x,y):
     gameDisplay.blit(naam, (x,y))
     pygame.draw.rect(gameDisplay, map_colour, (700, 220, 535, 450)) # vlak
-
-
-
-
     message_display2(map_text, 850, 250, 20)
     message_display2(map2_text, 815, 300, 20)
 
@@ -990,6 +989,7 @@ def reset():
     andere = False
     global Display_map
     global naam_snelweg
+    global tijd
     naam_snelweg = "     "
     Display_map = map_image
     map(Display_map, map_x,map_y)
@@ -1000,6 +1000,8 @@ def reset():
     map2_text = ""
     global file_nummer
     file_nummer = 0
+    tijd = ''
+    
 
 def snek():
     def collide(x1, x2, y1, y2, w1, w2, h1, h2):
@@ -1080,6 +1082,11 @@ def rating():
     button2("", 950, 300, 100, 100, yellow, red, set.set_wegdek5)
 
     message_display2('wegdek:', 250, 350, 100)
+    
+    button("ochtend",1220, 300, 50, 30, yellow, red, set.ochtend)
+    button("Middag",1220, 400, 50, 30, yellow, red, set.middag)
+    button("Avond",1220, 500, 50, 30, yellow, red, set.avond)
+    button("Nacht",1220, 600, 50, 30, yellow, red, set.nacht)
 class set:
     def set_file1():
         global beoordeling_file
@@ -1218,13 +1225,26 @@ class set:
         set.rating_wegdek_4()
         global wegdek_nummer
         wegdek_nummer = 5
+        
+    def ochtend():
+        global tijd 
+        tijd = 'O'
+    def middag():
+        global tijd
+        tijd = 'M'
+    def avond():
+        global tijd
+        tijd = 'A'
+    def nacht():
+        global tijd
+        tijd = 'N'
 
     ############################################################################################
 
 
 #beoordeling_wegdek & beoordeling_file & naam_snelweg moeten naar de database.
 def sent_data():
-    if naam_snelweg != "     " and beoordeling_file != 0 and beoordeling_wegdek != 0:
+    if naam_snelweg != "     " and beoordeling_file != 0 and beoordeling_wegdek != 0 and tijd != '':
         poi = 'gooi alles in de database'
         Main_scherm()
     else:
@@ -1482,27 +1502,6 @@ def beoordeling_scherm():
 
 
         gameDisplay.fill(map_colour)
-
-        # Connect to an existing database
-        # conn = psycopg2.connect("dbname=project3 user=postgres password=wachtwoord")
-
-        # Open a cursor to perform database operations
-        #cur = conn.cursor()
-        #cur.execute("UPDATE Players SET wins = wins +1 WHERE naam = 'Penkie'")
-        #cur.execute("SELECT * FROM Players")
-        # fetch all of the rows from the query
-        #data = cur.fetchall ()
-    # print the rows
-        #for row in data :
-        #    print("Naam",row[0], "Wins",row[1], "Losses",row[2])
-        #    pygame.display.flip()
-        #    cur.close()
-
-        #conn.commit()
-
-        # Close communication with the database
-        #cur.close()
-        #conn.close()
 
         # button vars
         y1 = 15
