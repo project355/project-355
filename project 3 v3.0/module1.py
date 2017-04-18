@@ -408,7 +408,7 @@ def map(naam, x,y):
     gameDisplay.blit(naam, (x,y))
     pygame.draw.rect(gameDisplay, map_colour, (700, 220, 535, 450)) # vlak
 
-    message_display(map_text)
+
 
 
     message_display2(map_text, 850, 250, 20)
@@ -864,157 +864,157 @@ def rating():
     message_display2('welke rating geeft u over de ' + naam_snelweg + ":", 600, 150, 70)
     message_display2('files:', 250, 550, 100)
     #buttons file
-    button2("", 550, 500, 100, 100, yellow, red, set_file1)
-    button2("", 650, 500, 100, 100, yellow, red, set_file2)
-    button2("", 750, 500, 100, 100, yellow, red, set_file3)
-    button2("", 850, 500, 100, 100, yellow, red, set_file4)
-    button2("", 950, 500, 100, 100, yellow, red, set_file5)
+    button2("", 550, 500, 100, 100, yellow, red, set.set_file1)
+    button2("", 650, 500, 100, 100, yellow, red, set.set_file2)
+    button2("", 750, 500, 100, 100, yellow, red, set.set_file3)
+    button2("", 850, 500, 100, 100, yellow, red, set.set_file4)
+    button2("", 950, 500, 100, 100, yellow, red, set.set_file5)
     #buttons wegdek
-    button2("", 550, 300, 100, 100, yellow, red, set_wegdek1)
-    button2("", 650, 300, 100, 100, yellow, red, set_wegdek2)
-    button2("", 750, 300, 100, 100, yellow, red, set_wegdek3)
-    button2("", 850, 300, 100, 100, yellow, red, set_wegdek4)
-    button2("", 950, 300, 100, 100, yellow, red, set_wegdek5)
+    button2("", 550, 300, 100, 100, yellow, red, set.set_wegdek1)
+    button2("", 650, 300, 100, 100, yellow, red, set.set_wegdek2)
+    button2("", 750, 300, 100, 100, yellow, red, set.set_wegdek3)
+    button2("", 850, 300, 100, 100, yellow, red, set.set_wegdek4)
+    button2("", 950, 300, 100, 100, yellow, red, set.set_wegdek5)
 
     message_display2('wegdek:', 250, 350, 100)
+class set:
+    def set_file1():
+        global beoordeling_file
+        beoordeling_file = 1
+        print(beoordeling_file)
+        set.rating_file_1()
 
-def set_file1():
-    global beoordeling_file
-    beoordeling_file = 1
-    print(beoordeling_file)
-    rating_file_1()
+    def set_file2():
+        global beoordeling_file
+        beoordeling_file = 2
+        print(beoordeling_file)
+        set.rating_file_2()
 
-def set_file2():
-    global beoordeling_file
-    beoordeling_file = 2
-    print(beoordeling_file)
-    rating_file_2()
+    def set_file3():
+        global beoordeling_file
+        beoordeling_file = 3
+        print(beoordeling_file)
+        set.rating_file_3()
 
-def set_file3():
-    global beoordeling_file
-    beoordeling_file = 3
-    print(beoordeling_file)
-    rating_file_3()
+    def set_file4():
+        global beoordeling_file
+        beoordeling_file = 4
+        print(beoordeling_file)
+        set.rating_file_4()
 
-def set_file4():
-    global beoordeling_file
-    beoordeling_file = 4
-    print(beoordeling_file)
-    rating_file_4()
+    def set_file5():
+        global beoordeling_file
+        beoordeling_file = 5
+        print(beoordeling_file)
+        set.rating_file_5()
 
-def set_file5():
-    global beoordeling_file
-    beoordeling_file = 5
-    print(beoordeling_file)
-    rating_file_5()
+    def rating_file_1():
+        global rating_files
+        rating_files = True
+        gameDisplay.blit(volle_ster, (550,500))
+        global file_nummer
+        file_nummer = 1
 
-def rating_file_1():
-    global rating_files
-    rating_files = True
-    gameDisplay.blit(volle_ster, (550,500))
-    global file_nummer
-    file_nummer = 1
+    def rating_file_2():
+        global rating_files
+        rating_files = True
+        gameDisplay.blit(volle_ster, (650,500))
+        set.rating_file_1()
+        global file_nummer
+        file_nummer = 2
 
-def rating_file_2():
-    global rating_files
-    rating_files = True
-    gameDisplay.blit(volle_ster, (650,500))
-    rating_file_1()
-    global file_nummer
-    file_nummer = 2
+    def rating_file_3():
+        global rating_files
+        rating_files = True
+        gameDisplay.blit(volle_ster, (750,500))
+        set.rating_file_2()
+        global file_nummer
+        file_nummer = 3
 
-def rating_file_3():
-    global rating_files
-    rating_files = True
-    gameDisplay.blit(volle_ster, (750,500))
-    rating_file_2()
-    global file_nummer
-    file_nummer = 3
+    def rating_file_4():
+        global rating_files
+        rating_files = True
+        gameDisplay.blit(volle_ster, (850,500))
+        set.rating_file_3()
+        global file_nummer
+        file_nummer = 4
 
-def rating_file_4():
-    global rating_files
-    rating_files = True
-    gameDisplay.blit(volle_ster, (850,500))
-    rating_file_3()
-    global file_nummer
-    file_nummer = 4
+    def rating_file_5():
+        global rating_files
+        rating_files = True
+        gameDisplay.blit(volle_ster, (950,500))
+        set.rating_file_4()
+        global file_nummer
+        file_nummer = 5
 
-def rating_file_5():
-    global rating_files
-    rating_files = True
-    gameDisplay.blit(volle_ster, (950,500))
-    rating_file_4()
-    global file_nummer
-    file_nummer = 5
-###########################################################################################
-def set_wegdek1():
-    global beoordeling_wegdek
-    beoordeling_wegdek = 1
-    print(beoordeling_wegdek)
-    rating_wegdek_1()
+    def set_wegdek1():
+        global beoordeling_wegdek
+        beoordeling_wegdek = 1
+        print(beoordeling_wegdek)
+        set.rating_wegdek_1()
 
-def set_wegdek2():
-    global beoordeling_wegdek
-    beoordeling_wegdek = 2
-    print(beoordeling_wegdek)
-    rating_wegdek_2()
+    def set_wegdek2():
+        global beoordeling_wegdek
+        beoordeling_wegdek = 2
+        print(beoordeling_wegdek)
+        set.rating_wegdek_2()
 
-def set_wegdek3():
-    global beoordeling_wegdek
-    beoordeling_wegdek = 3
-    print(beoordeling_wegdek)
-    rating_wegdek_3()
+    def set_wegdek3():
+        global beoordeling_wegdek
+        beoordeling_wegdek = 3
+        print(beoordeling_wegdek)
+        set.rating_wegdek_3()
 
-def set_wegdek4():
-    global beoordeling_wegdek
-    beoordeling_wegdek = 4
-    print(beoordeling_wegdek)
-    rating_wegdek_4()
+    def set_wegdek4():
+        global beoordeling_wegdek
+        beoordeling_wegdek = 4
+        print(beoordeling_wegdek)
+        set.rating_wegdek_4()
 
-def set_wegdek5():
-    global beoordeling_wegdek
-    beoordeling_wegdek = 5
-    print(beoordeling_wegdek)
-    rating_wegdek_5()
+    def set_wegdek5():
+        global beoordeling_wegdek
+        beoordeling_wegdek = 5
+        print(beoordeling_wegdek)
+        set.rating_wegdek_5()
 
-def rating_wegdek_1():
-    global rating_wegdek
-    rating_wegdek = True
-    gameDisplay.blit(volle_ster, (550,300))
-    global wegdek_nummer
-    wegdek_nummer = 1
+    def rating_wegdek_1():
+        global rating_wegdek
+        rating_wegdek = True
+        gameDisplay.blit(volle_ster, (550,300))
+        global wegdek_nummer
+        wegdek_nummer = 1
 
-def rating_wegdek_2():
-    global rating_wegdek
-    rating_wegdek = True
-    gameDisplay.blit(volle_ster, (650,300))
-    rating_wegdek_1()
-    global wegdek_nummer
-    wegdek_nummer = 2
+    def rating_wegdek_2():
+        global rating_wegdek
+        rating_wegdek = True
+        gameDisplay.blit(volle_ster, (650,300))
+        set.rating_wegdek_1()
+        global wegdek_nummer
+        wegdek_nummer = 2
 
-def rating_wegdek_3():
-    global rating_wegdek
-    rating_wegdek = True
-    gameDisplay.blit(volle_ster, (750,300))
-    rating_wegdek_2()
-    global wegdek_nummer
-    wegdek_nummer = 3
+    def rating_wegdek_3():
+        global rating_wegdek
+        rating_wegdek = True
+        gameDisplay.blit(volle_ster, (750,300))
+        set.rating_wegdek_2()
+        global wegdek_nummer
+        wegdek_nummer = 3
 
-def rating_wegdek_4():
-    global rating_wegdek
-    rating_wegdek = True
-    gameDisplay.blit(volle_ster, (850,300))
-    rating_wegdek_3()
-    global wegdek_nummer
-    wegdek_nummer = 4
+    def rating_wegdek_4():
+        global rating_wegdek
+        rating_wegdek = True
+        gameDisplay.blit(volle_ster, (850,300))
+        set.rating_wegdek_3()
+        global wegdek_nummer
+        wegdek_nummer = 4
 
-def rating_wegdek_5():
-    global rating_wegdek
-    rating_wegdek = True
-    gameDisplay.blit(volle_ster, (950,300))
-    rating_wegdek_4()
-    global wegdek_nummer
-    wegdek_nummer = 5
+    def rating_wegdek_5():
+        global rating_wegdek
+        rating_wegdek = True
+        gameDisplay.blit(volle_ster, (950,300))
+        set.rating_wegdek_4()
+        global wegdek_nummer
+        wegdek_nummer = 5
 
     ############################################################################################
 
@@ -1352,27 +1352,27 @@ def beoordeling_scherm():
 
         if rating_files == True:
             if file_nummer == 1:
-                rating_file_1()
+                set.rating_file_1()
             elif file_nummer == 2:
-                rating_file_2()
+                set.rating_file_2()
             elif file_nummer == 3:
-                rating_file_3()
+                set.rating_file_3()
             elif file_nummer == 4:
-                rating_file_4()
+                set.rating_file_4()
             elif file_nummer == 5:
-                rating_file_5()
+                set.rating_file_5()
 
         if rating_wegdek == True:
             if wegdek_nummer == 1:
-                rating_wegdek_1()
+                set.rating_wegdek_1()
             elif wegdek_nummer == 2:
-                rating_wegdek_2()
+                set.rating_wegdek_2()
             elif wegdek_nummer == 3:
-                rating_wegdek_3()
+                set.rating_wegdek_3()
             elif wegdek_nummer == 4:
-                rating_wegdek_4()
+                set.rating_wegdek_4()
             elif wegdek_nummer == 5:
-                rating_wegdek_5()
+                set.rating_wegdek_5()
 
 
         clock.tick(15)  #refresh rate van 15
