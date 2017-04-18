@@ -400,330 +400,330 @@ def map(naam, x,y):
     gameDisplay.blit(naam, (x,y))
     pygame.draw.rect(gameDisplay, map_colour, (700, 220, 535, 450)) # vlak
     message_display(map_text)
+class snelweg():
+    def A1():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A1
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "Niet-dodelijke ongevallen:9638" 
 
-def A1():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A1
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:9638"
+    def A2():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A2
+        global map_text
+        map(Display_map, map_x, map_y)
+        map_text = "Niet-dodelijke ongevallen:2003"
 
-def A2():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A2
-    global map_text
-    map(Display_map, map_x, map_y)
-    map_text = "Niet-dodelijke ongevallen:2003"
+    def A4():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A4
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "Niet-dodelijke ongevallen:3456"
 
-def A4():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A4
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:3456"
+    def A5():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A5
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "Niet-dodelijke ongevallen:2090"
 
-def A5():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A5
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:2090"
+    def A6():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A6
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "Niet-dodelijke ongevallen:1195"
 
-def A6():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A6
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:1195"
+    def A7():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A7
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "Niet-dodelijke ongevallen:7687"
 
-def A7():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A7
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:7687"
+    def A8():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A8
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "Niet-dodelijke ongevallen:6859"
 
-def A8():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A8
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:6859"
+    def A9():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A9
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "Niet-dodelijke ongevallen:6512’"
 
-def A9():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A9
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:6512’"
+    def A10():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A10
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "Niet-dodelijke ongevallen:7102"
 
-def A10():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A10
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:7102"
+    def A12():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A12
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "Niet-dodelijke ongevallen:10267"
 
-def A12():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A12
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:10267"
+    def A13():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A13
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "Niet-dodelijke ongevallen:6159"
 
-def A13():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A13
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "Niet-dodelijke ongevallen:6159"
+    def A15():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A15
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A15"
 
-def A15():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A15
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A15"
+    def A16():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A16
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A16"
 
-def A16():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A16
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A16"
+    def A17():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A17
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A17"
 
-def A17():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A17
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A17"
+    def A18():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A18
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A18"
 
-def A18():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A18
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A18"
+    def A19():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A19
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A19"
 
-def A19():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A19
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A19"
+    def A20():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A20
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A20"
 
-def A20():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A20
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A20"
+    def A27():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A27
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A27"
 
-def A27():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A27
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A27"
+    def A28():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A28
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A28"
 
-def A28():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A28
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A28"
+    def A29():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A29
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A29"
 
-def A29():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A29
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A29"
+    def A30():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A30
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A30"
 
-def A30():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A30
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A30"
+    def A31():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A31
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A31"
 
-def A31():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A31
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A31"
+    def A32():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A32
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A32"
 
-def A32():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A32
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A32"
+    def A35():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A35
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A35"
 
-def A35():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A35
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A35"
+    def A37():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A37
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A37"
 
-def A37():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A37
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A37"
+    def A44():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A44
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A44"
 
-def A44():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A44
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A44"
+    def A50():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A50
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A50"
 
-def A50():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A50
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A50"
+    def A58():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A58
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A58"
 
-def A58():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A58
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A58"
+    def A59():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A59
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A59"
 
-def A59():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A59
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A59"
+    def A65():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A65
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A65"
 
-def A65():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A65
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A65"
+    def A67():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A67
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A67"
 
-def A67():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A67
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A67"
+    def A73():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A73
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A73"
 
-def A73():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A73
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A73"
+    def A76():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A76
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A76"
 
-def A76():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A76
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A76"
+    def A77():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A77
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A77"
 
-def A77():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A77
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A77"
+    def A79():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A79
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A79"
 
-def A79():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A79
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A79"
-
-def A200():
-    global andere
-    andere = True
-    global Display_map
-    Display_map = map_A200
-    global map_text
-    map(Display_map, map_x,map_y)
-    map_text = "info A200"
+    def A200():
+        global andere
+        andere = True
+        global Display_map
+        Display_map = map_A200
+        global map_text
+        map(Display_map, map_x,map_y)
+        map_text = "info A200"
 
 def reset():
     global andere
@@ -887,8 +887,7 @@ def rating_file_5():
     rating_file_4()
     global file_nummer
     file_nummer = 5
-
-    ###########################################################################################
+###########################################################################################
 def set_wegdek1():
     global beoordeling_wegdek
     beoordeling_wegdek = 1
@@ -968,146 +967,146 @@ def sent_data():
         Main_scherm()
     else:
         message_display2("selecteer een snelweg en beoordeel het wegdek en het aantal files", 630, 650, 35)
-
-def A1_query():
-    global naam_snelweg
-    naam_snelweg = "A1"
+class snelweg_query:
+    def A1_query():
+        global naam_snelweg
+        naam_snelweg = "A1"
     
-def A2_query():
-    global naam_snelweg
-    naam_snelweg = "A2"
+    def A2_query():
+        global naam_snelweg
+        naam_snelweg = "A2"
 
-def A4_query():
-    global naam_snelweg
-    naam_snelweg = "A4"
+    def A4_query():
+        global naam_snelweg
+        naam_snelweg = "A4"
 
-def A5_query():
-    global naam_snelweg
-    naam_snelweg = "A5"
+    def A5_query():
+        global naam_snelweg
+        naam_snelweg = "A5"
 
-def A6_query():
-    global naam_snelweg
-    naam_snelweg = "A6"
+    def A6_query():
+        global naam_snelweg
+        naam_snelweg = "A6"
 
-def A7_query():
-    global naam_snelweg
-    naam_snelweg = "A7"
+    def A7_query():
+        global naam_snelweg
+        naam_snelweg = "A7"
 
-def A8_query():
-    global naam_snelweg
-    naam_snelweg = "A8"
+    def A8_query():
+        global naam_snelweg
+        naam_snelweg = "A8"
 
-def A9_query():
-    global naam_snelweg
-    naam_snelweg = "A9"
+    def A9_query():
+        global naam_snelweg
+        naam_snelweg = "A9"
 
-def A10_query():
-    global naam_snelweg
-    naam_snelweg = "A10"
+    def A10_query():
+        global naam_snelweg
+        naam_snelweg = "A10"
 
-def A12_query():
-    global naam_snelweg
-    naam_snelweg = "A12"
+    def A12_query():
+        global naam_snelweg
+        naam_snelweg = "A12"
 
-def A13_query():
-    global naam_snelweg
-    naam_snelweg = "A13"
+    def A13_query():
+        global naam_snelweg
+        naam_snelweg = "A13"
 
-def A15_query():
-    global naam_snelweg
-    naam_snelweg = "A15"
+    def A15_query():
+        global naam_snelweg
+        naam_snelweg = "A15"
 
-def A16_query():
-    global naam_snelweg
-    naam_snelweg = "A16"
+    def A16_query():
+        global naam_snelweg
+        naam_snelweg = "A16"
 
-def A17_query():
-    global naam_snelweg
-    naam_snelweg = "A17"
+    def A17_query():
+        global naam_snelweg
+        naam_snelweg = "A17"
 
-def A18_query():
-    global naam_snelweg
-    naam_snelweg = "A18"
+    def A18_query():
+        global naam_snelweg
+        naam_snelweg = "A18"
 
-def A20_query():
-    global naam_snelweg
-    naam_snelweg = "A20"
+    def A20_query():
+        global naam_snelweg
+        naam_snelweg = "A20"
 
-def A27_query():
-    global naam_snelweg
-    naam_snelweg = "A27"
+    def A27_query():
+        global naam_snelweg
+        naam_snelweg = "A27"
 
-def A28_query():
-    global naam_snelweg
-    naam_snelweg = "A28"
+    def A28_query():
+        global naam_snelweg
+        naam_snelweg = "A28"
 
-def A29_query():
-    global naam_snelweg
-    naam_snelweg = "A29"
+    def A29_query():
+        global naam_snelweg
+        naam_snelweg = "A29"
 
-def A30_query():
-    global naam_snelweg
-    naam_snelweg = "A30"
+    def A30_query():
+        global naam_snelweg
+        naam_snelweg = "A30"
 
-def A31_query():
-    global naam_snelweg
-    naam_snelweg = "A31"
+    def A31_query():
+        global naam_snelweg
+        naam_snelweg = "A31"
 
-def A32_query():
-    global naam_snelweg
-    naam_snelweg = "A32"
+    def A32_query():
+        global naam_snelweg
+        naam_snelweg = "A32"
 
-def A35_query():
-    global naam_snelweg
-    naam_snelweg = "A35"
+    def A35_query():
+        global naam_snelweg
+        naam_snelweg = "A35"
 
-def A37_query():
-    global naam_snelweg
-    naam_snelweg = "A37"
+    def A37_query():
+        global naam_snelweg
+        naam_snelweg = "A37"
 
-def A44_query():
-    global naam_snelweg
-    naam_snelweg = "A44"
+    def A44_query():
+        global naam_snelweg
+        naam_snelweg = "A44"
 
-def A50_query():
-    global naam_snelweg
-    naam_snelweg = "A50"
+    def A50_query():
+        global naam_snelweg
+        naam_snelweg = "A50"
 
-def A58_query():
-    global naam_snelweg
-    naam_snelweg = "A58"
+    def A58_query():
+        global naam_snelweg
+        naam_snelweg = "A58"
 
-def A59_query():
-    global naam_snelweg
-    naam_snelweg = "A59" 
+    def A59_query():
+        global naam_snelweg
+        naam_snelweg = "A59" 
 
-def A65_query():
-    global naam_snelweg
-    naam_snelweg = "A65"
+    def A65_query():
+        global naam_snelweg
+        naam_snelweg = "A65"
 
-def A67_query():
-    global naam_snelweg
-    naam_snelweg = "A67"
+    def A67_query():
+        global naam_snelweg
+        naam_snelweg = "A67"
 
-def A73_query():
-    global naam_snelweg
-    naam_snelweg = "A73"
+    def A73_query():
+        global naam_snelweg
+        naam_snelweg = "A73"
 
-def A76_query():
-    global naam_snelweg
-    naam_snelweg = "A76"
+    def A76_query():
+        global naam_snelweg
+        naam_snelweg = "A76"
 
-def A77_query():
-    global naam_snelweg
-    naam_snelweg = "A77"
+    def A77_query():
+        global naam_snelweg
+        naam_snelweg = "A77"
 
-def A79_query():
-    global naam_snelweg
-    naam_snelweg = "A79"
+    def A79_query():
+        global naam_snelweg
+        naam_snelweg = "A79"
 
-def A200_query():
-    global naam_snelweg
-    naam_snelweg = "A200"
+    def A200_query():
+        global naam_snelweg
+        naam_snelweg = "A200"
 
 
 
@@ -1153,47 +1152,47 @@ def Kaart_scherm():    #kaart scherm
         y1 = 15
         nextY = 50
         # button row 1
-        button("A1", x1, y1, 53, 30, yellow, red, A1)
-        button("A2", x1 + nextX, y1, 53, 30, yellow, red, A2)
-        button("A4", x1 + nextX * 2, y1, 53, 30, yellow, red, A4)
-        button("A5", x1 + nextX * 3, y1, 53, 30, yellow, red, A5)
-        button("A6", x1 + nextX * 4, y1, 53, 30, yellow, red, A6)
-        button("A7", x1 + nextX * 5, y1, 53, 30, yellow, red, A7)
-        button("A8", x1 + nextX * 6, y1, 53, 30, yellow, red, A8)
-        button("A9", x1 + nextX * 7, y1, 53, 30, yellow, red, A9)
-        button("A10", x1 + nextX * 8, y1, 53, 30, yellow, red, A10)
+        button("A1", x1, y1, 53, 30, yellow, red, snelweg.A1)
+        button("A2", x1 + nextX, y1, 53, 30, yellow, red, snelweg.A2)
+        button("A4", x1 + nextX * 2, y1, 53, 30, yellow, red, snelweg.A4)
+        button("A5", x1 + nextX * 3, y1, 53, 30, yellow, red, snelweg.A5)
+        button("A6", x1 + nextX * 4, y1, 53, 30, yellow, red, snelweg.A6)
+        button("A7", x1 + nextX * 5, y1, 53, 30, yellow, red, snelweg.A7)
+        button("A8", x1 + nextX * 6, y1, 53, 30, yellow, red, snelweg.A8)
+        button("A9", x1 + nextX * 7, y1, 53, 30, yellow, red, snelweg.A9)
+        button("A10", x1 + nextX * 8, y1, 53, 30, yellow, red, snelweg.A10)
 
         # button row 2
-        button("A12", x1, y1 + nextY, 53, 30, yellow, red, A12)
-        button("A13", x1 + nextX, y1 + nextY, 53, 30, yellow, red, A13)
-        button("A15", x1 + nextX * 2, y1 + nextY, 53, 30, yellow, red, A15)
-        button("A16", x1 + nextX * 3, y1 + nextY, 53, 30, yellow, red, A16)
-        button("A17", x1 + nextX * 4, y1 + nextY, 53, 30, yellow, red, A17)
-        button("A18", x1 + nextX * 5, y1 + nextY, 53, 30, yellow, red, A18)
-        button("A20", x1 + nextX * 6, y1 + nextY, 53, 30, yellow, red, A20)
-        button("A27", x1 + nextX * 7, y1 + nextY, 53, 30, yellow, red, A27)
-        button("A28", x1 + nextX * 8, y1 + nextY, 53, 30, yellow, red, A28)
+        button("A12", x1, y1 + nextY, 53, 30, yellow, red, snelweg.A12)
+        button("A13", x1 + nextX, y1 + nextY, 53, 30, yellow, red, snelweg.A13)
+        button("A15", x1 + nextX * 2, y1 + nextY, 53, 30, yellow, red, snelweg.A15)
+        button("A16", x1 + nextX * 3, y1 + nextY, 53, 30, yellow, red, snelweg.A16)
+        button("A17", x1 + nextX * 4, y1 + nextY, 53, 30, yellow, red, snelweg.A17)
+        button("A18", x1 + nextX * 5, y1 + nextY, 53, 30, yellow, red, snelweg.A18)
+        button("A20", x1 + nextX * 6, y1 + nextY, 53, 30, yellow, red, snelweg.A20)
+        button("A27", x1 + nextX * 7, y1 + nextY, 53, 30, yellow, red, snelweg.A27)
+        button("A28", x1 + nextX * 8, y1 + nextY, 53, 30, yellow, red, snelweg.A28)
 
         # button row 3
-        button("A29", x1, y1 + nextY * 2, 53, 30, yellow, red, A29)
-        button("A30", x1 + nextX, y1 + nextY * 2, 53, 30, yellow, red, A30)
-        button("A31", x1 + nextX * 2, y1 + nextY * 2, 53, 30, yellow, red, A31)
-        button("A32", x1 + nextX * 3, y1 + nextY * 2, 53, 30, yellow, red, A32)
-        button("A35", x1 + nextX * 4, y1 + nextY * 2, 53, 30, yellow, red, A35)
-        button("A37", x1 + nextX * 5, y1 + nextY * 2, 53, 30, yellow, red, A37)
-        button("A44", x1 + nextX * 6, y1 + nextY * 2, 53, 30, yellow, red, A44)
-        button("A50", x1 + nextX * 7, y1 + nextY * 2, 53, 30, yellow, red, A50)
-        button("A58", x1 + nextX * 8, y1 + nextY * 2, 53, 30, yellow, red, A58)
+        button("A29", x1, y1 + nextY * 2, 53, 30, yellow, red, snelweg.A29)
+        button("A30", x1 + nextX, y1 + nextY * 2, 53, 30, yellow, red, snelweg.A30)
+        button("A31", x1 + nextX * 2, y1 + nextY * 2, 53, 30, yellow, red, snelweg.A31)
+        button("A32", x1 + nextX * 3, y1 + nextY * 2, 53, 30, yellow, red, snelweg.A32)
+        button("A35", x1 + nextX * 4, y1 + nextY * 2, 53, 30, yellow, red, snelweg.A35)
+        button("A37", x1 + nextX * 5, y1 + nextY * 2, 53, 30, yellow, red, snelweg.A37)
+        button("A44", x1 + nextX * 6, y1 + nextY * 2, 53, 30, yellow, red, snelweg.A44)
+        button("A50", x1 + nextX * 7, y1 + nextY * 2, 53, 30, yellow, red, snelweg.A50)
+        button("A58", x1 + nextX * 8, y1 + nextY * 2, 53, 30, yellow, red, snelweg.A58)
 
         # button row 4
-        button("A59", x1, y1 + nextY * 3, 53, 30, yellow, red, A59)
-        button("A65", x1 + nextX, y1 + nextY * 3, 53, 30, yellow, red, A65)
-        button("A67", x1 + nextX * 2, y1 + nextY * 3, 53, 30, yellow, red, A67)
-        button("A73", x1 + nextX * 3, y1 + nextY * 3, 53, 30, yellow, red, A73)
-        button("A76", x1 + nextX * 4, y1 + nextY * 3, 53, 30, yellow, red, A76)
-        button("A77", x1 + nextX * 5, y1 + nextY * 3, 53, 30, yellow, red, A77)
-        button("A79", x1 + nextX * 6, y1 + nextY * 3, 53, 30, yellow, red, A79)
-        button("A200", x1 + nextX * 7, y1 + nextY * 3, 53, 30, yellow, red, A200)
+        button("A59", x1, y1 + nextY * 3, 53, 30, yellow, red, snelweg.A59)
+        button("A65", x1 + nextX, y1 + nextY * 3, 53, 30, yellow, red, snelweg.A65)
+        button("A67", x1 + nextX * 2, y1 + nextY * 3, 53, 30, yellow, red, snelweg.A67)
+        button("A73", x1 + nextX * 3, y1 + nextY * 3, 53, 30, yellow, red, snelweg.A73)
+        button("A76", x1 + nextX * 4, y1 + nextY * 3, 53, 30, yellow, red, snelweg.A76)
+        button("A77", x1 + nextX * 5, y1 + nextY * 3, 53, 30, yellow, red, snelweg.A77)
+        button("A79", x1 + nextX * 6, y1 + nextY * 3, 53, 30, yellow, red, snelweg.A79)
+        button("A200", x1 + nextX * 7, y1 + nextY * 3, 53, 30, yellow, red, snelweg.A200)
         button("EE_1", x1 + nextX * 8, y1 + nextY * 3, 53, 30, yellow, red, atari)
 
         # button back
@@ -1246,57 +1245,50 @@ def beoordeling_scherm():
         y2 = 50
 
         # button row 1
-        button("A1", 43, y1, 50, 30, yellow, red, A1_query)
-        button("A2", 115, y1, 50, 30, yellow, red, A2_query)
-        button("A4", 185, y1, 50, 30, yellow, red, A4_query)
-        button("A5", 255, y1, 50, 30, yellow, red, A5_query)
-        button("A6", 325, y1, 50, 30, yellow, red, A6_query)
-        button("A7", 395, y1, 50, 30, yellow, red, A7_query)
-        button("A8", 465, y1, 50, 30, yellow, red, A8_query)
-        button("A9", 535, y1, 50, 30, yellow, red, A9_query)
-        button("A10",605, y1, 50, 30, yellow, red, A10_query)
-        button("A12", 675, y1, 50, 30, yellow, red, A12_query)
-        button("A13", 745, y1, 50, 30, yellow, red, A13_query)
-        button("A15", 815, y1, 50, 30, yellow, red, A15_query)
-        button("A16", 885, y1, 50, 30, yellow, red, A16_query)
-        button("A17", 955, y1, 50, 30, yellow, red, A17_query)
-        button("A18", 1025, y1, 50, 30, yellow, red, A18_query)
-        button("A20", 1090, y1, 50, 30, yellow, red, A20_query)
-        button("A27", 1155, y1, 50, 30, yellow, red, A27_query)
-        button("A28", 1220, y1, 50, 30, yellow, red, A28_query)
+        button("A1", 43, y1, 50, 30, yellow, red, snelweg_query.A1_query)
+        button("A2", 115, y1, 50, 30, yellow, red, snelweg_query.A2_query)
+        button("A4", 185, y1, 50, 30, yellow, red, snelweg_query.A4_query)
+        button("A5", 255, y1, 50, 30, yellow, red, snelweg_query.A5_query)
+        button("A6", 325, y1, 50, 30, yellow, red, snelweg_query.A6_query)
+        button("A7", 395, y1, 50, 30, yellow, red, snelweg_query.A7_query)
+        button("A8", 465, y1, 50, 30, yellow, red, snelweg_query.A8_query)
+        button("A9", 535, y1, 50, 30, yellow, red, snelweg_query.A9_query)
+        button("A10",605, y1, 50, 30, yellow, red, snelweg_query.A10_query)
+        button("A12", 675, y1, 50, 30, yellow, red, snelweg_query.A12_query)
+        button("A13", 745, y1, 50, 30, yellow, red, snelweg_query.A13_query)
+        button("A15", 815, y1, 50, 30, yellow, red, snelweg_query.A15_query)
+        button("A16", 885, y1, 50, 30, yellow, red, snelweg_query.A16_query)
+        button("A17", 955, y1, 50, 30, yellow, red, snelweg_query.A17_query)
+        button("A18", 1025, y1, 50, 30, yellow, red, snelweg_query.A18_query)
+        button("A20", 1090, y1, 50, 30, yellow, red, snelweg_query.A20_query)
+        button("A27", 1155, y1, 50, 30, yellow, red, snelweg_query.A27_query)
+        button("A28", 1220, y1, 50, 30, yellow, red, snelweg_query.A28_query)
 
         # button row 2
-        button("A29", 43, y2, 50, 30, yellow, red, A29_query)
-        button("A30", 115, y2, 50, 30, yellow, red, A30_query)
-        button("A31", 185, y2, 50, 30, yellow, red, A31_query)
-        button("A32", 255, y2, 50, 30, yellow, red, A32_query)
-        button("A35", 325, y2, 50, 30, yellow, red, A35_query)
-        button("A37", 395, y2, 50, 30, yellow, red, A37_query)
-        button("A44", 465, y2, 50, 30, yellow, red, A44_query)
-        button("A50", 535, y2, 50, 30, yellow, red, A50_query)
-        button("A58", 605, y2, 50, 30, yellow, red, A58_query)
-        button("A59", 675, y2, 50, 30, yellow, red, A59_query)
-        button("A65", 745, y2, 50, 30, yellow, red, A65_query)
-        button("A67", 815, y2, 50, 30, yellow, red, A67_query)
-        button("A73", 885, y2, 50, 30, yellow, red, A73_query)
-        button("A76", 955, y2, 50, 30, yellow, red, A76_query)
-        button("A77", 1025, y2, 50, 30, yellow, red, A77_query)
-        button("A79", 1090, y2, 50, 30, yellow, red, A79_query)
-        button("A200",1155, y2, 50, 30, yellow, red, A200_query)
+        button("A29", 43, y2, 50, 30, yellow, red, snelweg_query.A29_query)
+        button("A30", 115, y2, 50, 30, yellow, red, snelweg_query.A30_query)
+        button("A31", 185, y2, 50, 30, yellow, red, snelweg_query.A31_query)
+        button("A32", 255, y2, 50, 30, yellow, red, snelweg_query.A32_query)
+        button("A35", 325, y2, 50, 30, yellow, red, snelweg_query.A35_query)
+        button("A37", 395, y2, 50, 30, yellow, red, snelweg_query.A37_query)
+        button("A44", 465, y2, 50, 30, yellow, red, snelweg_query.A44_query)
+        button("A50", 535, y2, 50, 30, yellow, red, snelweg_query.A50_query)
+        button("A58", 605, y2, 50, 30, yellow, red, snelweg_query.A58_query)
+        button("A59", 675, y2, 50, 30, yellow, red, snelweg_query.A59_query)
+        button("A65", 745, y2, 50, 30, yellow, red, snelweg_query.A65_query)
+        button("A67", 815, y2, 50, 30, yellow, red, snelweg_query.A67_query)
+        button("A73", 885, y2, 50, 30, yellow, red, snelweg_query.A73_query)
+        button("A76", 955, y2, 50, 30, yellow, red, snelweg_query.A76_query)
+        button("A77", 1025, y2, 50, 30, yellow, red, snelweg_query.A77_query)
+        button("A79", 1090, y2, 50, 30, yellow, red, snelweg_query.A79_query)
+        button("A200",1155, y2, 50, 30, yellow, red, snelweg_query.A200_query)
         button("EE_1",1220, y2, 50, 30, yellow, red, snek)
 
         button("Verstuur", 150, 700, 300, 50, yellow, red, sent_data)
         button("Terug", 850, 700, 300, 50, yellow, red, Main_scherm)
 
-
-
-
-        #if andere == True:######################################################################################################3
-         #   map(Display_map, map_x,map_y)
-
-
-
         rating()
+
         if rating_files == True:
             if file_nummer == 1:
                 rating_file_1()
@@ -1321,9 +1313,9 @@ def beoordeling_scherm():
             elif wegdek_nummer == 5:
                 rating_wegdek_5()
 
+
         clock.tick(15)  #refresh rate van 15
         pygame.display.flip()
-
 
 def Navigatie_scherm():    #navigatie scherm
     Instruction, Intro = True, False
