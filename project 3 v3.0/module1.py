@@ -70,6 +70,21 @@ map_A79 = pygame.image.load('images/A79.jpg')
 map_A200 = pygame.image.load('images/A200.jpg')
 volle_ster = pygame.image.load('images/volle_ster.png')
 lege_ster = pygame.image.load('images/lege_ster.png')
+map_berlijn = pygame.image.load('images/A200.jpg')
+map_parijs = pygame.image.load('images/A200.jpg')
+map_haarlem = pygame.image.load('images/A200.jpg')
+map_amsterdam= pygame.image.load('images/A200.jpg')
+map_denhaag = pygame.image.load('images/A200.jpg')
+map_middelburg = pygame.image.load('images/A200.jpg')
+map_utrecht = pygame.image.load('images/A200.jpg')
+map_denbosch = pygame.image.load('images/A200.jpg')
+map_maastricht = pygame.image.load('images/A200.jpg')
+map_arnhem = pygame.image.load('images/A200.jpg')
+map_zwolle = pygame.image.load('images/A200.jpg')
+map_assen = pygame.image.load('images/A200.jpg')
+map_groningen = pygame.image.load('images/A200.jpg')
+map_leeuwarden = pygame.image.load('images/A200.jpg')
+map_lelystad = pygame.image.load('images/A200.jpg')
 
 #colors are in a range of 0-255 (256 different entries)
 red = [255, 0, 0]
@@ -101,7 +116,11 @@ _image_library = {}     #global list
 
 #-------------------------------------------------------------------------------------------------------------------------
 
+def grafiek1():
+    pie_demo.poi()
 
+def grafiek2():
+    pie_demo.poi()
 
 def button(msg,x,y,w,h,ic,ac,action=None):
     """functie om een knop te maken (text,x,y,width,height,kleur, hover kleur, actie)"""
@@ -820,7 +839,7 @@ class snelweg:
         global andere
         andere = True
         global Display_map
-        Display_map = map_A200
+        Display_map = map_berlijn
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
@@ -831,7 +850,7 @@ class snelweg:
         global andere
         andere = True
         global Display_map
-        Display_map = map_A200
+        Display_map = map_parijs
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
@@ -842,7 +861,7 @@ class snelweg:
         global andere
         andere = True
         global Display_map
-        Display_map = map_A200
+        Display_map = map_haarlem
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
@@ -853,7 +872,7 @@ class snelweg:
         global andere
         andere = True
         global Display_map
-        Display_map = map_A200
+        Display_map = map_amsterdam
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
@@ -864,7 +883,7 @@ class snelweg:
         global andere
         andere = True
         global Display_map
-        Display_map = map_A200
+        Display_map = map_denhaag
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
@@ -875,7 +894,7 @@ class snelweg:
         global andere
         andere = True
         global Display_map
-        Display_map = map_A200
+        Display_map = map_maastricht
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
@@ -886,7 +905,7 @@ class snelweg:
         global andere
         andere = True
         global Display_map
-        Display_map = map_A200
+        Display_map = map_arnhem
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
@@ -897,7 +916,7 @@ class snelweg:
         global andere
         andere = True
         global Display_map
-        Display_map = map_A200
+        Display_map = map_zwolle
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
@@ -908,7 +927,7 @@ class snelweg:
         global andere
         andere = True
         global Display_map
-        Display_map = map_A200
+        Display_map = map_assen
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
@@ -919,7 +938,7 @@ class snelweg:
         global andere
         andere = True
         global Display_map
-        Display_map = map_A200
+        Display_map = map_groningen
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
@@ -930,7 +949,7 @@ class snelweg:
         global andere
         andere = True
         global Display_map
-        Display_map = map_A200
+        Display_map = map_leeuwarden
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
@@ -941,7 +960,7 @@ class snelweg:
         global andere
         andere = True
         global Display_map
-        Display_map = map_A200
+        Display_map = map_lelystad
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
@@ -953,7 +972,7 @@ class snelweg:
         global andere
         andere = True
         global Display_map
-        Display_map = map_A200
+        Display_map = map_utrecht
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
@@ -965,7 +984,7 @@ class snelweg:
         global andere
         andere = True
         global Display_map
-        Display_map = map_A200
+        Display_map = map_middelburg
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
@@ -976,7 +995,7 @@ class snelweg:
         global andere
         andere = True
         global Display_map
-        Display_map = map_A200
+        Display_map = map_denbosch
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
@@ -1001,7 +1020,7 @@ def reset():
     global file_nummer
     file_nummer = 0
     tijd = ''
-    
+
 
 def snek():
     def collide(x1, x2, y1, y2, w1, w2, h1, h2):
@@ -1082,7 +1101,7 @@ def rating():
     button2("", 950, 300, 100, 100, yellow, red, set.set_wegdek5)
 
     message_display2('wegdek:', 250, 350, 100)
-    
+
     button("ochtend",1220, 300, 50, 30, yellow, red, set.ochtend)
     button("Middag",1220, 400, 50, 30, yellow, red, set.middag)
     button("Avond",1220, 500, 50, 30, yellow, red, set.avond)
@@ -1225,9 +1244,9 @@ class set:
         set.rating_wegdek_4()
         global wegdek_nummer
         wegdek_nummer = 5
-        
+
     def ochtend():
-        global tijd 
+        global tijd
         tijd = 'O'
     def middag():
         global tijd
@@ -1414,6 +1433,7 @@ def Main_scherm():   #main menu scherm
         button("Navigatie", 50, 330, 700, 50, yellow, red, Navigatie_scherm)
         button("Opties", 50, 430, 700, 50, yellow, red, Opties_scherm)
         button("Beoordeling", 50, 530, 700, 50, yellow, red, beoordeling_scherm)
+        button("grafieken", 50, 630, 700, 50, yellow, red, Grafieken_scherm)
         button("X", 1200, 100, 70, 50, yellow, red, quit)
         pygame.display.flip()
 
@@ -1632,14 +1652,30 @@ def Opties_scherm():  #opties menu
         button("Sound on", 400, 130, 350, 50, yellow, red, sound_on)
         button("Volume down", 50, 230, 350, 50, yellow, red, volumedown)
         button("Volume up", 400, 230, 350, 50, yellow, red, volumeup)
-        button("Back", 50, 500, 700, 50, yellow, red, Main_scherm)
+        button("terug", 50, 500, 700, 50, yellow, red, Main_scherm)
         clock.tick(15)  #refresh rate van 15
         pygame.display.flip()
 
+def Grafieken_scherm():    #navigatie scherm
+    Instruction, Intro = True, False
+    while Instruction:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+        gameDisplay.fill(map_colour)
+        button("Grafiek 1", 50, 130, 650, 50,yellow, red, grafiek1)
+        button("Grafiek 2", 50, 230, 650, 50, yellow, red, grafiek2)
+        button("X", 1200, 100, 70, 50, yellow, red, Main_scherm)
+        map(car, 50, 400)
+        clock.tick(15)  #refresh rate van 15
+        pygame.display.flip()
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #pygame.mixer.music.play(-1)
 Main_scherm()
 Kaart_scherm()
 Navigatie_scherm()
+Opties_scherm()
+Grafieken_scherm()
 quit()
