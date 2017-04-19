@@ -72,21 +72,22 @@ map_A79 = pygame.image.load('images/A79.jpg')
 map_A200 = pygame.image.load('images/A200.jpg')
 volle_ster = pygame.image.load('images/volle_ster.png')
 lege_ster = pygame.image.load('images/lege_ster.png')
-map_berlijn = pygame.image.load('images/A200.jpg')
-map_parijs = pygame.image.load('images/A200.jpg')
-map_haarlem = pygame.image.load('images/A200.jpg')
-map_amsterdam= pygame.image.load('images/A200.jpg')
-map_denhaag = pygame.image.load('images/A200.jpg')
-map_middelburg = pygame.image.load('images/A200.jpg')
-map_utrecht = pygame.image.load('images/A200.jpg')
-map_denbosch = pygame.image.load('images/A200.jpg')
-map_maastricht = pygame.image.load('images/A200.jpg')
-map_arnhem = pygame.image.load('images/A200.jpg')
-map_zwolle = pygame.image.load('images/A200.jpg')
-map_assen = pygame.image.load('images/A200.jpg')
-map_groningen = pygame.image.load('images/A200.jpg')
-map_leeuwarden = pygame.image.load('images/A200.jpg')
-map_lelystad = pygame.image.load('images/A200.jpg')
+map_berlijn = pygame.image.load('images/Berlijn.png')
+map_parijs = pygame.image.load('images/Parijs.png')
+map_haarlem = pygame.image.load('images/Haarlem.png')
+map_amsterdam= pygame.image.load('images/Amsterdam.png')
+map_denhaag = pygame.image.load('images/Den_Haag.png')
+map_middelburg = pygame.image.load('images/Middelburg.png')
+map_utrecht = pygame.image.load('images/Utrecht.png')
+map_denbosch = pygame.image.load('images/Den_Bosch.png')
+map_maastricht = pygame.image.load('images/Maastricht.png')
+map_arnhem = pygame.image.load('images/Arnhem.png')
+map_zwolle = pygame.image.load('images/Zwolle.png')
+map_assen = pygame.image.load('images/Assen.png')
+map_groningen = pygame.image.load('images/Groningen.png')
+map_leeuwarden = pygame.image.load('images/Leeuwarden.png')
+map_lelystad = pygame.image.load('images/Lelystad.png')
+
 
 #colors are in a range of 0-255 (256 different entries)
 red = [255, 0, 0]
@@ -869,8 +870,8 @@ class snelweg:
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:7102"
-        map2_text = "Dodelijke ongevallen:14"
+        map_text = "Niet-dodelijke ongevallen:29580"
+        map2_text = "Dodelijke ongevallen:137"
 
     def nav_parijs():
         global andere
@@ -880,8 +881,8 @@ class snelweg:
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:7102"
-        map2_text = "Dodelijke ongevallen:14"
+        map_text = "Niet-dodelijke ongevallen:18053"
+        map2_text = "Dodelijke ongevallen:53"
 
     def nav_haarlem():
         global andere
@@ -891,8 +892,8 @@ class snelweg:
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:7102"
-        map2_text = "Dodelijke ongevallen:14"
+        map_text = "Niet-dodelijke ongevallen:28762"
+        map2_text = "Dodelijke ongevallen:74"
 
     def nav_amsterdam():
         global andere
@@ -902,8 +903,8 @@ class snelweg:
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:7102"
-        map2_text = "Dodelijke ongevallen:14"
+        map_text = "Niet-dodelijke ongevallen:15148"
+        map2_text = "Dodelijke ongevallen:41"
 
     def nav_denhaag():
         global andere
@@ -913,8 +914,8 @@ class snelweg:
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:7102"
-        map2_text = "Dodelijke ongevallen:14"
+        map_text = "Niet-dodelijke ongevallen:15148"
+        map2_text = "Dodelijke ongevallen:41"
 
     def nav_maastricht():
         global andere
@@ -924,8 +925,8 @@ class snelweg:
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:7102"
-        map2_text = "Dodelijke ongevallen:14"
+        map_text = "Niet-dodelijke ongevallen:19141"
+        map2_text = "Dodelijke ongevallen:78"
 
     def nav_arnhem():
         global andere
@@ -935,8 +936,8 @@ class snelweg:
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:7102"
-        map2_text = "Dodelijke ongevallen:14"
+        map_text = "Niet-dodelijke ongevallen:15388"
+        map2_text = "Dodelijke ongevallen:49"
 
     def nav_zwolle():
         global andere
@@ -946,8 +947,8 @@ class snelweg:
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:7102"
-        map2_text = "Dodelijke ongevallen:14"
+        map_text = "Niet-dodelijke ongevallen:20042"
+        map2_text = "Dodelijke ongevallen:85"
 
     def nav_assen():
         global andere
@@ -957,8 +958,8 @@ class snelweg:
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:7102"
-        map2_text = "Dodelijke ongevallen:14"
+        map_text = "Niet-dodelijke ongevallen:20042"
+        map2_text = "Dodelijke ongevallen:85"
 
     def nav_groningen():
         global andere
@@ -968,8 +969,8 @@ class snelweg:
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:7102"
-        map2_text = "Dodelijke ongevallen:14"
+        map_text = "Niet-dodelijke ongevallen:25270"
+        map2_text = "Dodelijke ongevallen:85"
 
     def nav_leeuwarden():
         global andere
@@ -979,8 +980,8 @@ class snelweg:
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:7102"
-        map2_text = "Dodelijke ongevallen:14"
+        map_text = "Niet-dodelijke ongevallen:32259"
+        map2_text = "Dodelijke ongevallen:94"
 
     def nav_lelystad():
         global andere
@@ -990,8 +991,8 @@ class snelweg:
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:7102"
-        map2_text = "Dodelijke ongevallen:14"
+        map_text = "Niet-dodelijke ongevallen:24072"
+        map2_text = "Dodelijke ongevallen:89"
 
 
     def nav_utrecht():
@@ -1002,8 +1003,8 @@ class snelweg:
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:7102"
-        map2_text = "Dodelijke ongevallen:14"
+        map_text = "Niet-dodelijke ongevallen:23075"
+        map2_text = "Dodelijke ongevallen:77"
 
 
     def nav_middelburg():
@@ -1014,8 +1015,8 @@ class snelweg:
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:7102"
-        map2_text = "Dodelijke ongevallen:14"
+        map_text = "Niet-dodelijke ongevallen:35847"
+        map2_text = "Dodelijke ongevallen:101"
 
     def nav_denbosch():
         global andere
@@ -1025,8 +1026,10 @@ class snelweg:
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:7102"
-        map2_text = "Dodelijke ongevallen:14"
+        map_text = "Niet-dodelijke ongevallen:24251"
+        map2_text = "Dodelijke ongevallen:64"
+
+
 
 def reset():
     global andere
