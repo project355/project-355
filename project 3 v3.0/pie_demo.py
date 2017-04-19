@@ -5,7 +5,7 @@ def poi():
     ax = axes([0.1, 0.1, 0.8, 0.8])
 
     # The slices will be ordered and plotted counter-clockwise.
-    labels = 'Frogs', 'Hogs', 'Dogs', 'Logs'
+    labels = 'Nacht', 'Avond', 'Ochtend', 'Middag'
     fracs = [15, 30, 45, 10]
     explode=(0, 0.05, 0, 0)
 
