@@ -3,6 +3,7 @@ import eztext
 import math
 import sys
 import pie_demo
+import barChart 
 
 
 pygame.init()
@@ -1019,6 +1020,8 @@ def reset():
     map2_text = ""
     global file_nummer
     file_nummer = 0
+    global wegdek_nummer
+    wegdek_nummer = 0
     tijd = ''
 
 
@@ -1595,6 +1598,19 @@ def beoordeling_scherm():
                 set.rating_wegdek_4()
             elif wegdek_nummer == 5:
                 set.rating_wegdek_5()
+                
+        if tijd == 'O':
+            pygame.draw.rect(gameDisplay, red, (1220, 300, 50, 30))
+            message_display2('Ochtend', 1245, 315, 12)
+        if tijd == 'M':
+            pygame.draw.rect(gameDisplay, red, (1220, 400, 50, 30))
+            message_display2('Middag', 1245, 415, 12)
+        if tijd == 'A':
+            pygame.draw.rect(gameDisplay, red, (1220, 500, 50, 30))
+            message_display2('Avond', 1245, 515, 12)
+        if tijd == 'N':
+            pygame.draw.rect(gameDisplay, red, (1220, 600, 50, 30))
+            message_display2('Nacht', 1245, 615, 12)
 
 
         clock.tick(15)  #refresh rate van 15
