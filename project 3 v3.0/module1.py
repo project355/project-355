@@ -29,6 +29,7 @@ rating_wegdek = False
 beoordeling_file = 0
 beoordeling_wegdek = 0
 tijd = ''
+oordeel = 0
 
 # image 637x750
 title = pygame.image.load('images/Roadmap.png')
@@ -117,11 +118,35 @@ _image_library = {}     #global list
 
 #-------------------------------------------------------------------------------------------------------------------------
 
+
+def pop_up():
+    if oordeel == 1:
+        quit()
+    else:
+        pygame.display.set_mode((display_width,display_height))
+        pygame.display.set_caption('Wilt u nog wat voor ons doen?')
+        Instruction, Intro = False, True
+        x, y, mov_x, mov_y = 0,0,6,6
+        while intro:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+
+            gameDisplay.fill(map_colour)
+        
+            button("ja", 50, 230, 700, 50,yellow, red, beoordeling_scherm)
+            button("nee", 50, 330, 700, 50, yellow, red, quit)
+            message_display2('Wilt u de wegen beoordelen?:', 650, 100, 75)
+            pygame.display.flip()
+
 def grafiek1():
+
     pie_demo.poi()
 
 def grafiek2():
-    pie_demo.poi()
+
+    barChart.poi()
 
 def button(msg,x,y,w,h,ic,ac,action=None):
     """functie om een knop te maken (text,x,y,width,height,kleur, hover kleur, actie)"""
@@ -1003,7 +1028,6 @@ class snelweg:
         map_text = "Niet-dodelijke ongevallen:7102"
         map2_text = "Dodelijke ongevallen:14"
 
-
 def reset():
     global andere
     andere = False
@@ -1023,7 +1047,6 @@ def reset():
     global wegdek_nummer
     wegdek_nummer = 0
     tijd = ''
-
 
 def snek():
     def collide(x1, x2, y1, y2, w1, w2, h1, h2):
@@ -1268,6 +1291,8 @@ class set:
 def sent_data():
     if naam_snelweg != "     " and beoordeling_file != 0 and beoordeling_wegdek != 0 and tijd != '':
         poi = 'gooi alles in de database'
+        global oordeel
+        oordeel = 1
         Main_scherm()
     else:
         message_display2("selecteer een snelweg en beoordeel het wegdek en het aantal files", 630, 650, 35)
@@ -1414,8 +1439,6 @@ class snelweg_query:
         global naam_snelweg
         naam_snelweg = "A200"
 
-
-
 #--------------------------------------------------------------------------------------------------------------
 
 def Main_scherm():   #main menu scherm
@@ -1427,8 +1450,7 @@ def Main_scherm():   #main menu scherm
     while intro:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
+                pop_up()
 
         gameDisplay.fill(map_colour)
         map(title, 50, 52)
@@ -1437,7 +1459,7 @@ def Main_scherm():   #main menu scherm
         button("Opties", 50, 430, 700, 50, yellow, red, Opties_scherm)
         button("Beoordeling", 50, 530, 700, 50, yellow, red, beoordeling_scherm)
         button("grafieken", 50, 630, 700, 50, yellow, red, Grafieken_scherm)
-        button("X", 1200, 100, 70, 50, yellow, red, quit)
+        button("X", 1200, 100, 70, 50, yellow, red, pop_up)
         pygame.display.flip()
 
 def Kaart_scherm():    #kaart scherm
@@ -1446,8 +1468,7 @@ def Kaart_scherm():    #kaart scherm
     while Instruction:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
+                pop_up()
 
 
         gameDisplay.fill(map_colour)
@@ -1516,12 +1537,8 @@ def beoordeling_scherm():
     Instruction, Intro = True, False
     while Instruction:
         for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    quit()
             if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
+                pop_up()
 
 
         gameDisplay.fill(map_colour)
@@ -1621,8 +1638,7 @@ def Navigatie_scherm():    #navigatie scherm
     while Instruction:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
+                pop_up()
         gameDisplay.fill(map_colour)
         map(map_image,map_x,10)
         y1 = 15
@@ -1661,8 +1677,7 @@ def Opties_scherm():  #opties menu
     while Instruction:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
+                pop_up()
         gameDisplay.fill(map_colour)
         button("Sound off", 50, 130, 350, 50, yellow, red, sound_off)
         button("Sound on", 400, 130, 350, 50, yellow, red, sound_on)
@@ -1677,8 +1692,7 @@ def Grafieken_scherm():    #navigatie scherm
     while Instruction:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
+                pop_up()
         gameDisplay.fill(map_colour)
         button("Grafiek 1", 50, 130, 650, 50,yellow, red, grafiek1)
         button("Grafiek 2", 50, 230, 650, 50, yellow, red, grafiek2)
@@ -1695,3 +1709,7 @@ Navigatie_scherm()
 Opties_scherm()
 Grafieken_scherm()
 quit()
+
+
+
+
