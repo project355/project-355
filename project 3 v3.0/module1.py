@@ -3,14 +3,14 @@ import eztext
 import math
 import sys
 import pie_demo
-import barChart 
+import barChart
+#alle imports
 
-
-pygame.init()
+pygame.init()#pygame wordt gestart
 
 display_width = 1300
-display_height = 800
-pygame.mixer.music.load("poi.wav")
+display_height = 800 #de afmetingen van het scherm
+pygame.mixer.music.load("poi.wav") #de muziek wordt ingeladen
 
 # globals
 x = (display_width * 0.45)
@@ -32,6 +32,7 @@ tijd = ''
 oordeel = 0
 
 # image 637x750
+#alle afbeeldingen worden hier ingeladen
 title = pygame.image.load('images/Roadmap.png')
 car = pygame.image.load('images/car.png')
 map_image = pygame.image.load('images/wegenkaartV2.png')
@@ -120,7 +121,7 @@ _image_library = {}     #global list
 #-------------------------------------------------------------------------------------------------------------------------
 
 
-def pop_up():
+def pop_up(): #het pop_up scherm  kan met deze functie aangeroepen worden
     if oordeel == 1:
         quit()
     else:
@@ -135,22 +136,22 @@ def pop_up():
                     quit()
 
             gameDisplay.fill(map_colour)
-        
+
             button("ja", 50, 230, 700, 50,yellow, red, beoordeling_scherm)
             button("nee", 50, 330, 700, 50, yellow, red, quit)
             message_display2('Wilt u de wegen beoordelen?:', 650, 100, 75)
             pygame.display.flip()
 
-def grafiek1():
+def grafiek1(): # hiermee wordt de grafiek over meest verongelukte voertuigen aangeroepen
 
     pie_demo.poi()
 
-def grafiek2():
+def grafiek2(): # hiermee wordt de grafiek over de meest gevaarlijke a-wegen aangeroepen
 
     barChart.poi()
 
-def button(msg,x,y,w,h,ic,ac,action=None):
-    """functie om een knop te maken (text,x,y,width,height,kleur, hover kleur, actie)"""
+def button(msg,x,y,w,h,ic,ac,action=None): # dit is de function die een button aanmaakt (text,x,y,width,height,kleur, hover kleur, actie)
+
     mouse = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
     if x+w > mouse[0] > x and y+h > mouse[1] > y:   #als de muis over de knop hovert, verander de kleur
@@ -419,63 +420,62 @@ def atari():
         pygame.display.flip()
 
     if game_over == True:
-        Kaart_scherm()
+        Kaart_scherm() #de functie die het spel "atari breakout" opstart
 
 def text_objects(text, font):   #functie om tekst te tonen
     textSurface = font.render(text, True, black)
     return textSurface, textSurface.get_rect()
 
-def sound_off():
-    """turn sound off"""
+def sound_off(): #de function die het geluid uit zet
     pygame.mixer.music.stop()
 
-def sound_on():
-    """turn sound on"""
+def sound_on(): #de functie die het geluid aan zet
     pygame.mixer.music.play(-1)
 
-def volumedown():
+def volumedown(): #de functie die het volume lager zet
     volume = pygame.mixer.music.get_volume()
     volume = volume - 0.1
     pygame.mixer.music.set_volume(volume)
 
-def volumeup():
+def volumeup(): #de functie die het volume hoger zet
     volume = pygame.mixer.music.get_volume()
     volume = volume + 0.1
     pygame.mixer.music.set_volume(volume)
 
-def message_display2(text, x, y, h):
+def message_display2(text, x, y, h): #een functie om een stuk tekst in op een bepaalde plek zet
     largeText = pygame.font.Font('freesansbold.ttf',h)
     TextSurf, TextRect = text_objects(text, largeText)
     TextRect.center = (x, y)
     gameDisplay.blit(TextSurf, TextRect)
-def message_display(text):
+
+def message_display(text): #een functie om een stuk tekst te tonen
     largeText = pygame.font.Font('freesansbold.ttf',30)
     TextSurf, TextRect = text_objects(text, largeText)
     TextRect.center = (925, 250)
     gameDisplay.blit(TextSurf, TextRect)
 
-def map(naam, x,y):
+def map(naam, x,y): #de functie die bij de kaart pagina de afbeelding en tekst veranderd
     gameDisplay.blit(naam, (x,y))
     pygame.draw.rect(gameDisplay, map_colour, (700, 220, 535, 450)) # vlak
-    message_display2(map_text, 850, 250, 20)
-    message_display2(map2_text, 815, 300, 20)
+    message_display2(map_text, 850, 250, 20) #bovenste stuk tekst, de niet dodelijke ongevallen
+    message_display2(map2_text, 815, 300, 20) #onderste stuk tekst, de dodelijke ongevallen
 
 def sec(naam, x, y):
     gameDisplay.blit(naam, (x,y))
     message_display(map2_text)
 
-class snelweg:
-
+class snelweg:#de class met alle dingen omtrent alle snelwegen
+#de functions die de tekst en afbeelding aangeven bij de kaart pagina
     def A1():
         global andere
         andere = True
         global Display_map
-        Display_map = map_A1
+        Display_map = map_A1 #welke afbeelding het moet worden
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:9638"
-        map2_text = "Dodelijke ongevallen:52"
+        map_text = "Niet-dodelijke ongevallen:9638" #het bovenste stuk tekst
+        map2_text = "Dodelijke ongevallen:52" #het onderste stuk tekst
 
     def A2():
         global andere
@@ -861,17 +861,17 @@ class snelweg:
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:7102"
         map2_text = "Dodelijke ongevallen:14"
-
+#de functies die zorgen voor de wisseling van de afbeelding en tekst bij de navigatie pagina
     def nav_berlijn():
         global andere
         andere = True
         global Display_map
-        Display_map = map_berlijn
+        Display_map = map_berlijn #de afbeelding die gebruikt moeten worden
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:29580"
-        map2_text = "Dodelijke ongevallen:137"
+        map_text = "Niet-dodelijke ongevallen:29580" #de bovenste tekst
+        map2_text = "Dodelijke ongevallen:137" #de onderste tekst
 
     def nav_parijs():
         global andere
@@ -1031,31 +1031,31 @@ class snelweg:
 
 
 
-def reset():
+def reset(): #de functie die de kaart pagina laat terug springen naar de orignele afbeelding en tekst
     global andere
     andere = False
     global Display_map
     global naam_snelweg
     global tijd
     naam_snelweg = "     "
-    Display_map = map_image
+    Display_map = map_image #de afbeelding
     map(Display_map, map_x,map_y)
     global map_text
     global map2_text
     map(Display_map, map_x, map_y)
-    map_text = ""
-    map2_text = ""
+    map_text = "" #de tekst wordt weer leeg
+    map2_text = "" #de tekst wordt weer leeg
     global file_nummer
     file_nummer = 0
     global wegdek_nummer
     wegdek_nummer = 0
     tijd = ''
 
-def snek():
+def snek(): #de functie die de game "snake" opstart
     def collide(x1, x2, y1, y2, w1, w2, h1, h2):
         if x1+w1>x2 and x1<x2+w2 and y1+h1>y2 and y1<y2+h2:return True
         else:return False
-    def die(screen, score):
+    def die(screen, score): #het dood gaan scherm
         f=pygame.font.SysFont('Arial', 30);t=f.render('Your score was: '+str(score), True, (0, 0, 0));screen.blit(t, (10, 270));pygame.display.update();pygame.time.wait(2000);Main_scherm()
     xs = [290, 290, 290, 290, 290];ys = [290, 270, 250, 230, 210];dirs = 0;score = 0;applepos = (random.randint(0, 590), random.randint(0, 590));pygame.init();s=pygame.display.set_mode((600, 600));pygame.display.set_caption('Snek');appleimage = pygame.Surface((10, 10));appleimage.fill((0, 255, 0));img = pygame.Surface((20, 20));img.fill((255, 0, 0));f = pygame.font.SysFont('Arial', 20);clock = pygame.time.Clock()
     while True:
@@ -1063,11 +1063,8 @@ def snek():
         for e in pygame.event.get():
             if e.type == pygame.QUIT:
                 Main_scherm()
-                #pygame.display.set_mode((500,500)
-#           if event.type == pygame.KEYDOWN:
-#                if event.key == pygame.K_ESCAPE
 
-            elif e.type == pygame.KEYDOWN:
+            elif e.type == pygame.KEYDOWN: #de bewegingen
                 if e.key == pygame.K_UP and dirs != 0:dirs = 2
                 elif e.key == pygame.K_DOWN and dirs != 2:dirs = 0
                 elif e.key == pygame.K_LEFT and dirs != 1:dirs = 3
@@ -1090,13 +1087,8 @@ def snek():
             s.blit(img, (xs[i], ys[i]))
         s.blit(appleimage, applepos);t=f.render(str(score), True, (0, 0, 0));s.blit(t, (10, 10));pygame.display.update()
 
-def message_display2(text, x, y, h):
-    largeText = pygame.font.Font('freesansbold.ttf',h)
-    TextSurf, TextRect = text_objects(text, largeText)
-    TextRect.center = (x, y)
-    gameDisplay.blit(TextSurf, TextRect)
 
-def button2(msg,x,y,w,h,ic,ac,action=None):
+def button2(msg,x,y,w,h,ic,ac,action=None): #de button die wordt gebruikt als je een onzichtbare button wilt
     """functie om een knop te maken (text,x,y,width,height,kleur, hover kleur, actie)"""
     mouse = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
@@ -1111,7 +1103,7 @@ def button2(msg,x,y,w,h,ic,ac,action=None):
     textRect.center = ( (x+(w/2)), (y+(h/2)) )
     gameDisplay.blit(textSurf, textRect)
 
-def rating():
+def rating(): #de buttons die horen bij het beoordelingen scherm
     gameDisplay.blit(lege_ster, (550,500))
     gameDisplay.blit(lege_ster, (550,300))
     message_display2('welke rating geeft u over de ' + naam_snelweg + ":", 600, 150, 70)
@@ -1135,7 +1127,7 @@ def rating():
     button("Middag",1220, 400, 50, 30, yellow, red, set.middag)
     button("Avond",1220, 500, 50, 30, yellow, red, set.avond)
     button("Nacht",1220, 600, 50, 30, yellow, red, set.nacht)
-class set:
+class set: #de class die alle functies heeft die de rating knoppen werkende maken
     def set_file1():
         global beoordeling_file
         beoordeling_file = 1
@@ -1291,7 +1283,7 @@ class set:
 
 
 #beoordeling_wegdek & beoordeling_file & naam_snelweg moeten naar de database.
-def sent_data():
+def sent_data():# de function die de beoordeling in de database verwerkt
     if naam_snelweg != "     " and beoordeling_file != 0 and beoordeling_wegdek != 0 and tijd != '':
         poi = 'gooi alles in de database'
         global oordeel
@@ -1300,7 +1292,7 @@ def sent_data():
     else:
         message_display2("selecteer een snelweg en beoordeel het wegdek en het aantal files", 630, 650, 35)
 
-class snelweg_query:
+class snelweg_query: #de queries over welke snelweg geselecteerd is bij de beoordeling
     def A1_query():
         global naam_snelweg
         naam_snelweg = "A1"
@@ -1445,9 +1437,9 @@ class snelweg_query:
 #--------------------------------------------------------------------------------------------------------------
 
 def Main_scherm():   #main menu scherm
-    pygame.display.set_mode((display_width,display_height))
-    pygame.display.set_caption('Roadmap Netherlands')
-    Instruction, Intro = False, True
+    pygame.display.set_mode((display_width,display_height))#de afmeting van het scherm
+    pygame.display.set_caption('Roadmap Netherlands') # de titel op de bovenbalk
+    Instruction, Intro = False, True #het start op als het programma start
     reset()
     x, y, mov_x, mov_y = 0,0,6,6
     while intro:
@@ -1457,6 +1449,7 @@ def Main_scherm():   #main menu scherm
 
         gameDisplay.fill(map_colour)
         map(title, 50, 52)
+        #de knoppen van het main scherm
         button("kaart", 50, 230, 700, 50,yellow, red, Kaart_scherm)
         button("Navigatie", 50, 330, 700, 50, yellow, red, Navigatie_scherm)
         button("Opties", 50, 430, 700, 50, yellow, red, Opties_scherm)
@@ -1466,7 +1459,7 @@ def Main_scherm():   #main menu scherm
         pygame.display.flip()
 
 def Kaart_scherm():    #kaart scherm
-    Instruction, Intro = True, False
+    Instruction, Intro = True, False #het start niet direct op als het programma opstart
     pygame.display.set_caption('Roadmap Netherlands')
     while Instruction:
         for event in pygame.event.get():
@@ -1536,8 +1529,8 @@ def Kaart_scherm():    #kaart scherm
         clock.tick(15)  #refresh rate van 15
         pygame.display.flip()
 
-def beoordeling_scherm():
-    Instruction, Intro = True, False
+def beoordeling_scherm(): #het beoordeling scherm
+    Instruction, Intro = True, False #het start niet direct op als het programma start
     while Instruction:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -1594,7 +1587,7 @@ def beoordeling_scherm():
         button("Terug", 850, 700, 300, 50, yellow, red, Main_scherm)
 
         rating()
-
+         #hetgeen wat er voor zorgt dat de steren zichzelf op de goede manier tonen
         if rating_files == True:
             if file_nummer == 1:
                 set.rating_file_1()
@@ -1618,7 +1611,7 @@ def beoordeling_scherm():
                 set.rating_wegdek_4()
             elif wegdek_nummer == 5:
                 set.rating_wegdek_5()
-                
+       #hetgeen wat zorgt dat het selecteren van de tijd goed verloopt
         if tijd == 'O':
             pygame.draw.rect(gameDisplay, red, (1220, 300, 50, 30))
             message_display2('Ochtend', 1245, 315, 12)
@@ -1637,7 +1630,7 @@ def beoordeling_scherm():
         pygame.display.flip()
 
 def Navigatie_scherm():    #navigatie scherm
-    Instruction, Intro = True, False
+    Instruction, Intro = True, False #het start niet direct op als het programma opstart
     while Instruction:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -1646,24 +1639,27 @@ def Navigatie_scherm():    #navigatie scherm
         map(map_image,map_x,10)
         y1 = 15
         message_display2("Van Rotterdam naar:", 950, 40, 30)
+
+        #button row 1
         button("Berlijn", 700, 90, 100, 30, yellow, red,snelweg.nav_berlijn)
         button("Parijs", 810, 90, 100, 30, yellow, red, snelweg.nav_parijs)
         button("Haarlem", 920, 90, 100, 30, yellow, red, snelweg.nav_haarlem)
         button("Amsterdam", 1030, 90, 100, 30, yellow, red,snelweg.nav_amsterdam )
         button("Den Haag", 1140, 90, 100, 30, yellow, red, snelweg.nav_denhaag)
 
+        #button row 2
         button("Middelburg", 700, 130, 100, 30, yellow, red, snelweg.nav_middelburg)
         button("Utrecht", 810, 130, 100, 30, yellow, red, snelweg.nav_utrecht)
         button("Den Bosch", 920, 130, 100, 30, yellow, red, snelweg.nav_denbosch)
         button("Maastricht",1030, 130, 100, 30, yellow, red, snelweg.nav_maastricht)
         button("Arnhem", 1140, 130, 100, 30, yellow, red, snelweg.nav_arnhem)
 
+        #button row 3
         button("Zwolle", 700, 170, 100, 30, yellow, red, snelweg.nav_zwolle)
         button("Assen", 810, 170, 100, 30, yellow, red, snelweg.nav_assen)
         button("Groningen", 920, 170, 100, 30, yellow, red, snelweg.nav_groningen)
         button("Leeuwarden", 1030, 170, 100, 30, yellow, red, snelweg.nav_leeuwarden)
         button("Lelystad", 1140, 170, 100, 30, yellow, red, snelweg.nav_lelystad)
-
 
 
         button("Terug", 1200, 700, 53, 30, yellow, red, Main_scherm)
@@ -1690,29 +1686,25 @@ def Opties_scherm():  #opties menu
         clock.tick(15)  #refresh rate van 15
         pygame.display.flip()
 
-def Grafieken_scherm():    #navigatie scherm
+def Grafieken_scherm():    #grafieken scherm
     Instruction, Intro = True, False
     while Instruction:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pop_up()
         gameDisplay.fill(map_colour)
-        button("Grafiek 1", 50, 130, 650, 50,yellow, red, grafiek1)
-        button("Grafiek 2", 50, 230, 650, 50, yellow, red, grafiek2)
+        button("Grafiek 1", 50, 130, 650, 50,yellow, red, grafiek1) # dit roept de grafiek op over het soort voertuig
+        button("Grafiek 2", 50, 230, 650, 50, yellow, red, grafiek2)# dit roept de grafiek op over de gevaarlijkste a-wegen
         button("X", 1200, 100, 70, 50, yellow, red, Main_scherm)
         map(car, 50, 400)
         clock.tick(15)  #refresh rate van 15
         pygame.display.flip()
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-#pygame.mixer.music.play(-1)
+#dit roept alle schermen op
+pygame.mixer.music.play(-1)
 Main_scherm()
 Kaart_scherm()
 Navigatie_scherm()
 Opties_scherm()
 Grafieken_scherm()
 quit()
-
-
-
-
