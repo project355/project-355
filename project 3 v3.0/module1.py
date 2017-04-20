@@ -4,13 +4,13 @@ import math
 import sys
 import pie_demo
 import barChart
-#alle imports
+# alle imports
 
-pygame.init()#pygame wordt gestart
+pygame.init() # pygame wordt gestart
 
 display_width = 1300
-display_height = 800 #de afmetingen van het scherm
-pygame.mixer.music.load("poi.wav") #de muziek wordt ingeladen
+display_height = 800 # de afmetingen van het scherm
+pygame.mixer.music.load("poi.wav") # de muziek wordt ingeladen
 
 # globals
 x = (display_width * 0.45)
@@ -28,11 +28,13 @@ rating_files = False
 rating_wegdek = False
 beoordeling_file = 0
 beoordeling_wegdek = 0
+file_rating_avg = ""
+weg_rating_avg = ""
 tijd = ''
 oordeel = 0
 
 # image 637x750
-#alle afbeeldingen worden hier ingeladen
+# alle afbeeldingen worden hier ingeladen
 title = pygame.image.load('images/Roadmap.png')
 car = pygame.image.load('images/car.png')
 map_image = pygame.image.load('images/wegenkaartV2.png')
@@ -73,22 +75,21 @@ map_A79 = pygame.image.load('images/A79.jpg')
 map_A200 = pygame.image.load('images/A200.jpg')
 volle_ster = pygame.image.load('images/volle_ster.png')
 lege_ster = pygame.image.load('images/lege_ster.png')
-map_berlijn = pygame.image.load('images/Berlijn.png')
-map_parijs = pygame.image.load('images/Parijs.png')
-map_haarlem = pygame.image.load('images/Haarlem.png')
-map_amsterdam= pygame.image.load('images/Amsterdam.png')
-map_denhaag = pygame.image.load('images/Den_Haag.png')
-map_middelburg = pygame.image.load('images/Middelburg.png')
-map_utrecht = pygame.image.load('images/Utrecht.png')
-map_denbosch = pygame.image.load('images/Den_Bosch.png')
-map_maastricht = pygame.image.load('images/Maastricht.png')
-map_arnhem = pygame.image.load('images/Arnhem.png')
-map_zwolle = pygame.image.load('images/Zwolle.png')
-map_assen = pygame.image.load('images/Assen.png')
-map_groningen = pygame.image.load('images/Groningen.png')
-map_leeuwarden = pygame.image.load('images/Leeuwarden.png')
-map_lelystad = pygame.image.load('images/Lelystad.png')
-
+map_berlijn = pygame.image.load('images/A200.jpg')
+map_parijs = pygame.image.load('images/A200.jpg')
+map_haarlem = pygame.image.load('images/A200.jpg')
+map_amsterdam= pygame.image.load('images/A200.jpg')
+map_denhaag = pygame.image.load('images/A200.jpg')
+map_middelburg = pygame.image.load('images/A200.jpg')
+map_utrecht = pygame.image.load('images/A200.jpg')
+map_denbosch = pygame.image.load('images/A200.jpg')
+map_maastricht = pygame.image.load('images/A200.jpg')
+map_arnhem = pygame.image.load('images/A200.jpg')
+map_zwolle = pygame.image.load('images/A200.jpg')
+map_assen = pygame.image.load('images/A200.jpg')
+map_groningen = pygame.image.load('images/A200.jpg')
+map_leeuwarden = pygame.image.load('images/A200.jpg')
+map_lelystad = pygame.image.load('images/A200.jpg')
 
 #colors are in a range of 0-255 (256 different entries)
 red = [255, 0, 0]
@@ -110,7 +111,6 @@ mudred = (112,46,27)
 mudblue = (1,66,137)
 map_colour = (0, 148, 255)
 
-
 #------------------------------------------------------------------------------------------------------------------------
 
 intro, Introduction, gameExit,playing, players, throwdice = True, False, False, False, False, 0
@@ -120,8 +120,186 @@ _image_library = {}     #global list
 
 #-------------------------------------------------------------------------------------------------------------------------
 
+########## database start ##########
 
-def pop_up(): #het pop_up scherm  kan met deze functie aangeroepen worden
+# connextion #
+try:
+    conn = psycopg2.connect("dbname='project3' user='postgres' password='root'")
+except:
+    print ("no connection")
+
+# weg -> naam, gemiddelde file teverdenheid, gemiddelde wegdek tevredenheid 
+ccw = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+try:
+    ccw.execute("""SELECT naam, gft, gwt  FROM weg""")
+except:
+    print("I can't select weg")
+
+# persoon -> id_persoon, file teverdenheid, wegdek tevredenheid, tijd
+ccp = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+try:
+    ccp.execute("""SELECT id_persoon, ft, wt, tijd FROM persoon""")
+except:
+    print("I can't select persoon")
+
+### weg (uit)###
+def count_weg(naam):
+    """select count(weg.naam)"""
+    try:
+        ccw.execute("SELECT count(naam) FROM weg where naam = '"+naam+"'")
+    except Exception as error:
+        return(error)
+    conn.commit()
+    result = ccw.fetchall()
+    for row in result:
+        return row[0]
+
+def weg_naam():
+    """select weg.naam"""
+    try:
+        ccw.execute("SELECT naam FROM weg")
+    except Exception as error:
+        return(error)
+    conn.commit()
+    result = ccw.fetchall()
+    for row in result:
+        return row[0]
+
+def weg_gft(naam):
+    """select weg.gft on roadname"""
+    try:
+        ccw.execute("SELECT gft FROM weg WHERE naam = '"+naam+"'")
+    except Exception as error:
+        return(error)
+    conn.commit()
+    result = ccw.fetchall()
+    for row in result:
+        return row[0]
+
+def weg_gwt(naam):
+    """select weg.gwt on roadname"""
+    try:
+        ccw.execute("SELECT gwt FROM weg WHERE naam = '"+naam+"'")
+    except Exception as error:
+        return(error)
+    conn.commit()
+    result = ccw.fetchall()
+    for row in result:
+        return row[0]
+
+### persoon (uit)###
+def count_persoon(weg):
+    """select count(persoon.id_persoon)"""
+    try:
+        ccp.execute("SELECT count(id_persoon) FROM persoon WHERE weg = '"+weg+"'")
+    except Exception as error:
+        return(error)
+    conn.commit()
+    result = ccp.fetchall()
+    for row in result:
+        return row[0]
+
+def persoon_id_persoon():
+    """select persoon.id_persoon"""
+    try:
+        ccp.execute("SELECT id_persoon FROM persoon")
+    except Exception as error:
+        return(error)
+    conn.commit()
+    result = ccp.fetchall()
+    for row in result:
+        return row[0]
+
+def persoon_ft(weg):
+    """select persoon.ft on id_persoon"""
+    try:
+        ccp.execute("SELECT ft FROM persoon WHERE weg = '"+weg+"'")
+    except Exception as error:
+        return(error)
+    conn.commit()
+    result = ccp.fetchall()
+    for row in result:
+        return row[0]
+
+def persoon_wt(weg):
+    """select persoon.wt on id_persoon"""
+    try:
+        ccp.execute("SELECT wt FROM persoon WHERE weg = '"+weg+"'")
+    except Exception as error:
+        return(error)
+    conn.commit()
+    result = ccp.fetchall()
+    for row in result:
+        return row[0]
+
+def persoon_tijd(weg):
+    """select persoon.wt on id_persoon"""
+    try:
+        ccp.execute("SELECT tijd FROM persoon WHERE weg = '"+weg+"'")
+    except Exception as error:
+        return(error)
+    conn.commit()
+    result = ccp.fetchall()
+    for row in result:
+        return row[0]
+
+### weg (in)###
+def update_weg(weg, gft, gwt):
+    """gemiddelde beoordeling importeren"""
+    try:
+        ccw.execute("""UPDATE weg SET gft = %s, gwt = %s WHERE naam === %s""" "'"+weg+"'", (gft, gwt))
+    except Exception as error:
+        return(error)
+    conn.commit()
+
+### persoon (in)###
+def insert_into_persoon(weg, ft, wt, tijd):
+    """beoordeling persoon importeren"""
+    try:
+        ccp.execute("""insert into persoon(id_persoon,weg, ft,wt, tijd) Values (nextval('id_persoon_sequence'),%s, %s,%s, %s) """, (weg,ft, wt, tijd))
+    except Exception as error:
+        return(error)
+    conn.commit()
+
+### avg persoon ###
+
+def avg_p_file(weg, p_count):
+    """select count(persoon.id_persoon)"""
+    global file_rating_avg
+    global weg_rating_avg
+    if(p_count < 1):
+        file_rating_avg = "%0.1f" % 0
+        weg_rating_avg = "%0.1f" % 0
+        print(0, 0)
+        #return None
+    else:
+        try:
+            ccp.execute("SELECT * FROM persoon WHERE weg = '"+weg+"'")
+        except Exception as error:
+            return(error)
+        conn.commit()
+        result = ccp.fetchall()
+
+        file_rating, weg_rating = 0, 0
+        for row in result:
+            #print(row[1]) # weg
+            #print(row[2]) # file rating
+            #print(row[3]) # weg rating
+            file_rating = file_rating + row[2]
+            weg_rating = weg_rating + row[3]
+        print(file_rating, weg_rating)
+        if (file_rating < 1 | weg_rating < 1):
+            file_rating_avg = "%0.1f" % 0
+            weg_rating_avg = "%0.1f" % 0
+            #return None
+        else:
+            file_rating_avg = "%0.1f" % (file_rating / p_count)
+            weg_rating_avg = "%0.1f" % (weg_rating / p_count)
+            #return None
+
+########## database end ##########
+
+def pop_up(): # het pop_up scherm  kan met deze functie aangeroepen worden
     if oordeel == 1:
         quit()
     else:
@@ -136,22 +314,20 @@ def pop_up(): #het pop_up scherm  kan met deze functie aangeroepen worden
                     quit()
 
             gameDisplay.fill(map_colour)
-
+        
             button("ja", 50, 230, 700, 50,yellow, red, beoordeling_scherm)
             button("nee", 50, 330, 700, 50, yellow, red, quit)
             message_display2('Wilt u de wegen beoordelen?:', 650, 100, 75)
             pygame.display.flip()
 
 def grafiek1(): # hiermee wordt de grafiek over meest verongelukte voertuigen aangeroepen
-
     pie_demo.poi()
 
 def grafiek2(): # hiermee wordt de grafiek over de meest gevaarlijke a-wegen aangeroepen
-
     barChart.poi()
 
 def button(msg,x,y,w,h,ic,ac,action=None): # dit is de function die een button aanmaakt (text,x,y,width,height,kleur, hover kleur, actie)
-
+    """functie om een knop te maken (text,x,y,width,height,kleur, hover kleur, actie)"""
     mouse = pygame.mouse.get_pos()
     click = pygame.mouse.get_pressed()
     if x+w > mouse[0] > x and y+h > mouse[1] > y:   #als de muis over de knop hovert, verander de kleur
@@ -420,16 +596,18 @@ def atari():
         pygame.display.flip()
 
     if game_over == True:
-        Kaart_scherm() #de functie die het spel "atari breakout" opstart
+        Kaart_scherm()
 
 def text_objects(text, font):   #functie om tekst te tonen
     textSurface = font.render(text, True, black)
     return textSurface, textSurface.get_rect()
 
 def sound_off(): #de function die het geluid uit zet
+    """turn sound off"""
     pygame.mixer.music.stop()
 
 def sound_on(): #de functie die het geluid aan zet
+    """turn sound on"""
     pygame.mixer.music.play(-1)
 
 def volumedown(): #de functie die het volume lager zet
@@ -459,6 +637,8 @@ def map(naam, x,y): #de functie die bij de kaart pagina de afbeelding en tekst v
     pygame.draw.rect(gameDisplay, map_colour, (700, 220, 535, 450)) # vlak
     message_display2(map_text, 850, 250, 20) #bovenste stuk tekst, de niet dodelijke ongevallen
     message_display2(map2_text, 815, 300, 20) #onderste stuk tekst, de dodelijke ongevallen
+    message_display2(file_rating_avg, 805, 350, 20)
+    message_display2(weg_rating_avg, 810, 400, 20)
 
 def sec(naam, x, y):
     gameDisplay.blit(naam, (x,y))
@@ -476,6 +656,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:9638" #het bovenste stuk tekst
         map2_text = "Dodelijke ongevallen:52" #het onderste stuk tekst
+        p_count = count_persoon("A1")
+        avg_p_file("A1", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A2():
         global andere
@@ -487,6 +673,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x, map_y)
         map_text = "Niet-dodelijke ongevallen:2003"
         map2_text = "Dodelijke ongevallen:21"
+        p_count = count_persoon("A2")
+        avg_p_file("A2", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A4():
         global andere
@@ -498,6 +690,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:3456"
         map2_text = "Dodelijke ongevallen:25"
+        p_count = count_persoon("A4")
+        avg_p_file("A4", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A5():
         global andere
@@ -509,6 +707,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:2090"
         map2_text = "Dodelijke ongevallen:18"
+        p_count = count_persoon("A5")
+        avg_p_file("A5", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A6():
         global andere
@@ -520,6 +724,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:1195"
         map2_text = "Dodelijke ongevallen:8"
+        p_count = count_persoon("A6")
+        avg_p_file("A6", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A7():
         global andere
@@ -531,6 +741,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:7687"
         map2_text = "Dodelijke ongevallen:28"
+        p_count = count_persoon("A7")
+        avg_p_file("A7", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A8():
         global andere
@@ -542,6 +758,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:6859"
         map2_text = "Dodelijke ongevallen:15"
+        p_count = count_persoon("A8")
+        avg_p_file("A8", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A9():
         global andere
@@ -553,6 +775,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:6512’"
         map2_text = "Dodelijke ongevallen:19"
+        p_count = count_persoon("A9")
+        avg_p_file("A9", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A10():
         global andere
@@ -564,6 +792,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:7102"
         map2_text = "Dodelijke ongevallen:17"
+        p_count = count_persoon("A10")
+        avg_p_file("A10", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A12():
         global andere
@@ -575,6 +809,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:10267"
         map2_text = "Dodelijke ongevallen:32"
+        p_count = count_persoon("A12")
+        avg_p_file("A12", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A13():
         global andere
@@ -586,6 +826,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:6159"
         map2_text = "Dodelijke ongevallen:16"
+        p_count = count_persoon("A13")
+        avg_p_file("A13", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A15():
         global andere
@@ -597,6 +843,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:9412"
         map2_text = "Dodelijke ongevallen:25"
+        p_count = count_persoon("A15")
+        avg_p_file("A15", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A16():
         global andere
@@ -608,6 +860,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:8641"
         map2_text = "Dodelijke ongevallen:28"
+        p_count = count_persoon("A16")
+        avg_p_file("A16", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A17():
         global andere
@@ -619,6 +877,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:3244"
         map2_text = "Dodelijke ongevallen:8"
+        p_count = count_persoon("A17")
+        avg_p_file("A17", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A18():
         global andere
@@ -630,6 +894,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:7749"
         map2_text = "Dodelijke ongevallen:23"
+        p_count = count_persoon("A18")
+        avg_p_file("A18", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A19():
         global andere
@@ -641,6 +911,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:5121"
         map2_text = "Dodelijke ongevallen:14"
+        p_count = count_persoon("A19")
+        avg_p_file("A19", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A20():
         global andere
@@ -652,6 +928,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:5121"
         map2_text = "Dodelijke ongevallen:17"
+        p_count = count_persoon("A20")
+        avg_p_file("A20", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A27():
         global andere
@@ -663,6 +945,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:6489"
         map2_text = "Dodelijke ongevallen:32"
+        p_count = count_persoon("A27")
+        avg_p_file("A27", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A28():
         global andere
@@ -674,6 +962,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:4654"
         map2_text = "Dodelijke ongevallen:36"
+        p_count = count_persoon("A28")
+        avg_p_file("A28", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A29():
         global andere
@@ -685,6 +979,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:4755"
         map2_text = "Dodelijke ongevallen:15"
+        p_count = count_persoon("A29")
+        avg_p_file("A29", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A30():
         global andere
@@ -696,6 +996,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:2322"
         map2_text = "Dodelijke ongevallen:18"
+        p_count = count_persoon("A30")
+        avg_p_file("A30", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A31():
         global andere
@@ -707,6 +1013,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:2429"
         map2_text = "Dodelijke ongevallen:8"
+        p_count = count_persoon("A31")
+        avg_p_file("A31", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A32():
         global andere
@@ -718,6 +1030,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:7400"
         map2_text = "Dodelijke ongevallen:10"
+        p_count = count_persoon("A32")
+        avg_p_file("A32", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A35():
         global andere
@@ -729,6 +1047,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:2107"
         map2_text = "Dodelijke ongevallen:21"
+        p_count = count_persoon("A35")
+        avg_p_file("A35", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A37():
         global andere
@@ -740,6 +1064,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:5533"
         map2_text = "Dodelijke ongevallen:9"
+        p_count = count_persoon("A37")
+        avg_p_file("A37", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A44():
         global andere
@@ -751,6 +1081,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:8727"
         map2_text = "Dodelijke ongevallen:17"
+        p_count = count_persoon("A44")
+        avg_p_file("A44", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A50():
         global andere
@@ -762,6 +1098,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:5874"
         map2_text = "Dodelijke ongevallen:23"
+        p_count = count_persoon("A50")
+        avg_p_file("A50", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A58():
         global andere
@@ -773,6 +1115,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:2779"
         map2_text = "Dodelijke ongevallen:15"
+        p_count = count_persoon("A58")
+        avg_p_file("A58", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A59():
         global andere
@@ -784,6 +1132,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:4381"
         map2_text = "Dodelijke ongevallen:14"
+        p_count = count_persoon("A59")
+        avg_p_file("A59", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A65():
         global andere
@@ -795,6 +1149,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:2729"
         map2_text = "Dodelijke ongevallen:8"
+        p_count = count_persoon("A65")
+        avg_p_file("A65", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A67():
         global andere
@@ -806,6 +1166,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:4381"
         map2_text = "Dodelijke ongevallen:13"
+        p_count = count_persoon("A67")
+        avg_p_file("A67", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A73():
         global andere
@@ -817,6 +1183,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:2592"
         map2_text = "Dodelijke ongevallen:8"
+        p_count = count_persoon("A73")
+        avg_p_file("A73", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A76():
         global andere
@@ -828,6 +1200,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:3719"
         map2_text = "Dodelijke ongevallen:10"
+        p_count = count_persoon("A76")
+        avg_p_file("A76", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A77():
         global andere
@@ -839,6 +1217,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:3449"
         map2_text = "Dodelijke ongevallen:8"
+        p_count = count_persoon("A77")
+        avg_p_file("A77", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A79():
         global andere
@@ -850,6 +1234,12 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:3716"
         map2_text = "Dodelijke ongevallen:10"
+        p_count = count_persoon("A79")
+        avg_p_file("A79", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
 
     def A200():
         global andere
@@ -861,175 +1251,179 @@ class snelweg:#de class met alle dingen omtrent alle snelwegen
         map(Display_map, map_x,map_y)
         map_text = "Niet-dodelijke ongevallen:7102"
         map2_text = "Dodelijke ongevallen:14"
-#de functies die zorgen voor de wisseling van de afbeelding en tekst bij de navigatie pagina
+        p_count = count_persoon("A200")
+        avg_p_file("A200", p_count)
+        global file_rating_avg
+        file_rating_avg = "File tevredenheid: " + str(file_rating_avg)
+        global weg_rating_avg
+        weg_rating_avg = "Weg tevredenheid: " + str(weg_rating_avg)
+
     def nav_berlijn():
         global andere
         andere = True
         global Display_map
-        Display_map = map_berlijn #de afbeelding die gebruikt moeten worden
+        Display_map = map_A200
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:29580" #de bovenste tekst
-        map2_text = "Dodelijke ongevallen:137" #de onderste tekst
+        map_text = "Niet-dodelijke ongevallen:7102"
+        map2_text = "Dodelijke ongevallen:14"
 
     def nav_parijs():
         global andere
         andere = True
         global Display_map
-        Display_map = map_parijs
+        Display_map = map_A200
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:18053"
-        map2_text = "Dodelijke ongevallen:53"
+        map_text = "Niet-dodelijke ongevallen:7102"
+        map2_text = "Dodelijke ongevallen:14"
 
     def nav_haarlem():
         global andere
         andere = True
         global Display_map
-        Display_map = map_haarlem
+        Display_map = map_A200
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:28762"
-        map2_text = "Dodelijke ongevallen:74"
+        map_text = "Niet-dodelijke ongevallen:7102"
+        map2_text = "Dodelijke ongevallen:14"
 
     def nav_amsterdam():
         global andere
         andere = True
         global Display_map
-        Display_map = map_amsterdam
+        Display_map = map_A200
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:15148"
-        map2_text = "Dodelijke ongevallen:41"
+        map_text = "Niet-dodelijke ongevallen:7102"
+        map2_text = "Dodelijke ongevallen:14"
 
     def nav_denhaag():
         global andere
         andere = True
         global Display_map
-        Display_map = map_denhaag
+        Display_map = map_A200
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:15148"
-        map2_text = "Dodelijke ongevallen:41"
+        map_text = "Niet-dodelijke ongevallen:7102"
+        map2_text = "Dodelijke ongevallen:14"
 
     def nav_maastricht():
         global andere
         andere = True
         global Display_map
-        Display_map = map_maastricht
+        Display_map = map_A200
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:19141"
-        map2_text = "Dodelijke ongevallen:78"
+        map_text = "Niet-dodelijke ongevallen:7102"
+        map2_text = "Dodelijke ongevallen:14"
 
     def nav_arnhem():
         global andere
         andere = True
         global Display_map
-        Display_map = map_arnhem
+        Display_map = map_A200
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:15388"
-        map2_text = "Dodelijke ongevallen:49"
+        map_text = "Niet-dodelijke ongevallen:7102"
+        map2_text = "Dodelijke ongevallen:14"
 
     def nav_zwolle():
         global andere
         andere = True
         global Display_map
-        Display_map = map_zwolle
+        Display_map = map_A200
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:20042"
-        map2_text = "Dodelijke ongevallen:85"
+        map_text = "Niet-dodelijke ongevallen:7102"
+        map2_text = "Dodelijke ongevallen:14"
 
     def nav_assen():
         global andere
         andere = True
         global Display_map
-        Display_map = map_assen
+        Display_map = map_A200
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:20042"
-        map2_text = "Dodelijke ongevallen:85"
+        map_text = "Niet-dodelijke ongevallen:7102"
+        map2_text = "Dodelijke ongevallen:14"
 
     def nav_groningen():
         global andere
         andere = True
         global Display_map
-        Display_map = map_groningen
+        Display_map = map_A200
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:25270"
-        map2_text = "Dodelijke ongevallen:85"
+        map_text = "Niet-dodelijke ongevallen:7102"
+        map2_text = "Dodelijke ongevallen:14"
 
     def nav_leeuwarden():
         global andere
         andere = True
         global Display_map
-        Display_map = map_leeuwarden
+        Display_map = map_A200
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:32259"
-        map2_text = "Dodelijke ongevallen:94"
+        map_text = "Niet-dodelijke ongevallen:7102"
+        map2_text = "Dodelijke ongevallen:14"
 
     def nav_lelystad():
         global andere
         andere = True
         global Display_map
-        Display_map = map_lelystad
+        Display_map = map_A200
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:24072"
-        map2_text = "Dodelijke ongevallen:89"
+        map_text = "Niet-dodelijke ongevallen:7102"
+        map2_text = "Dodelijke ongevallen:14"
 
 
     def nav_utrecht():
         global andere
         andere = True
         global Display_map
-        Display_map = map_utrecht
+        Display_map = map_A200
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:23075"
-        map2_text = "Dodelijke ongevallen:77"
+        map_text = "Niet-dodelijke ongevallen:7102"
+        map2_text = "Dodelijke ongevallen:14"
 
 
     def nav_middelburg():
         global andere
         andere = True
         global Display_map
-        Display_map = map_middelburg
+        Display_map = map_A200
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:35847"
-        map2_text = "Dodelijke ongevallen:101"
+        map_text = "Niet-dodelijke ongevallen:7102"
+        map2_text = "Dodelijke ongevallen:14"
 
     def nav_denbosch():
         global andere
         andere = True
         global Display_map
-        Display_map = map_denbosch
+        Display_map = map_A200
         global map_text
         global map2_text
         map(Display_map, map_x,map_y)
-        map_text = "Niet-dodelijke ongevallen:24251"
-        map2_text = "Dodelijke ongevallen:64"
-
-
+        map_text = "Niet-dodelijke ongevallen:7102"
+        map2_text = "Dodelijke ongevallen:14"
 
 def reset(): #de functie die de kaart pagina laat terug springen naar de orignele afbeelding en tekst
     global andere
@@ -1048,14 +1442,18 @@ def reset(): #de functie die de kaart pagina laat terug springen naar de orignel
     global file_nummer
     file_nummer = 0
     global wegdek_nummer
-    wegdek_nummer = 0
+    wegdeknummer = 0
     tijd = ''
+    global file_rating_avg
+    file_rating_avg = ""
+    global weg_rating_avg
+    weg_rating_avg = ""
 
 def snek(): #de functie die de game "snake" opstart
     def collide(x1, x2, y1, y2, w1, w2, h1, h2):
         if x1+w1>x2 and x1<x2+w2 and y1+h1>y2 and y1<y2+h2:return True
         else:return False
-    def die(screen, score): #het dood gaan scherm
+    def die(screen, score):  #het dood gaan scherm
         f=pygame.font.SysFont('Arial', 30);t=f.render('Your score was: '+str(score), True, (0, 0, 0));screen.blit(t, (10, 270));pygame.display.update();pygame.time.wait(2000);Main_scherm()
     xs = [290, 290, 290, 290, 290];ys = [290, 270, 250, 230, 210];dirs = 0;score = 0;applepos = (random.randint(0, 590), random.randint(0, 590));pygame.init();s=pygame.display.set_mode((600, 600));pygame.display.set_caption('Snek');appleimage = pygame.Surface((10, 10));appleimage.fill((0, 255, 0));img = pygame.Surface((20, 20));img.fill((255, 0, 0));f = pygame.font.SysFont('Arial', 20);clock = pygame.time.Clock()
     while True:
@@ -1063,6 +1461,9 @@ def snek(): #de functie die de game "snake" opstart
         for e in pygame.event.get():
             if e.type == pygame.QUIT:
                 Main_scherm()
+                #pygame.display.set_mode((500,500)
+           #if event.type == pygame.KEYDOWN:
+                #if event.key == pygame.K_ESCAPE
 
             elif e.type == pygame.KEYDOWN: #de bewegingen
                 if e.key == pygame.K_UP and dirs != 0:dirs = 2
@@ -1076,17 +1477,25 @@ def snek(): #de functie die de game "snake" opstart
         if collide(xs[0], applepos[0], ys[0], applepos[1], 20, 10, 20, 10):score+=1;xs.append(700);ys.append(700);applepos=(random.randint(0,590),random.randint(0,590))
         if xs[0] < 0 or xs[0] > 580 or ys[0] < 0 or ys[0] > 580: die(s, score)
         i = len(xs)-1
+        
         while i >= 1:
             xs[i] = xs[i-1];ys[i] = ys[i-1];i -= 1
+        
         if dirs==0:ys[0] += 20
         elif dirs==1:xs[0] += 20
         elif dirs==2:ys[0] -= 20
-        elif dirs==3:xs[0] -= 20
-        s.fill((255, 255, 255))
+        elif dirs==3:xs[0] -= 20  
+              
+        s.fill((255, 255, 255))        
         for i in range(0, len(xs)):
             s.blit(img, (xs[i], ys[i]))
         s.blit(appleimage, applepos);t=f.render(str(score), True, (0, 0, 0));s.blit(t, (10, 10));pygame.display.update()
 
+def message_display2(text, x, y, h):
+    largeText = pygame.font.Font('freesansbold.ttf',h)
+    TextSurf, TextRect = text_objects(text, largeText)
+    TextRect.center = (x, y)
+    gameDisplay.blit(TextSurf, TextRect)
 
 def button2(msg,x,y,w,h,ic,ac,action=None): #de button die wordt gebruikt als je een onzichtbare button wilt
     """functie om een knop te maken (text,x,y,width,height,kleur, hover kleur, actie)"""
@@ -1096,7 +1505,6 @@ def button2(msg,x,y,w,h,ic,ac,action=None): #de button die wordt gebruikt als je
 
         if click[0] == 1 and action != None:        #als je er op klikt, doe actie
             action()
-
 
     smallText = pygame.font.SysFont("freesansbold.ttf",20)
     textSurf, textRect = text_objects(msg, smallText)
@@ -1122,11 +1530,12 @@ def rating(): #de buttons die horen bij het beoordelingen scherm
     button2("", 950, 300, 100, 100, yellow, red, set.set_wegdek5)
 
     message_display2('wegdek:', 250, 350, 100)
-
-    button("ochtend",1220, 300, 50, 30, yellow, red, set.ochtend)
+    
+    button("Ochtend",1220, 300, 50, 30, yellow, red, set.ochtend)
     button("Middag",1220, 400, 50, 30, yellow, red, set.middag)
     button("Avond",1220, 500, 50, 30, yellow, red, set.avond)
     button("Nacht",1220, 600, 50, 30, yellow, red, set.nacht)
+
 class set: #de class die alle functies heeft die de rating knoppen werkende maken
     def set_file1():
         global beoordeling_file
@@ -1265,9 +1674,9 @@ class set: #de class die alle functies heeft die de rating knoppen werkende make
         set.rating_wegdek_4()
         global wegdek_nummer
         wegdek_nummer = 5
-
+        
     def ochtend():
-        global tijd
+        global tijd 
         tijd = 'O'
     def middag():
         global tijd
@@ -1279,13 +1688,12 @@ class set: #de class die alle functies heeft die de rating knoppen werkende make
         global tijd
         tijd = 'N'
 
-    ############################################################################################
+############################################################################################
 
-
-#beoordeling_wegdek & beoordeling_file & naam_snelweg moeten naar de database.
-def sent_data():# de function die de beoordeling in de database verwerkt
+#beoordeling_wegdek & beoordeling_file & naam_snelweg & tijd moeten naar de database.
+def sent_data(): # de function die de beoordeling in de database verwerkt
     if naam_snelweg != "     " and beoordeling_file != 0 and beoordeling_wegdek != 0 and tijd != '':
-        poi = 'gooi alles in de database'
+        insert_into_persoon(naam_snelweg, beoordeling_file, beoordeling_wegdek, tijd)
         global oordeel
         oordeel = 1
         Main_scherm()
@@ -1437,9 +1845,9 @@ class snelweg_query: #de queries over welke snelweg geselecteerd is bij de beoor
 #--------------------------------------------------------------------------------------------------------------
 
 def Main_scherm():   #main menu scherm
-    pygame.display.set_mode((display_width,display_height))#de afmeting van het scherm
+    pygame.display.set_mode((display_width,display_height)) # de afmeting van het scherm
     pygame.display.set_caption('Roadmap Netherlands') # de titel op de bovenbalk
-    Instruction, Intro = False, True #het start op als het programma start
+    Instruction, Intro = False, True # het start op als het programma start
     reset()
     x, y, mov_x, mov_y = 0,0,6,6
     while intro:
@@ -1459,14 +1867,13 @@ def Main_scherm():   #main menu scherm
         pygame.display.flip()
 
 def Kaart_scherm():    #kaart scherm
-    Instruction, Intro = True, False #het start niet direct op als het programma opstart
+    Instruction, Intro = True, False # het start niet direct op als het programma opstart
     pygame.display.set_caption('Roadmap Netherlands')
     while Instruction:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pop_up()
-
-
+                     
         gameDisplay.fill(map_colour)
         map(map_image,map_x,10)
 
@@ -1529,13 +1936,12 @@ def Kaart_scherm():    #kaart scherm
         clock.tick(15)  #refresh rate van 15
         pygame.display.flip()
 
-def beoordeling_scherm(): #het beoordeling scherm
-    Instruction, Intro = True, False #het start niet direct op als het programma start
+def beoordeling_scherm(): # het beoordeling scherm
+    Instruction, Intro = True, False # het start niet direct op als het programma start
     while Instruction:
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+            if event.type == pygame.KEYDOWN:
                 pop_up()
-
 
         gameDisplay.fill(map_colour)
 
@@ -1586,8 +1992,7 @@ def beoordeling_scherm(): #het beoordeling scherm
         button("Verstuur", 150, 700, 300, 50, yellow, red, sent_data)
         button("Terug", 850, 700, 300, 50, yellow, red, Main_scherm)
 
-        rating()
-         #hetgeen wat er voor zorgt dat de steren zichzelf op de goede manier tonen
+        rating() # hetgeen wat er voor zorgt dat de steren zichzelf op de goede manier tonen
         if rating_files == True:
             if file_nummer == 1:
                 set.rating_file_1()
@@ -1611,7 +2016,8 @@ def beoordeling_scherm(): #het beoordeling scherm
                 set.rating_wegdek_4()
             elif wegdek_nummer == 5:
                 set.rating_wegdek_5()
-       #hetgeen wat zorgt dat het selecteren van de tijd goed verloopt
+
+        # hetgeen wat zorgt dat het selecteren van de tijd goed verloopt
         if tijd == 'O':
             pygame.draw.rect(gameDisplay, red, (1220, 300, 50, 30))
             message_display2('Ochtend', 1245, 315, 12)
@@ -1625,12 +2031,11 @@ def beoordeling_scherm(): #het beoordeling scherm
             pygame.draw.rect(gameDisplay, red, (1220, 600, 50, 30))
             message_display2('Nacht', 1245, 615, 12)
 
-
         clock.tick(15)  #refresh rate van 15
         pygame.display.flip()
-
+        
 def Navigatie_scherm():    #navigatie scherm
-    Instruction, Intro = True, False #het start niet direct op als het programma opstart
+    Instruction, Intro = True, False # het start niet direct op als het programma opstart
     while Instruction:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -1639,28 +2044,23 @@ def Navigatie_scherm():    #navigatie scherm
         map(map_image,map_x,10)
         y1 = 15
         message_display2("Van Rotterdam naar:", 950, 40, 30)
-
-        #button row 1
         button("Berlijn", 700, 90, 100, 30, yellow, red,snelweg.nav_berlijn)
         button("Parijs", 810, 90, 100, 30, yellow, red, snelweg.nav_parijs)
         button("Haarlem", 920, 90, 100, 30, yellow, red, snelweg.nav_haarlem)
         button("Amsterdam", 1030, 90, 100, 30, yellow, red,snelweg.nav_amsterdam )
         button("Den Haag", 1140, 90, 100, 30, yellow, red, snelweg.nav_denhaag)
 
-        #button row 2
         button("Middelburg", 700, 130, 100, 30, yellow, red, snelweg.nav_middelburg)
         button("Utrecht", 810, 130, 100, 30, yellow, red, snelweg.nav_utrecht)
         button("Den Bosch", 920, 130, 100, 30, yellow, red, snelweg.nav_denbosch)
         button("Maastricht",1030, 130, 100, 30, yellow, red, snelweg.nav_maastricht)
         button("Arnhem", 1140, 130, 100, 30, yellow, red, snelweg.nav_arnhem)
 
-        #button row 3
         button("Zwolle", 700, 170, 100, 30, yellow, red, snelweg.nav_zwolle)
         button("Assen", 810, 170, 100, 30, yellow, red, snelweg.nav_assen)
         button("Groningen", 920, 170, 100, 30, yellow, red, snelweg.nav_groningen)
         button("Leeuwarden", 1030, 170, 100, 30, yellow, red, snelweg.nav_leeuwarden)
         button("Lelystad", 1140, 170, 100, 30, yellow, red, snelweg.nav_lelystad)
-
 
         button("Terug", 1200, 700, 53, 30, yellow, red, Main_scherm)
         button("deselecteer", 800, 700, 70, 30, yellow, red, reset)
