@@ -33,6 +33,6 @@ def poi():
                     # everything is rotated counter-clockwise by 90 degrees,
                     # so the plotting starts on the positive y-axis.
 
-    title('titel', bbox={'facecolor':'0.8', 'pad':5})
+    title('Meest verongelukte voertuigen', bbox={'facecolor':'0.8', 'pad':5})
 
     show()
