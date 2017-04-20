@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>c6895853-0e7f-48a1-b85e-4bd540914959</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>module1.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>PythonApplication3</Name>
+    <RootNamespace>PythonApplication3</RootNamespace>
+    <InterpreterId>{2af0f10d-7135-4994-9156-5d01c9c11b7e}</InterpreterId>
+    <InterpreterVersion>3.5</InterpreterVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="barChart.py" />
+    <Compile Include="eztext.py" />
+    <Compile Include="module1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="pie_demo.py" />
+    <Compile Include="snake.py">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\A1.jpg" />
+    <Content Include="images\A10.jpg" />
+    <Content Include="images\A12.jpg" />
+    <Content Include="images\A13.jpg" />
+    <Content Include="images\A15.jpg" />
+    <Content Include="images\A16.jpg" />
+    <Content Include="images\A17.jpg" />
+    <Content Include="images\A18.jpg" />
+    <Content Include="images\A2.jpg" />
+    <Content Include="images\A20.jpg" />
+    <Content Include="images\A200.jpg" />
+    <Content Include="images\A22.jpg" />
+    <Content Include="images\A27.jpg" />
+    <Content Include="images\A28.jpg" />
+    <Content Include="images\A29.jpg" />
+    <Content Include="images\A30.jpg" />
+    <Content Include="images\A31.jpg" />
+    <Content Include="images\A32.jpg" />
+    <Content Include="images\A35.jpg" />
+    <Content Include="images\A37.jpg" />
+    <Content Include="images\A38.jpg" />
+    <Content Include="images\A4.jpg" />
+    <Content Include="images\A44.jpg" />
+    <Content Include="images\A5.jpg" />
+    <Content Include="images\A50.jpg" />
+    <Content Include="images\A58.jpg" />
+    <Content Include="images\A59.jpg" />
+    <Content Include="images\A6.jpg" />
+    <Content Include="images\A65.jpg" />
+    <Content Include="images\A67.jpg" />
+    <Content Include="images\A7.jpg" />
+    <Content Include="images\A73.jpg" />
+    <Content Include="images\A74.jpg" />
+    <Content Include="images\A76.jpg" />
+    <Content Include="images\A77.jpg" />
+    <Content Include="images\A79.jpg" />
+    <Content Include="images\A8.jpg" />
+    <Content Include="images\A9.jpg" />
+    <Content Include="images\car.png" />
+    <Content Include="images\lege_ster.png" />
+    <Content Include="images\Roadmap.png" />
+    <Content Include="images\volle_ster.png" />
+    <Content Include="images\wegenkaartV2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="{2af0f10d-7135-4994-9156-5d01c9c11b7e}\3.2" />
+    <InterpreterReference Include="{2af0f10d-7135-4994-9156-5d01c9c11b7e}\3.5" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
+  </PropertyGroup>
+  <Import Condition="Exists($(PtvsTargetsFile))" Project="$(PtvsTargetsFile)" />
+  <Import Condition="!Exists($(PtvsTargetsFile))" Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
