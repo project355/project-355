@@ -1448,6 +1448,8 @@ def reset(): #de functie die de kaart pagina laat terug springen naar de orignel
     file_rating_avg = ""
     global weg_rating_avg
     weg_rating_avg = ""
+    global beoordeling_wegdek
+    beoordeling_wegdek = 0
 
 def snek(): #de functie die de game "snake" opstart
     def collide(x1, x2, y1, y2, w1, w2, h1, h2):
